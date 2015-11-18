@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/save"
+        android:title="Save Data"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_submit"
+        android:icon="@drawable/submit"
+        android:title="@string/menuSubmitData"
+        app:showAsAction="never"/>
+
+
+    <item android:id="@+id/action_settings"
+        android:title="@string/menuSettings"
+        android:icon="@drawable/settings"
+        app:showAsAction="never"/>
+
+</menu>

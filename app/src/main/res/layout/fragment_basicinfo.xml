@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".BasicInfoActivity"
+    android:orientation="vertical"
+    android:weightSum="1">
+    <TextView
+        android:text="@string/teamNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/teamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter Team Name"
+        android:backgroundTint="@color/background_material_dark"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.04" />
+
+    <TextView
+        android:text="@string/teamNumberTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/teamNumber"
+        android:hint="Enter Team Number"
+        android:backgroundTint="@color/background_material_dark"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".04" />
+
+    <TextView
+        android:text="@string/robotNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/robotName"
+        android:hint="Enter Robot Name"
+        android:backgroundTint="@color/background_material_dark"/>
+
+
+</LinearLayout>

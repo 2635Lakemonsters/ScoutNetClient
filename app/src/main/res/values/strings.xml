@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ScoutNet Client</string>
+
+    <string name="basicInfoPageTitle">Basic info</string>
+    <string name="teamNameTitle">Team Name</string>
+    <string name="teamNumberTitle">Team Number</string>
+    <string name="teamAwesomeTitle">Is Team Awesome?</string>
+    <string name="robotNameTitle">Robot Name</string>
+
+    <string name="menuSettings">Settings</string>
+    <string name="menuSubmitData">Submit Data</string>
+
+    <string name="preference_file_key">org.team2635.scoutnetclient.preferencefile</string>
+
+<!-- Dialog Titles -->
+    <string name="dialog_upload_prompt">Upload Data?</string>
+
+
+<!--Dialog Buttons -->
+    <string name ="upload">Upload</string>
+    <string name ="cancel">Cancel</string>
+</resources>
