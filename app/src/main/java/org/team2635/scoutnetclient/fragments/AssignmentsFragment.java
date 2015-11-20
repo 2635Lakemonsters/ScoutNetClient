@@ -1,7 +1,9 @@
 package org.team2635.scoutnetclient.fragments;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.team2635.scoutnetclient.R;
+import org.team2635.scoutnetclient.SettingsActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,9 +24,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-/**
- * Created by Siren on 11/14/2015.
- */
 public class AssignmentsFragment extends ListFragment
 {
     /** Called when the activity is first created. */
@@ -45,11 +45,13 @@ public class AssignmentsFragment extends ListFragment
 
     private ArrayList populate() {
         ArrayList items = new ArrayList();
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String adress = sharedPref.getString("pref_key_server_ip", "");
 
         try {
             URL url = new URL
                     // TODO - change line below to your own domain
-                    ("http://www.ece301.com/food.php");
+                    (adress);
             HttpURLConnection urlConnection =
                     (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
@@ -69,13 +71,13 @@ public class AssignmentsFragment extends ListFragment
                 }
             }
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         } catch (JSONException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
         return items;

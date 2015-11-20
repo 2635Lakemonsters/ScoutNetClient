@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -20,9 +21,7 @@ import org.team2635.scoutnetclient.utilities.PagerAdapter;
 
 import static android.app.PendingIntent.getActivity;
 
-/**
- * Created by Siren on 10/23/2015.
- */
+
 public class PitInfoActivity extends AppCompatActivity  implements UploadPromptDialog.NoticeDialogListener
 {
 
@@ -33,8 +32,13 @@ public class PitInfoActivity extends AppCompatActivity  implements UploadPromptD
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pitinfo);
-        Toolbar Toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(Toolbar);
+
+        Toolbar toolbar =
+                (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        //TODO: Up Button Enable
+     //   ab.setDisplayHomeAsUpEnabled(true);
 
         viewpager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager());

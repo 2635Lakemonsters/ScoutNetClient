@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import org.team2635.scoutnetclient.fragments.AssignmentsFragment;
@@ -19,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar Toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(Toolbar);
 
-        ActionBar actionBar = getSupportActionBar();
-        //actionBar.
+        Toolbar toolbar =
+                (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        //TODO: Up Button Enable
+      //  ab.setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showAssignment()
+    public void showAssignment(View view)
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -56,4 +60,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void showSettingsActivity()
+    {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                showSettingsActivity();
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
 }
