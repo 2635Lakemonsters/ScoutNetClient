@@ -56,7 +56,8 @@ android:orientation="vertical">
             android:text="Get Assignment Data"
             android:onClick="showAssignment"
             android:layout_gravity="center_vertical"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:enabled="false" />
 
         <FrameLayout android:id="@+id/assignment_container" android:layout_weight="1"
             android:layout_width="0px" android:layout_height="match_parent"

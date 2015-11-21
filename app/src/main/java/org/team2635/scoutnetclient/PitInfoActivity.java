@@ -37,8 +37,7 @@ public class PitInfoActivity extends AppCompatActivity  implements UploadPromptD
                 (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        //TODO: Up Button Enable
-     //   ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true);
 
         viewpager = (ViewPager) findViewById(R.id.pager);
         PagerAdapter padapter = new PagerAdapter(getSupportFragmentManager());
