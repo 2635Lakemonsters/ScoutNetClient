@@ -6,9 +6,6 @@ import android.content.SharedPreferences;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/**
- * Created by Siren on 11/1/2015.
- */
 public class DataManager
 {
     public SharedPreferences m_sharedPref;
@@ -64,12 +61,18 @@ public class DataManager
         return urlCount;
     }
 
+    //TODO:Test proper data clearing functionality
     public void clearData()
     {
         SharedPreferences.Editor editor = m_sharedPref.edit();
+        urlCount = m_sharedPref.getInt("count", 999);
 
-        editor.clear();
+        for(int i=1; i<urlCount; ++i)
+        {
+            editor.remove("url"+i);
+        }
 
+        editor.remove("count");
         editor.commit();
     }
 }

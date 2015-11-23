@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
@@ -16,11 +17,13 @@ import android.view.View;
 
 import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
+import org.team2635.scoutnetclient.dialogs.SuccessDialog;
+import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.AssignmentsFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
+{
     public String[] urls;
 
     @Override
@@ -32,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
 
     }
 
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 showSettingsActivity();
                 return true;
             case R.id.action_submit:
-                submitData();
+                showUploadPromptDialog();
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -100,10 +102,38 @@ public class MainActivity extends AppCompatActivity {
         for(String s : urls)
         {
             System.out.println("Extracted and ran a URL! Data: " + s);
+            //TODO: Web server submission connectivity
             //uploader.runURL("10.26.35.17", s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
         manager.clearData();
+        showSuccessDialog();
+    }
+
+    public void showUploadPromptDialog() {
+        // Create an instance of the dialog fragment and show it
+        DialogFragment uploadPromptDialog = new UploadPromptDialog();
+        uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+    }
+
+    // The dialog fragment receives a reference to this Activity through the
+    // Fragment.onAttach() callback, which it uses to call the following methods
+    // defined by the NoticeDialogFragment.NoticeDialogListener interface
+    @Override
+    public void onDialogPositiveClick(DialogFragment uploadPromptDialog) {
+        submitData();
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment uploadPromptDialog) {
+        // User touched the dialog's negative button
+    }
+
+    public void showSuccessDialog()
+    {
+        // Create an instance of the dialog fragment and show it
+        DialogFragment successDialog = new SuccessDialog();
+        successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
     }
 }

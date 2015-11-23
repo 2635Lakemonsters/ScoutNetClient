@@ -15,10 +15,12 @@
 
 <!-- Dialog Titles -->
     <string name="dialog_upload_prompt">Upload Data?</string>
+    <string name="dialog_success">Success!</string>
 
 <!--Dialog Buttons -->
     <string name ="upload">Upload</string>
     <string name ="cancel">Cancel</string>
+    <string name="confirm">Ok</string>
 
 <!--Activity Titles-->
     <string name="basicInfoPageTitle">Basic info</string>

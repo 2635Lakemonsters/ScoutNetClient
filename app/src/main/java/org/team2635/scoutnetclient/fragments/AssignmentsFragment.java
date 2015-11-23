@@ -26,6 +26,10 @@ import java.util.ArrayList;
 
 public class AssignmentsFragment extends ListFragment
 {
+    //TODO: Implement saving assignment array
+    //TODO: Implement clickable functionality for list elements
+    //TODO: Implement click functionality linking to data submission page
+    //TODO: Autofill team number in submission page based on list element
     /** Called when the activity is first created. */
     @SuppressWarnings("unchecked")
     @Override

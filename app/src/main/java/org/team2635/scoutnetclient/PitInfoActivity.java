@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
+import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.PagerAdapter;
@@ -63,8 +64,8 @@ public class PitInfoActivity extends AppCompatActivity  implements UploadPromptD
                 return true;
 
             case R.id.action_submit:
-                //showUploadPromptDialog();
-                submitData();
+                showUploadPromptDialog();
+                //submitData();
                 return true;
 
             default:
@@ -119,6 +120,7 @@ public class PitInfoActivity extends AppCompatActivity  implements UploadPromptD
         uploader.addEntry("1855924759", robotName);
         //uploader.upload();
         manager.write(uploader.getUrlData());
+        showSuccessDialog();
     }
     public void submitData()
     {
@@ -132,10 +134,19 @@ public class PitInfoActivity extends AppCompatActivity  implements UploadPromptD
         for(String s : urls)
         {
             System.out.println("Extracted and ran a URL! Data: " + s);
+            //TODO: Web server submission connectivity
             //uploader.runURL("10.26.35.17", s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
         manager.clearData();
+        showSuccessDialog();
+    }
+
+    public void showSuccessDialog()
+    {
+        // Create an instance of the dialog fragment and show it
+        DialogFragment successDialog = new SuccessDialog();
+        successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
     }
 }
