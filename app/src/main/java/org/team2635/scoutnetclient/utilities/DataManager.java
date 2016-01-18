@@ -1,16 +1,12 @@
 package org.team2635.scoutnetclient.utilities;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class DataManager
 {
-    public SharedPreferences m_sharedPref;
-    public int urlCount = 0;
-    public String[] urls;
+    private final SharedPreferences m_sharedPref;
+    private int urlCount = 0;
+    private String[] urls;
 
     public DataManager(SharedPreferences sharedPref)
     {
@@ -24,7 +20,7 @@ public class DataManager
             //First Instantiation, setting value to zero. Because compatibility and crap
             urlCount = 0;
             editor.putInt("count", urlCount);
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -37,7 +33,7 @@ public class DataManager
 
         editor.putInt("count", urlCount);
 
-        editor.commit();
+        editor.apply();
 
         System.out.println("Url data logged to memory! Data: " + url);
         System.out.println("Url count: " + urlCount);
@@ -73,6 +69,6 @@ public class DataManager
         }
 
         editor.remove("count");
-        editor.commit();
+        editor.apply();
     }
 }

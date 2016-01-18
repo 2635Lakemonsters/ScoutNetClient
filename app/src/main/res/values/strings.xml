@@ -21,7 +21,7 @@
 <!--Dialog Buttons -->
     <string name ="upload">Upload</string>
     <string name ="cancel">Cancel</string>
-    <string name="confirm">Ok</string>
+    <string name="confirm">OK</string>
 
 <!--Activity Titles-->
     <string name="basicInfoPageTitle">Basic info</string>

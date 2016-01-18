@@ -14,9 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-
-import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
@@ -32,7 +29,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
-    public String[] urls;
+    private String[] urls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +50,19 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         return true;
     }
 
-    public void showPitActivity(View view)
+    public void showPitActivity()
     {
         Intent intent = new Intent(this, PitInfoActivity.class);
         startActivity(intent);
     }
 
-    public void showMatchActivity(View view)
+    public void showMatchActivity()
     {
         Intent intent = new Intent(this, FieldInfoActivity.class);
         startActivity(intent);
     }
 
-    public void showAssignment(View view)
+    public void showAssignment()
     {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -76,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
 
     }
 
-    public void showSettingsActivity()
+    private void showSettingsActivity()
     {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
@@ -99,14 +96,11 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         }
     }
 
-    public void submitData()
+    private void submitData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-
-        // The dalek says... DEPRECATE!!!
-        //GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
 
         urls = manager.getURLArray();
         //TODO: Get page adress from settings
@@ -155,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         showSuccessDialog();
     }
 
-    public void showUploadPromptDialog() {
+    private void showUploadPromptDialog() {
         // Create an instance of the dialog fragment and show it
         DialogFragment uploadPromptDialog = new UploadPromptDialog();
         uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
@@ -174,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         // User touched the dialog's negative button
     }
 
-    public void showSuccessDialog()
+    private void showSuccessDialog()
     {
         // Create an instance of the dialog fragment and show it
         DialogFragment successDialog = new SuccessDialog();

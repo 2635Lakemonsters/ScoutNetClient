@@ -12,11 +12,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
@@ -32,9 +29,9 @@ import java.net.URL;
 public class FieldInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     //TODO:Create field scouting page/design
-    public String[] urls;
-    public int pepes = 0;
-    public int viewToGet = 0;
+    private String[] urls;
+    private int pepes = 0;
+    private int viewToGet = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +44,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         ab.setDisplayHomeAsUpEnabled(true);
 
         TextView pepeText = (TextView) findViewById(R.id.pepeCountText);
-        pepeText.setText(Integer.toString(pepes));
-        System.out.println(Integer.toString(pepes));
+        pepeText.setText("" + pepes);
     }
 
     @Override
@@ -84,14 +80,11 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         }
     }
 
-    public void submitData()
+    private void submitData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-
-        // The dalek says... DEPRECATE!!!
-        //GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
 
         urls = manager.getURLArray();
         //TODO: Get page adress from settings
@@ -141,12 +134,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     }
 
     //TODO: Add saveData() functionality
-    public void saveData()
+    private void saveData()
     {
         showSuccessDialog();
     }
 
-    public void showUploadPromptDialog() {
+    private void showUploadPromptDialog() {
         // Create an instance of the dialog fragment and show it
         DialogFragment uploadPromptDialog = new UploadPromptDialog();
         uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
@@ -165,26 +158,26 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         // User touched the dialog's negative button
     }
 
-    public void showSuccessDialog()
+    private void showSuccessDialog()
     {
         // Create an instance of the dialog fragment and show it
         DialogFragment successDialog = new SuccessDialog();
         successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
     }
 
-    public void addPepe(View view)
+    public void addPepe()
     {
         pepes++;
         updatePepes(true);
     }
 
-    public void removePepe(View view)
+    public void removePepe()
     {
         updatePepes(false);
         pepes--;
     }
 
-    public void updatePepes(boolean state)
+    private void updatePepes(boolean state)
     {
         System.out.println(pepes);
         viewToGet = 0;
@@ -215,11 +208,11 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         System.out.println(viewToGet);
 
         ImageView pepeView = (ImageView) findViewById(viewToGet);
-        if(state == true)
+        if(state)
         {
             pepeView.setVisibility(View.VISIBLE);
         }
-        else if (state == false)
+        else if (!state)
         {
             pepeView.setVisibility(View.INVISIBLE);
         }

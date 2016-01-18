@@ -2,7 +2,6 @@ package org.team2635.scoutnetclient.fragments;
 
 
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 
 import org.team2635.scoutnetclient.R;

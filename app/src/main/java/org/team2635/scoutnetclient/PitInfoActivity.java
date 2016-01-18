@@ -32,8 +32,8 @@ import java.net.URL;
 public class PitInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
 
-    public String[] urls;
-    ViewPager viewpager;
+    private String[] urls;
+    private ViewPager viewpager;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +94,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         }
     }
 
-    public void showUploadPromptDialog()
+    private void showUploadPromptDialog()
     {
         // Create an instance of the dialog fragment and show it
         DialogFragment uploadPromptDialog = new UploadPromptDialog();
@@ -115,7 +115,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
     }
 
-    public void saveData()
+    private void saveData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -141,14 +141,11 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         manager.write(uploader.getUrlData());
         showSuccessDialog();
     }
-    public void submitData()
+    private void submitData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-
-        // The dalek says... DEPRECATE!!!
-        //GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
 
         urls = manager.getURLArray();
         //TODO: Get page adress from settings
@@ -197,7 +194,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         showSuccessDialog();
     }
 
-    public void showSuccessDialog()
+    private void showSuccessDialog()
     {
         // Create an instance of the dialog fragment and show it
         DialogFragment successDialog = new SuccessDialog();

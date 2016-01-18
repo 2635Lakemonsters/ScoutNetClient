@@ -1,6 +1,5 @@
 package org.team2635.scoutnetclient.fragments;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
-import org.team2635.scoutnetclient.SettingsActivity;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,7 +38,7 @@ public class AssignmentsFragment extends ListFragment implements AdapterView.OnI
     /** Called when the activity is first created. */
     @SuppressWarnings("unchecked")
 
-    public int teamNumber = 0000;
+    private int teamNumber = 0000;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
