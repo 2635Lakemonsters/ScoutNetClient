@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FieldInfoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Pepes: "
+
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:id="@+id/pepeCountText"
+            android:textColor="@android:color/black"/>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:onClick="addPepe"
+            android:id="@+id/button21" />
+
+
+        <ImageView
+            android:layout_width="29dp"
+            android:layout_height="62dp"
+            android:id="@+id/pepe1"
+            android:src="@drawable/pepe"
+            android:layout_weight="0.05"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="29dp"
+            android:layout_height="62dp"
+            android:id="@+id/pepe2"
+            android:src="@drawable/pepe"
+            android:layout_weight="0.05"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="29dp"
+            android:layout_height="62dp"
+            android:id="@+id/pepe3"
+            android:src="@drawable/pepe"
+            android:layout_weight="0.05"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="29dp"
+            android:layout_height="62dp"
+            android:id="@+id/pepe4"
+            android:src="@drawable/pepe"
+            android:layout_weight="0.05"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:layout_width="29dp"
+            android:layout_height="62dp"
+            android:id="@+id/pepe5"
+            android:src="@drawable/pepe"
+            android:layout_weight="0.05"
+            android:visibility="invisible"/>
+
+
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:onClick="removePepe"
+            android:id="@+id/button2" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView7" />
+
 
 </LinearLayout>

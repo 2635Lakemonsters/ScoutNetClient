@@ -40,6 +40,7 @@ public class GoogleFormUploader {
 	 * the response that it got back from google
 	 * server.
 	 ***************************************/
+
 	public void upload(){
 		//Log.i("Uploader", getFormUrl());
 		//Log.i("Uploader", getData());
@@ -54,10 +55,12 @@ public class GoogleFormUploader {
 		t.start();
 	}
 
-    public void runURL(String adress, String url)
+	//TODO: Deprecated method, remove before release
+	/**
+    public void runURL(String adress, String urlData)
     {
         final String m_adress = adress;
-        final String m_urlData = url;
+        final String m_urlData = urlData;
 
         Thread t = new Thread(new Runnable(){
             public void run(){
@@ -67,6 +70,7 @@ public class GoogleFormUploader {
             }
         });
     }
+	 **/
 
 	public String getUrlData()
 	{
@@ -74,6 +78,7 @@ public class GoogleFormUploader {
 		String string = getData();
 		return string;
 	}
+
 	
 	private String getFormUrl(){
 		StringBuilder url = new StringBuilder("https://docs.google.com/forms/d/");
@@ -85,7 +90,7 @@ public class GoogleFormUploader {
 	private String getData(){
 		StringBuilder data = new StringBuilder();
 		for(Entry cur: mEntries){
-			data.append("entry.");
+			//data.append("entry.");
 			data.append(cur.getEntryId());
 			data.append("=");
 			try {
@@ -115,6 +120,6 @@ public class GoogleFormUploader {
 	 * by the google docs server.
 	 *********************************************/
 	public void onUploadComplete(String response){
-		
+		System.out.println(response);
 	}
 }

@@ -34,8 +34,14 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_activity_settings"
             android:parentActivityName=".MainActivity">
-
         </activity>
+
+        <activity
+            android:name=".FieldInfoActivity"
+            android:label="@string/title_activity_activity_fieldscouting"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
     </application>
 
 </manifest>

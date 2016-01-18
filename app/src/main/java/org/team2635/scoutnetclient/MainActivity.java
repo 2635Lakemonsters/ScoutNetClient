@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
@@ -21,6 +22,13 @@ import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.AssignmentsFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
+
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
@@ -82,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 return true;
             case R.id.action_submit:
                 showUploadPromptDialog();
+                return true;
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -95,15 +104,50 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-        GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
+
+        // The dalek says... DEPRECATE!!!
+        //GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
 
         urls = manager.getURLArray();
+        //TODO: Get page adress from settings
+        //String adress = "http://192.168.1.109/pitform.php";
 
-        for(String s : urls)
+        for(final String s : urls)
         {
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run()
+                {
+                    try
+                    {
+                        URL url = new URL("http://192.168.1.109/pitform.php?" + s);
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                        try
+                        {
+                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                            System.out.println(in);
+                        }
+                        finally
+                        {
+                            urlConnection.disconnect();
+                        }
+                    }
+
+                    catch(MalformedURLException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    catch(IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
+
             System.out.println("Extracted and ran a URL! Data: " + s);
-            //TODO: Web server submission connectivity
-            //uploader.runURL("10.26.35.17", s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.

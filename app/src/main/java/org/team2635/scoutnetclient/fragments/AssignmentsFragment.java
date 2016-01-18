@@ -1,6 +1,7 @@
 package org.team2635.scoutnetclient.fragments;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -8,11 +9,13 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 import org.team2635.scoutnetclient.SettingsActivity;
 
@@ -24,16 +27,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class AssignmentsFragment extends ListFragment
+public class AssignmentsFragment extends ListFragment implements AdapterView.OnItemClickListener
 {
     //TODO: Implement saving assignment array
-    //TODO: Implement clickable functionality for list elements
-    //TODO: Implement click functionality linking to data submission page
-    //TODO: Autofill team number in submission page based on list element
+    //TODO: TEST clickable functionality for list elements
+    //TODO: TEST Click functionality linking to data submission page
+    //TODO: TEST Autofill team number in submission page based on list element
+
+    //TODO: The pink panther's TODO list:
+    //TODO: todo, todo todo todo todo toooodoooooo
+
     /** Called when the activity is first created. */
     @SuppressWarnings("unchecked")
-    @Override
 
+    public int teamNumber = 0000;
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -42,9 +51,18 @@ public class AssignmentsFragment extends ListFragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
 
         return inflater.inflate(R.layout.fragment_basicinfo,container,false);
+    }
+
+    public void onItemClick(AdapterView parent, View v, int position, long id)
+    {
+        Intent intent = new Intent(getContext(), PitInfoActivity.class);
+        //TODO: Get ID of clicked element
+        intent.putExtra("TEAMNUMBER", teamNumber);
+        startActivity(intent);
     }
 
     private ArrayList populate() {
@@ -86,4 +104,6 @@ public class AssignmentsFragment extends ListFragment
         }
         return items;
     }
+
+
 }

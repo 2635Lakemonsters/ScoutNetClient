@@ -5,10 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import org.team2635.scoutnetclient.fragments.BasicInfoFragment;
+import org.team2635.scoutnetclient.fragments.GameInfoFragment;
+import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 
-public class PagerAdapter extends FragmentPagerAdapter {
+public class PitPagerAdapter extends FragmentPagerAdapter {
 
-    public PagerAdapter(FragmentManager fm) {
+    public PitPagerAdapter(FragmentManager fm) {
         super(fm);
 
     }
@@ -19,7 +21,10 @@ public class PagerAdapter extends FragmentPagerAdapter {
         switch (arg0) {
             case 0:
                 return new BasicInfoFragment();
-
+            case 1:
+                return new RobotInfoFragment();
+            case 2:
+                return new GameInfoFragment();
             default:
                 break;
         }

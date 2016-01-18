@@ -49,7 +49,7 @@ public class DataManager
         urls = new String[urlCount + 1];
         for(int i=0; i<urlCount + 1; i++)
         {
-            String url = m_sharedPref.getString("url"+i, "No Data");
+            String url = m_sharedPref.getString("url"+i, "");
             urls[i] = url;
             System.out.println("Data assigned to array! Place in array " + i + ". Data: " + url);
         }
