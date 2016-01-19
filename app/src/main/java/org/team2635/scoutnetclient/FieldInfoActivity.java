@@ -50,7 +50,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.nouploadactionmenu, menu);
+        inflater.inflate(R.menu.nosaveactionmenu, menu);
         return true;
     }
 
@@ -87,8 +87,10 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         DataManager manager = new DataManager(sharedPref);
 
         urls = manager.getURLArray();
-        //TODO: Get page adress from settings
-        //String adress = "http://192.168.1.109/pitform.php";
+        //TODO: Test address retrieval from settings
+        final String address = sharedPref.getString("pref_key_server_ip", "");
+        final String pageID = sharedPref.getString("pref_key_server_data_page", "");
+
 
         for(final String s : urls)
         {
@@ -98,7 +100,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 {
                     try
                     {
-                        URL url = new URL("http://192.168.1.109/pitform.php?" + s);
+                        URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
                         try
@@ -165,13 +167,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
     }
 
-    public void addPepe()
+    public void addPepe(View view)
     {
         pepes++;
         updatePepes(true);
     }
 
-    public void removePepe()
+    public void removePepe(View view)
     {
         updatePepes(false);
         pepes--;

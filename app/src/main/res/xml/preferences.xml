@@ -9,8 +9,14 @@
             <EditTextPreference
                 android:key="pref_key_server_ip"
                 android:summary="IP Address of the ScoutNet Server. Get this from scouting manager."
-                android:title="IP Adress"
+                android:title="IP Address"
                 android:defaultValue="192.168.7.2" />
+
+            <EditTextPreference
+                android:key="pref_key_server_data_page"
+                android:summary="Data page of the ScoutNet Server. Get this from scouting manager."
+                android:title="Data Page"
+                android:defaultValue="pitdata.php" />
 
         </PreferenceCategory>
 
