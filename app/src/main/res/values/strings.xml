@@ -31,5 +31,22 @@
 
     <string name="one">One</string>
     <string name="two">Two</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="unknown">Unknown</string>
+
+<!--Defense Names-->
+    <string name="A1">Portcullis</string>
+    <string name="A2">Cheval de Frise</string>
+    <string name="B1">Ramparts</string>
+    <string name="B2">Moat</string>
+    <string name="C1">Drawbridge</string>
+    <string name="C2">Sally Port</string>
+    <string name="D1">Rock Wall</string>
+    <string name="D2">Rough Terrain</string>
+    <string name="Lowbar">Low Bar</string>
+
+<!--Questions-->
+    <string name="CrossableDefenses">Which defenses can you traverse?</string>
 
 </resources>

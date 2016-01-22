@@ -52,7 +52,7 @@ public class AssignmentsFragment extends ListFragment implements AdapterView.OnI
                              Bundle savedInstanceState)
     {
 
-        return inflater.inflate(R.layout.fragment_basicinfo,container,false);
+        return inflater.inflate(R.layout.fragment_teaminfo,container,false);
     }
 
     public void onItemClick(AdapterView parent, View v, int position, long id)
