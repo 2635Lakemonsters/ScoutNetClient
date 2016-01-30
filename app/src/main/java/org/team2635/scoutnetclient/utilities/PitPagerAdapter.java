@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import org.team2635.scoutnetclient.fragments.BasicInfoFragment;
+import org.team2635.scoutnetclient.fragments.DefensesFragment;
 import org.team2635.scoutnetclient.fragments.GameInfoFragment;
 import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 
@@ -25,6 +26,8 @@ public class PitPagerAdapter extends FragmentPagerAdapter {
                 return new RobotInfoFragment();
             case 2:
                 return new GameInfoFragment();
+            case 3:
+                return new DefensesFragment();
             default:
                 break;
         }

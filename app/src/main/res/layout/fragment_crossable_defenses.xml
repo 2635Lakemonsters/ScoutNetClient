@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PitInfoActivity">
+    tools:context=".DefensesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +69,8 @@
             android:layout_row="0"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,17 +82,21 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/A1Yes" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/A1Unknown"
+                android:singleLine="false" />
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/A1No" />
         </RadioGroup>
 
         <TextView
@@ -103,7 +108,8 @@
             android:layout_row="1"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -117,19 +123,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/A2Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/A2Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/A2No" />
         </RadioGroup>
 
         <TextView
@@ -141,7 +150,8 @@
             android:layout_row="2"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -155,19 +165,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/B1Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/B1Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/B1No" />
         </RadioGroup>
 
         <TextView
@@ -179,7 +192,8 @@
             android:layout_row="3"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -193,19 +207,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/B2Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/B2Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/B2No" />
         </RadioGroup>
 
         <TextView
@@ -217,7 +234,8 @@
             android:layout_row="4"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -231,19 +249,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/C1Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/C1Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/C1No" />
         </RadioGroup>
 
         <TextView
@@ -255,7 +276,8 @@
             android:layout_row="5"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -269,19 +291,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/C2Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/C2Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/C2No" />
         </RadioGroup>
 
         <TextView
@@ -293,7 +318,8 @@
             android:layout_row="6"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -307,19 +333,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/D1Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/D1Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/D1No" />
         </RadioGroup>
 
         <TextView
@@ -331,7 +360,8 @@
             android:layout_row="7"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -345,19 +375,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/D2Yes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/D2Unknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/D2No" />
         </RadioGroup>
 
         <TextView
@@ -369,7 +402,8 @@
             android:layout_row="8"
             android:layout_column="0"
             android:layout_marginTop="15dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="3dp" />
 
         <RadioGroup
             android:layout_width="wrap_content"
@@ -383,19 +417,22 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp" />
+                android:layout_marginLeft="20dp"
+                android:id="@+id/LowYes" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="69dp" />
+                android:layout_marginLeft="69dp"
+                android:id="@+id/LowUnknown" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:layout_marginLeft="65dp" />
+                android:layout_marginLeft="65dp"
+                android:id="@+id/LowNo" />
         </RadioGroup>
 
     </GridLayout>
