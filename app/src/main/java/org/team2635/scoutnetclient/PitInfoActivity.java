@@ -19,6 +19,7 @@ import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
+import org.team2635.scoutnetclient.fragments.DefensesFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.PitPagerAdapter;
 
@@ -46,7 +47,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        viewpager = (ViewPager) findViewById(R.id.pager);
+        viewpager = (ViewPager) findViewById(R.id.pitPager);
         PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(padapter);
 
@@ -121,6 +122,15 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
 
+        DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
+        String[] selections = defensesFrag.getSelections();
+
+        //TODO: Commit selections to entries
+        for(String s : selections)
+        {
+            //uploader.addEntry("");
+        }
+
         EditText v_teamName = (EditText) findViewById(R.id.teamName);
         EditText v_teamNumber = (EditText) findViewById(R.id.teamNumber);
         EditText v_robotName = (EditText) findViewById(R.id.robotName);
@@ -134,8 +144,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         v_teamNumber.setText("");
 
         GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
-        //uploader.addEntry("986342234", "Yes");
-        //uploader.addEntry("1379691523", teamNumber);
         uploader.addEntry("NAME", robotName);
         //uploader.upload();
         manager.write(uploader.getUrlData());

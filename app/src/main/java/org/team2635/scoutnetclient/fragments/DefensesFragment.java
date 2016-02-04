@@ -16,8 +16,9 @@ import java.lang.reflect.Array;
 
 public class DefensesFragment extends Fragment
 {
-    OnHeadlineSelectedListener mCallback;
+    ReadDataListener mCallback;
     RadioGroup[] groups;
+    String[] selections;
 
 
     @Override
@@ -34,7 +35,7 @@ public class DefensesFragment extends Fragment
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            mCallback = (OnHeadlineSelectedListener) context;
+            mCallback = (ReadDataListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + " must implement OnHeadlineSelectedListener");
@@ -48,7 +49,7 @@ public class DefensesFragment extends Fragment
     }
 
     // Container Activity must implement this interface
-    public interface OnHeadlineSelectedListener
+    public interface ReadDataListener
     {
         public void onArticleSelected(int position);
     }
@@ -82,20 +83,29 @@ public class DefensesFragment extends Fragment
         }
     });
 
-
+    //TODO: Read data in a separate thread?
     public void readData()
     {
+        selections = new String[9];
+        int position = 0;
         for(RadioGroup g : groups)
         {
+            //Gets checked buttons ID, converts it to a string, then extracts ending bit (Yes, Unknown, or No)
             int id = g.getCheckedRadioButtonId();
+            String idString = getResources().getResourceEntryName(id);
+            String substring = idString.substring(3);
 
-            switch(id)
-            {
-
-
-            }
+            //Commits substring to position in array, then increments position
+            selections[position] = substring;
+            position++;
         }
 
+    }
+
+    public String[] getSelections()
+    {
+        readData();
+        return selections;
     }
 
 }
