@@ -3,4 +3,64 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Does the robot (Check all that apply)"
+        android:id="@+id/textView10" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge the Tower"
+        android:id="@+id/doesChallengeTower" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scale the Tower"
+        android:id="@+id/doesClimbTower" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Breach Defenses"
+        android:id="@+id/doesBreachDefenses" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hold the Sally Port"
+        android:id="@+id/doesHoldSally" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hold the Drawbridge"
+        android:id="@+id/doesHoldBridge" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hit the Low Goal"
+        android:id="@+id/doesLowGoal" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hit the High Goal"
+        android:id="@+id/doesHighGoal" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play defensively"
+        android:id="@+id/isDefensive" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/isOffensive"
+        android:text="Play offensively" />
 </LinearLayout>

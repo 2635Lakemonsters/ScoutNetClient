@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,10 +33,9 @@ import java.net.URL;
 
 public class PitInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
-
     private String[] urls;
     private ViewPager viewpager;
-
+    private static final String TAG = "PitInfoActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +83,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 return true;
 
             case R.id.action_submit:
-                showUploadPromptDialog();
+                showDialog("uploadPrompt");
                 //submitData();
                 return true;
 
@@ -95,25 +95,24 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         }
     }
 
-    private void showUploadPromptDialog()
-    {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment uploadPromptDialog = new UploadPromptDialog();
-        uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+    //TODO: Test fragment titles on action bar
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setSubtitle(title);
     }
 
     // The dialog fragment receives a reference to this Activity through the
     // Fragment.onAttach() callback, which it uses to call the following methods
     // defined by the NoticeDialogFragment.NoticeDialogListener interface
     @Override
-    public void onDialogPositiveClick(DialogFragment uploadPromptDialog) {
+    public void onDialogPositiveClick(DialogFragment uploadPromptDialog)
+    {
         submitData();
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment uploadPromptDialog) {
+    public void onDialogNegativeClick(DialogFragment uploadPromptDialog)
+    {
         // User touched the dialog's negative button
-
     }
 
     private void saveData()
@@ -121,14 +120,18 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-
+        GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
         DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
-        String[] selections = defensesFrag.getSelections();
 
-        //TODO: Commit selections to entries
+        String[] selections = defensesFrag.getSelections();
+        String[] options = defensesFrag.getDefenses();
+
+        //TODO: Test this
+        int position = 0;
         for(String s : selections)
         {
-            //uploader.addEntry("");
+            uploader.addEntry(options[position], s);
+            ++position;
         }
 
         EditText v_teamName = (EditText) findViewById(R.id.teamName);
@@ -143,11 +146,9 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         v_teamName.setText("");
         v_teamNumber.setText("");
 
-        GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
         uploader.addEntry("NAME", robotName);
-        //uploader.upload();
         manager.write(uploader.getUrlData());
-        showSuccessDialog();
+        showDialog("success");
     }
     private void submitData()
     {
@@ -201,13 +202,25 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
         manager.clearData();
-        showSuccessDialog();
+        showDialog("success");
     }
 
-    private void showSuccessDialog()
+    private void showDialog(String dialog)
     {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment successDialog = new SuccessDialog();
-        successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+        switch(dialog)
+        {
+            case("success"):
+                DialogFragment successDialog = new SuccessDialog();
+                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            case("uploadPrompt"):
+                DialogFragment uploadPromptDialog = new UploadPromptDialog();
+                uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            default:
+                Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
+                break;
+        }
+
     }
 }

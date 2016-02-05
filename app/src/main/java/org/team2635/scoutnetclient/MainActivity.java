@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +31,7 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     private String[] urls;
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 showSettingsActivity();
                 return true;
             case R.id.action_submit:
-                showUploadPromptDialog();
+                showDialog("uploadPrompt");
                 return true;
             default:
                 // If we got here, the user's action was not recognized.
@@ -148,13 +150,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
         manager.clearData();
-        showSuccessDialog();
-    }
-
-    private void showUploadPromptDialog() {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment uploadPromptDialog = new UploadPromptDialog();
-        uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+        showDialog("success");
     }
 
     // The dialog fragment receives a reference to this Activity through the
@@ -170,10 +166,22 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         // User touched the dialog's negative button
     }
 
-    private void showSuccessDialog()
+    private void showDialog(String dialog)
     {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment successDialog = new SuccessDialog();
-        successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+        switch(dialog)
+        {
+            case("success"):
+                DialogFragment successDialog = new SuccessDialog();
+                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            case("uploadPrompt"):
+                DialogFragment uploadPromptDialog = new UploadPromptDialog();
+                uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            default:
+                Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
+                break;
+        }
+
     }
 }

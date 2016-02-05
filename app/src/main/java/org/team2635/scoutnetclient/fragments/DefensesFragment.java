@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
 
+import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
 import java.lang.reflect.Array;
 
 public class DefensesFragment extends Fragment
 {
+    //TODO: Test this
     ReadDataListener mCallback;
     RadioGroup[] groups;
     String[] selections;
@@ -46,6 +48,10 @@ public class DefensesFragment extends Fragment
     public void onStart()
     {
         groupGetThread.start();
+
+        // Set title bar
+        ((PitInfoActivity) getActivity())
+                .setActionBarTitle("Crossable Defenses");
     }
 
     // Container Activity must implement this interface
@@ -106,6 +112,23 @@ public class DefensesFragment extends Fragment
     {
         readData();
         return selections;
+    }
+
+    public String[] getDefenses()
+    {
+        String[] defenses = new String[9];
+
+        defenses[1] = "A1";
+        defenses[2] = "A2";
+        defenses[3] = "B1";
+        defenses[4] = "B2";
+        defenses[5] = "C1";
+        defenses[6] = "C2";
+        defenses[7] = "D1";
+        defenses[8] = "D2";
+        defenses[9] = "LB";
+
+        return defenses;
     }
 
 }

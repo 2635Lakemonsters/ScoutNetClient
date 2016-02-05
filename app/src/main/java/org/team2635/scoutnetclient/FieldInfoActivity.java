@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,6 +29,7 @@ import java.net.URL;
 
 public class FieldInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
+    private static final String TAG = "FieldInfo";
     //TODO:Create field scouting page/design
     private String[] urls;
     private int pepes = 0;
@@ -68,8 +70,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 return true;
 
             case R.id.action_submit:
-                showUploadPromptDialog();
-                //submitData();
+                showDialog("uploadPrompt");
                 return true;
 
             default:
@@ -132,19 +133,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
         manager.clearData();
-        showSuccessDialog();
+        showDialog("success");
     }
 
     //TODO: Add saveData() functionality
     private void saveData()
     {
-        showSuccessDialog();
-    }
-
-    private void showUploadPromptDialog() {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment uploadPromptDialog = new UploadPromptDialog();
-        uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+        showDialog("success");
     }
 
     // The dialog fragment receives a reference to this Activity through the
@@ -158,13 +153,6 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     @Override
     public void onDialogNegativeClick(DialogFragment uploadPromptDialog) {
         // User touched the dialog's negative button
-    }
-
-    private void showSuccessDialog()
-    {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment successDialog = new SuccessDialog();
-        successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
     }
 
     public void addPepe(View view)
@@ -223,4 +211,22 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         pepeText.setText("" + pepes);
     }
 
+    private void showDialog(String dialog)
+    {
+        switch(dialog)
+        {
+            case("success"):
+                DialogFragment successDialog = new SuccessDialog();
+                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            case("uploadPrompt"):
+                DialogFragment uploadPromptDialog = new UploadPromptDialog();
+                uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                break;
+            default:
+                Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
+                break;
+        }
+
+    }
 }
