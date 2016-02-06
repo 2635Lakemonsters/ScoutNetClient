@@ -21,6 +21,8 @@ import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.DefensesFragment;
+import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
+import org.team2635.scoutnetclient.fragments.StrategyInfoFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.PitPagerAdapter;
 
@@ -122,17 +124,58 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         DataManager manager = new DataManager(sharedPref);
         GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
         DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
+        StrategyInfoFragment strategyFrag = (StrategyInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
+        RobotInfoFragment robotFrag = (RobotInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
 
-        String[] selections = defensesFrag.getSelections();
-        String[] options = defensesFrag.getDefenses();
+        //Get data from defenses selection fragment
+        String[] defenseSelections = defensesFrag.getSelections();
+        String[] defenseOptions = defensesFrag.getDefenses();
 
         //TODO: Test this
-        int position = 0;
-        for(String s : selections)
+        int i = 0;
+        for(String s : defenseSelections)
         {
-            uploader.addEntry(options[position], s);
-            ++position;
+            uploader.addEntry(defenseOptions[i], s);
+            ++i;
         }
+
+        //Get data from strategy info fragment
+        String[] strategySelections = strategyFrag.getData();
+        String[] strategyOptions = strategyFrag.getOptions();
+
+        //TODO: Test this
+        i = 0;
+        for(String s : strategySelections)
+        {
+            uploader.addEntry(strategyOptions[i], s);
+            ++i;
+        }
+
+
+        //Get data from robot info
+        String wheels = robotFrag.getNumberOfWheels();
+        String locomotion = robotFrag.getLocomotionType();
+        String vision = robotFrag.getUsingVision();
+        String visionUsage = robotFrag.getVisionUsage();
+        String driveTrain = robotFrag.getDriveTrain();
+
+        uploader.addEntry("NUMOFWHEELS", wheels);
+        uploader.addEntry("LOCOMOION", locomotion);
+        uploader.addEntry("VISION", vision);
+        uploader.addEntry("VISIONUSAGE", visionUsage);
+        uploader.addEntry("DRIVETRAIN", driveTrain);
+
+        String[] robotSelections = robotFrag.getCheckBoxData();
+        String[] robotOptions = robotFrag.getOptions();
+
+        //TODO: Test this
+        i = 0;
+        for(String s : robotSelections)
+        {
+            uploader.addEntry(robotOptions[i], s);
+            ++i;
+        }
+
 
         EditText v_teamName = (EditText) findViewById(R.id.teamName);
         EditText v_teamNumber = (EditText) findViewById(R.id.teamNumber);

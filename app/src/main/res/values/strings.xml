@@ -35,6 +35,10 @@
     <string name="no">No</string>
     <string name="unknown">Unknown</string>
 
+    <string name="canTheRobot">Can the robot</string>
+    <string name="doesRobotCheckAll">Does the robot (Check all that apply)</string>
+    <string name="generalStrategyNotes">General Strategy Notes</string>
+
 <!--Defense Names-->
     <string name="A1">Portcullis</string>
     <string name="A2">Cheval de Frise</string>
@@ -48,5 +52,22 @@
 
 <!--Questions-->
     <string name="CrossableDefenses">Which defenses can you traverse?</string>
+    <string name="challengeTower">Challenge the Tower</string>
+    <string name="scaleTower">Scale the Tower</string>
+    <string name="holdSallyPort">Hold Sally Port</string>
+    <string name="holdDrawBridge">Hold Drawbridge</string>
+    <string name="lowGoal">Hit the Low Goal</string>
+    <string name="highGoal">Hit the High Goal</string>
+    <string name="visionProcessing">Vision processing?</string>
+    <string name="treadsOrWheels">Treads or wheels?</string>
+    <string name="playDefense">Play defensively</string>
+    <string name="playOffense">Play offensively</string>
+    <string name="whatFor">What for?</string>
+    <string name="numberOfWheels">Number of wheels</string>
+    <string name="driveTrain">Drive train</string>
+    <string name="breachDefenses">Breach Defenses</string>
+    <string name="wheels">Wheels</string>
+    <string name="treads">Treads</string>
+
 
 </resources>

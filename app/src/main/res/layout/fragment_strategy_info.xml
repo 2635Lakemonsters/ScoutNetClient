@@ -7,60 +7,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Does the robot (Check all that apply)"
-        android:id="@+id/textView10" />
+        android:text="@string/doesRobotCheckAll"
+        android:id="@+id/textView10"
+        android:textColor="@android:color/black" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Challenge the Tower"
+        android:text="@string/challengeTower"
         android:id="@+id/doesChallengeTower" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Scale the Tower"
-        android:id="@+id/doesClimbTower" />
+        android:text="@string/scaleTower"
+        android:id="@+id/doesScaleTower" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Breach Defenses"
+        android:text="@string/breachDefenses"
         android:id="@+id/doesBreachDefenses" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hold the Sally Port"
+        android:text="@string/holdSallyPort"
         android:id="@+id/doesHoldSally" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hold the Drawbridge"
+        android:text="@string/holdDrawBridge"
         android:id="@+id/doesHoldBridge" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hit the Low Goal"
+        android:text="@string/lowGoal"
         android:id="@+id/doesLowGoal" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hit the High Goal"
+        android:text="@string/highGoal"
         android:id="@+id/doesHighGoal" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play defensively"
+        android:text="@string/playDefense"
         android:id="@+id/isDefensive" />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/isOffensive"
-        android:text="Play offensively" />
+        android:text="@string/playOffense" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generalStrategyNotes"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/generalStrategyNotes" />
 </LinearLayout>
