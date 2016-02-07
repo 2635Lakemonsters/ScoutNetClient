@@ -73,6 +73,10 @@
     <string name="hintMatchNumber">Enter Match Number</string>
     <string name="hintTeamNumber">Enter Team Number</string>
     <string name="teamScore">Team Score</string>
+    <string name="defensiveRating">Defensive Rating</string>
+    <string name="doesAutonomous">Does Autonomous</string>
+    <string name="defenseReached">Defense Reached</string>
+    <string name="defenseCrossed">Defense Crossed</string>
 
 
 </resources>

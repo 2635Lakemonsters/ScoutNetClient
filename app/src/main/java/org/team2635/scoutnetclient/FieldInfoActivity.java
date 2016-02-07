@@ -3,8 +3,10 @@ package org.team2635.scoutnetclient;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,13 +15,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.utilities.DataManager;
+import org.team2635.scoutnetclient.utilities.FieldPagerAdapter;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -33,10 +33,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     private static final String TAG = "FieldInfo";
     //TODO:Create field scouting page/design
     private String[] urls;
-    private int pepes = 0;
-    private int viewToGet = 0;
+    private ViewPager viewpager;
+    private int highGoalCount;
+    private int lowGoalCount;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fieldinfo);
 
@@ -46,8 +48,15 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        TextView pepeText = (TextView) findViewById(R.id.pepeCountText);
-        pepeText.setText("" + pepes);
+        viewpager = (ViewPager) findViewById(R.id.fieldPager);
+        FieldPagerAdapter padapter = new FieldPagerAdapter(getSupportFragmentManager());
+        viewpager.setAdapter(padapter);
+    }
+
+    //TODO: Test fragment titles on action bar
+    public void setActionBarTitle(String title)
+    {
+        getSupportActionBar().setSubtitle(title);
     }
 
     @Override
@@ -141,6 +150,33 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     private void saveData()
     {
         showDialog("success");
+    }
+
+    public void highGoalAdd(View view)
+    {
+        ++highGoalCount;
+    }
+
+    public void highGoalSubtract(View view)
+    {
+        if(highGoalCount > 0)
+        {
+            --highGoalCount;
+        }
+
+    }
+
+    public void lowGoalAdd(View view)
+    {
+        ++lowGoalCount;
+    }
+
+    public void lowGoalSubtract(View view)
+    {
+        if(lowGoalCount > 0)
+        {
+            --lowGoalCount;
+        }
     }
 
     // The dialog fragment receives a reference to this Activity through the

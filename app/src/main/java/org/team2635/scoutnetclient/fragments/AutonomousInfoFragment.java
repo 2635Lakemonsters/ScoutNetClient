@@ -8,16 +8,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
-import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
-public class FieldInfoFragment extends Fragment {
+public class AutonomousInfoFragment extends Fragment
+{
+    private int highGoalCount;
+    private int lowGoalCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_field_info, container, false);
+        return inflater.inflate(R.layout.fragment_autonomous_info, container, false);
     }
 
     @Override
@@ -25,7 +27,8 @@ public class FieldInfoFragment extends Fragment {
     {
         // Set title bar
         ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Basic Info");
+                .setActionBarTitle("Autonomous Info");
     }
+
 
 }

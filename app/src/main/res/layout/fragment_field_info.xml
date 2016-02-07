@@ -1,69 +1,98 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context="org.team2635.scoutnetclient.fragments.FieldInfoFragment"
     android:baselineAligned="false">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/teamNumberTitle"
-            android:textColor="@android:color/black" />
+            android:layout_weight="1">
 
-        <EditText
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/teamNumberTitle"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:hint="@string/hintTeamNumber"
+                android:id="@+id/fieldTeamNumber" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:hint="@string/hintTeamNumber"
-            android:id="@+id/fieldTeamNumber" />
+            android:layout_gravity="right"
+            android:layout_weight="1">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="24dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/matchNumberTitle"
+                android:textColor="@android:color/black" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/teamScore"
-            android:textColor="@android:color/black" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/fieldTeamScore"
-            android:hint="@string/hintTeamScore" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:hint="@string/hintMatchNumber"
+                android:id="@+id/fieldMatchNumber" />
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_weight="1">
+        android:text="@string/teamScore"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/matchNumberTitle"
-            android:textColor="@android:color/black" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/fieldTeamScore"
+        android:hint="@string/hintTeamScore"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal" />
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:hint="@string/hintMatchNumber"
-            android:id="@+id/fieldMatchNumber" />
-    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/defensiveRating"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/defensiveRating"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

@@ -37,6 +37,7 @@ public class RobotInfoFragment extends Fragment
                 .setActionBarTitle("Robot Capabilities");
     }
 
+    //TODO: Add box for autonomous yes/no
     public Thread getCheckBoxReferences = new Thread(new Runnable()
     {
         @Override
