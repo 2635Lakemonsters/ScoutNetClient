@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
@@ -171,13 +172,18 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         switch(dialog)
         {
             case("success"):
-                DialogFragment successDialog = new SuccessDialog();
-                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                //DialogFragment successDialog = new SuccessDialog();
+                //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+
                 break;
             case("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
                 uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
+            case("dataSaved"):
+                Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

@@ -6,24 +6,25 @@
     <string name="teamAwesomeTitle">Is Team Awesome?</string>
     <string name="robotNameTitle">Robot Name</string>
     <string name="driverNumberTitle">Number of Drivers</string>
+    <string name="matchNumberTitle">Match Number</string>
 
-<!--Action Bar Titles-->
+    <!--Action Bar Titles-->
     <string name="menuSettings">Settings</string>
     <string name="menuSubmitData">Submit Data</string>
 
-<!--Preference Keys-->
+    <!--Preference Keys-->
     <string name="preference_file_key">org.team2635.scoutnetclient.preferencefile</string>
 
-<!-- Dialog Titles -->
+    <!-- Dialog Titles -->
     <string name="dialog_upload_prompt">Upload Data?</string>
     <string name="dialog_success">Success!</string>
 
-<!--Dialog Buttons -->
-    <string name ="upload">Upload</string>
-    <string name ="cancel">Cancel</string>
+    <!--Dialog Buttons -->
+    <string name="upload">Upload</string>
+    <string name="cancel">Cancel</string>
     <string name="confirm">OK</string>
 
-<!--Activity Titles-->
+    <!--Activity Titles-->
     <string name="basicInfoPageTitle">Basic info</string>
     <string name="title_activity_activity_pitscouting">Pit Scouting</string>
     <string name="title_activity_activity_settings">Settings</string>
@@ -39,7 +40,7 @@
     <string name="doesRobotCheckAll">Does the robot (Check all that apply)</string>
     <string name="generalStrategyNotes">General Strategy Notes</string>
 
-<!--Defense Names-->
+    <!--Defense Names-->
     <string name="A1">Portcullis</string>
     <string name="A2">Cheval de Frise</string>
     <string name="B1">Ramparts</string>
@@ -50,7 +51,7 @@
     <string name="D2">Rough Terrain</string>
     <string name="Lowbar">Low Bar</string>
 
-<!--Questions-->
+    <!--Questions-->
     <string name="CrossableDefenses">Which defenses can you traverse?</string>
     <string name="challengeTower">Challenge the Tower</string>
     <string name="scaleTower">Scale the Tower</string>
@@ -68,6 +69,10 @@
     <string name="breachDefenses">Breach Defenses</string>
     <string name="wheels">Wheels</string>
     <string name="treads">Treads</string>
+    <string name="hintTeamScore">Enter Team Score</string>
+    <string name="hintMatchNumber">Enter Match Number</string>
+    <string name="hintTeamNumber">Enter Team Number</string>
+    <string name="teamScore">Team Score</string>
 
 
 </resources>

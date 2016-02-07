@@ -5,29 +5,23 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import org.team2635.scoutnetclient.fragments.TeamInfoFragment;
-import org.team2635.scoutnetclient.fragments.DefensesFragment;
-import org.team2635.scoutnetclient.fragments.StrategyInfoFragment;
 import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 
-public class PitPagerAdapter extends FragmentPagerAdapter {
+public class FieldPagerAdapter extends FragmentPagerAdapter {
 
-    public PitPagerAdapter(FragmentManager fm) {
+    public FieldPagerAdapter(FragmentManager fm) {
         super(fm);
-
     }
 
     @Override
     public Fragment getItem(int arg0) {
 
+        //TODO: Change to actual fragments
         switch (arg0) {
             case 0:
                 return new TeamInfoFragment();
             case 1:
                 return new RobotInfoFragment();
-            case 2:
-                return new StrategyInfoFragment();
-            case 3:
-                return new DefensesFragment();
             default:
                 break;
         }
@@ -37,7 +31,7 @@ public class PitPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 4;
+        return 2;
     }
 
 }

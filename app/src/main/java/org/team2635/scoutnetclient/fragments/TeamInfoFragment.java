@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
-public class BasicInfoFragment extends Fragment
+public class TeamInfoFragment extends Fragment
 {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

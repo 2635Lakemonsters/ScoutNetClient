@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
@@ -191,7 +192,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
         uploader.addEntry("NAME", robotName);
         manager.write(uploader.getUrlData());
-        showDialog("success");
+        showDialog("dataSaved");
     }
     private void submitData()
     {
@@ -253,13 +254,18 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         switch(dialog)
         {
             case("success"):
-                DialogFragment successDialog = new SuccessDialog();
-                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                //DialogFragment successDialog = new SuccessDialog();
+                //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+
                 break;
             case("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
                 uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
+            case("dataSaved"):
+                Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

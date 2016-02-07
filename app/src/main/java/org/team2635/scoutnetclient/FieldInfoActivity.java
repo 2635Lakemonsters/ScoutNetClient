@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
@@ -155,74 +156,23 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         // User touched the dialog's negative button
     }
 
-    public void addPepe(View view)
-    {
-        pepes++;
-        updatePepes(true);
-    }
-
-    public void removePepe(View view)
-    {
-        updatePepes(false);
-        pepes--;
-    }
-
-    private void updatePepes(boolean state)
-    {
-        System.out.println(pepes);
-        viewToGet = 0;
-
-        switch(pepes)
-        {
-            case 1:
-                System.out.println("Case 1");
-                viewToGet = R.id.pepe1;
-                break;
-            case 2:
-                System.out.println("Case 2");
-                viewToGet = R.id.pepe2;
-                break;
-            case 3:
-                System.out.println("Case 3");
-                viewToGet = R.id.pepe3;
-                break;
-            case 4:
-                System.out.println("Case 4");
-                viewToGet = R.id.pepe4;
-                break;
-            case 5:
-                System.out.println("Case 5");
-                viewToGet = R.id.pepe5;
-                break;
-        }
-        System.out.println(viewToGet);
-
-        ImageView pepeView = (ImageView) findViewById(viewToGet);
-        if(state)
-        {
-            pepeView.setVisibility(View.VISIBLE);
-        }
-        else if (!state)
-        {
-            pepeView.setVisibility(View.INVISIBLE);
-        }
-
-        TextView pepeText = (TextView) findViewById(R.id.pepeCountText);
-        pepeText.setText("" + pepes);
-    }
-
     private void showDialog(String dialog)
     {
         switch(dialog)
         {
             case("success"):
-                DialogFragment successDialog = new SuccessDialog();
-                successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+                //DialogFragment successDialog = new SuccessDialog();
+                //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
+
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+
                 break;
             case("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
                 uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
+            case("dataSaved"):
+                Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

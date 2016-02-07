@@ -14,7 +14,7 @@ import org.team2635.scoutnetclient.R;
 
 public class SuccessDialog extends DialogFragment
 {
-
+    //TODO: DEPRECATE!
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
