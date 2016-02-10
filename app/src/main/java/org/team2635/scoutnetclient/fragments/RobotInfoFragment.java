@@ -37,7 +37,6 @@ public class RobotInfoFragment extends Fragment
                 .setActionBarTitle("Robot Capabilities");
     }
 
-    //TODO: Add box for autonomous yes/no
     public Thread getCheckBoxReferences = new Thread(new Runnable()
     {
         @Override
@@ -138,6 +137,24 @@ public class RobotInfoFragment extends Fragment
     public String getVisionUsage()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.visionUsage);
+        String string = usage.getText().toString();
+        return string;
+    }
+
+    public String getUsingAuto()
+    {
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.usesAuto);
+        int id = group.getCheckedRadioButtonId();
+
+        String idString = getResources().getResourceEntryName(id);
+        String substring = idString.substring(5);
+
+        return substring;
+    }
+
+    public String getAutoUsage()
+    {
+        EditText usage = (EditText) getActivity().findViewById(R.id.autoUsage);
         String string = usage.getText().toString();
         return string;
     }

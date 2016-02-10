@@ -67,13 +67,15 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:layout_gravity="center_horizontal"
-                android:onClick="highGoalAdd()" />
+                android:id="@+id/autoHighAdd"
+                android:nestedScrollingEnabled="false"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/highGoalNumber"
+                android:id="@+id/autoHighGoalNumber"
                 android:layout_gravity="center_horizontal" />
 
             <Button
@@ -82,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:layout_gravity="center_horizontal"
-                android:onClick="highGoalSubtract()" />
+                android:id="@+id/autoHighSub"
+                android:nestedScrollingEnabled="false"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -101,14 +104,14 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/button"
-                android:onClick="lowGoalAdd()" />
+                android:id="@+id/autoLowAdd"
+                android:nestedScrollingEnabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/lowGoalNumber"
+                android:id="@+id/autoLowGoalNumber"
                 android:layout_gravity="center_horizontal" />
 
             <Button
@@ -117,8 +120,8 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/button2"
-                android:onClick="lowGoalSubtract()" />
+                android:id="@+id/autoLowSub"
+                android:nestedScrollingEnabled="false"/>
         </LinearLayout>
 
     </LinearLayout>

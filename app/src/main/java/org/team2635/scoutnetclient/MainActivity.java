@@ -3,6 +3,7 @@ package org.team2635.scoutnetclient;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
@@ -86,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                showSettingsActivity();
+                    showSettingsActivity();
                 return true;
             case R.id.action_submit:
                 showDialog("uploadPrompt");

@@ -152,31 +152,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         showDialog("success");
     }
 
-    public void highGoalAdd(View view)
+    public void autoOnClick(View v)
     {
-        ++highGoalCount;
-    }
-
-    public void highGoalSubtract(View view)
-    {
-        if(highGoalCount > 0)
-        {
-            --highGoalCount;
-        }
 
     }
 
-    public void lowGoalAdd(View view)
+    public void teleOnClick(View v)
     {
-        ++lowGoalCount;
-    }
 
-    public void lowGoalSubtract(View view)
-    {
-        if(lowGoalCount > 0)
-        {
-            --lowGoalCount;
-        }
     }
 
     // The dialog fragment receives a reference to this Activity through the

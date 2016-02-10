@@ -159,12 +159,16 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String vision = robotFrag.getUsingVision();
         String visionUsage = robotFrag.getVisionUsage();
         String driveTrain = robotFrag.getDriveTrain();
+        String auto = robotFrag.getUsingAuto();
+        String autoUsage = robotFrag.getAutoUsage();
 
         uploader.addEntry("NUMOFWHEELS", wheels);
         uploader.addEntry("LOCOMOION", locomotion);
         uploader.addEntry("VISION", vision);
         uploader.addEntry("VISIONUSAGE", visionUsage);
         uploader.addEntry("DRIVETRAIN", driveTrain);
+        uploader.addEntry("AUTO", auto);
+        uploader.addEntry("AUTOUSAGE", autoUsage);
 
         String[] robotSelections = robotFrag.getCheckBoxData();
         String[] robotOptions = robotFrag.getOptions();
