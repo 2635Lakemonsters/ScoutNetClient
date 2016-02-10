@@ -17,7 +17,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import org.json.JSONObject;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
+import org.team2635.scoutnetclient.fragments.AutonomousInfoFragment;
+import org.team2635.scoutnetclient.fragments.FieldInfoFragment;
+import org.team2635.scoutnetclient.fragments.MatchDefensesFragment;
+import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
+import org.team2635.scoutnetclient.fragments.TeleopInfoFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.FieldPagerAdapter;
 
@@ -149,18 +155,22 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     //TODO: Add saveData() functionality
     private void saveData()
     {
+        SharedPreferences sharedPref = getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        DataManager manager = new DataManager(sharedPref);
+        JSONObject object = new JSONObject();
+        AutonomousInfoFragment autoFrag = new AutonomousInfoFragment();
+        TeleopInfoFragment teleFrag = new TeleopInfoFragment();
+        FieldInfoFragment fieldFrag = new FieldInfoFragment();
+        MatchDefensesFragment defenseFrag = new MatchDefensesFragment();
+
+
+
+
+
         showDialog("success");
     }
 
-    public void autoOnClick(View v)
-    {
-
-    }
-
-    public void teleOnClick(View v)
-    {
-
-    }
 
     // The dialog fragment receives a reference to this Activity through the
     // Fragment.onAttach() callback, which it uses to call the following methods

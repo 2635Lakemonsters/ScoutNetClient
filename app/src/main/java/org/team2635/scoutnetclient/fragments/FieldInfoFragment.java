@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RatingBar;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.PitInfoActivity;
@@ -26,6 +28,34 @@ public class FieldInfoFragment extends Fragment {
         // Set title bar
         ((FieldInfoActivity) getActivity())
                 .setActionBarTitle("Basic Info");
+    }
+
+    public String getTeamNum()
+    {
+        EditText usage = (EditText) getActivity().findViewById(R.id.fieldTeamNumber);
+        String string = usage.getText().toString();
+        return string;
+    }
+
+    public String getMatchNum()
+    {
+        EditText usage = (EditText) getActivity().findViewById(R.id.fieldMatchNumber);
+        String string = usage.getText().toString();
+        return string;
+    }
+
+    public String getTeamScore()
+    {
+        EditText usage = (EditText) getActivity().findViewById(R.id.fieldTeamScore);
+        String string = usage.getText().toString();
+        return string;
+    }
+
+    public String getDefenseRating()
+    {
+        RatingBar bar = (RatingBar) getActivity().findViewById(R.id.defensiveRating);
+        int i = bar.getNumStars();
+        return Integer.toString(i);
     }
 
 }
