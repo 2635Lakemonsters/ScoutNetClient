@@ -6,7 +6,6 @@ public class DataManager
 {
     private final SharedPreferences m_sharedPref;
     private int urlCount = 0;
-    private String[] urls;
 
     public DataManager(SharedPreferences sharedPref)
     {
@@ -42,7 +41,7 @@ public class DataManager
 
     public String[] getURLArray()
     {
-        urls = new String[urlCount + 1];
+        String[] urls = new String[urlCount + 1];
         for(int i=0; i<urlCount + 1; i++)
         {
             String url = m_sharedPref.getString("url"+i, "");

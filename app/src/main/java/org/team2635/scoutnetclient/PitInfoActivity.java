@@ -16,8 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
-
 import org.json.JSONObject;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.DefensesFragment;
@@ -36,8 +34,6 @@ import java.net.URL;
 
 public class PitInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
-    private String[] urls;
-    private ViewPager viewpager;
     private static final String TAG = "PitInfoActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +46,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        viewpager = (ViewPager) findViewById(R.id.pitPager);
+        ViewPager viewpager = (ViewPager) findViewById(R.id.pitPager);
         PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(padapter);
 
@@ -125,8 +121,20 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-        GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
         JSONObject jsonObject = new JSONObject();
+
+        final String scoutName = sharedPref.getString("key_pref_scout_name", "");
+
+        try
+        {
+            jsonObject.accumulate("DATATYPE", "pitData");
+            jsonObject.accumulate("SCOUTNAME", scoutName);
+        }
+        catch(Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
         DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
         RobotInfoFragment robotFrag = (RobotInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
@@ -231,7 +239,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        manager.write(uploader.getUrlData());
+        manager.write(jsonObject.toString());
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -244,7 +252,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
 
-        urls = manager.getURLArray();
+        String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
         final String address = sharedPref.getString("pref_key_server_ip", "");
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
@@ -270,14 +278,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                         {
                             urlConnection.disconnect();
                         }
-                    }
-
-                    catch(MalformedURLException e)
-                    {
-                        e.printStackTrace();
-                    }
-
-                    catch(IOException e)
+                    } catch(IOException e)
                     {
                         e.printStackTrace();
                     }

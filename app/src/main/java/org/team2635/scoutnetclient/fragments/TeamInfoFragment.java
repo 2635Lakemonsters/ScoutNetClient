@@ -30,21 +30,18 @@ public class TeamInfoFragment extends Fragment
     public String getTeamNumber()
     {
         EditText number = (EditText) getActivity().findViewById(R.id.teamNumber);
-        String string = number.getText().toString();
-        return string;
+        return number.getText().toString();
     }
 
     public String getTeamName()
     {
         EditText name = (EditText) getActivity().findViewById(R.id.teamName);
-        String string = name.getText().toString();
-        return string;
+        return name.getText().toString();
     }
 
     public String getRobotName()
     {
         EditText name = (EditText) getActivity().findViewById(R.id.robotName);
-        String string = name.getText().toString();
-        return string;
+        return name.getText().toString();
     }
 }

@@ -4,13 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
-
-import static android.app.PendingIntent.getActivity;
-
-public class GoogleFormUploader {
+class GoogleFormUploader {
 	private ArrayList<Entry> mEntries;
 	private String formId;
 	
@@ -58,8 +52,7 @@ public class GoogleFormUploader {
 	public String getUrlData()
 	{
 
-		String string = getData();
-		return string;
+		return getData();
 	}
 
 	
@@ -97,12 +90,12 @@ public class GoogleFormUploader {
 	/********************************************
 	 * Default behavior is do nothing. Override this
 	 * if you want to get a callback when the upload
-	 * is complete. Check the response to termine
+	 * is complete. Check the response to determine
 	 * success of failure.
 	 * @param response - the response that was sent back
 	 * by the google docs server.
 	 *********************************************/
-	public void onUploadComplete(String response){
+	private void onUploadComplete(String response){
 		System.out.println(response);
 	}
 }

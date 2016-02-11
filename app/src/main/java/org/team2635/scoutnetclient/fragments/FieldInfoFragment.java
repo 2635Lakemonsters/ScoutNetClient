@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
-import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
 public class FieldInfoFragment extends Fragment {
@@ -33,22 +32,19 @@ public class FieldInfoFragment extends Fragment {
     public String getTeamNum()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.fieldTeamNumber);
-        String string = usage.getText().toString();
-        return string;
+        return usage.getText().toString();
     }
 
     public String getMatchNum()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.fieldMatchNumber);
-        String string = usage.getText().toString();
-        return string;
+        return usage.getText().toString();
     }
 
     public String getTeamScore()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.fieldTeamScore);
-        String string = usage.getText().toString();
-        return string;
+        return usage.getText().toString();
     }
 
     public String getDefenseRating()

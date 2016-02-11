@@ -2,9 +2,7 @@ package org.team2635.scoutnetclient.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +11,12 @@ import android.widget.RadioGroup;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
-import java.lang.reflect.Array;
-
 public class DefensesFragment extends Fragment
 {
     //TODO: Test this
-    ReadDataListener mCallback;
-    RadioGroup[] groups;
-    String[] selections;
+    private ReadDataListener mCallback;
+    private RadioGroup[] groups;
+    private String[] selections;
 
 
     @Override
@@ -55,12 +51,12 @@ public class DefensesFragment extends Fragment
     }
 
     // Container Activity must implement this interface
-    public interface ReadDataListener
+    interface ReadDataListener
     {
-        public void onArticleSelected(int position);
+        void onArticleSelected(int position);
     }
 
-    public Thread groupGetThread = new Thread(new Runnable()
+    private final Thread groupGetThread = new Thread(new Runnable()
     {
         @Override
         public void run()
@@ -90,7 +86,7 @@ public class DefensesFragment extends Fragment
     });
 
     //TODO: Read data in a separate thread?
-    public void readData()
+    private void readData()
     {
         selections = new String[9];
         int position = 0;

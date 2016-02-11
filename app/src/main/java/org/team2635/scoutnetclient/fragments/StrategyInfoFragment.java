@@ -15,7 +15,7 @@ import org.team2635.scoutnetclient.R;
 public class StrategyInfoFragment extends Fragment
 {
     //TODO: Test this class's functionality
-    public CheckBox[] references = new CheckBox[9];
+    private CheckBox[] references = new CheckBox[9];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +34,7 @@ public class StrategyInfoFragment extends Fragment
                 .setActionBarTitle("Strategies");
     }
 
-    public Thread getReferences = new Thread(new Runnable()
+    private Thread getReferences = new Thread(new Runnable()
     {
         @Override
         public void run()

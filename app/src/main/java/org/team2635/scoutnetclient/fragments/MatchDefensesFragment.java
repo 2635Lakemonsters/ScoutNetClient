@@ -10,18 +10,14 @@ import android.widget.CheckBox;
 import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.R;
 
-/**
- * Created by LakeM on 2/8/2016.
- */
 public class MatchDefensesFragment extends Fragment
 {
-    CheckBox[] checkBoxReferences = new CheckBox[9];
+    private CheckBox[] checkBoxReferences = new CheckBox[9];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_match_defenses, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_match_defenses, container, false);
     }
 
     @Override
@@ -33,7 +29,7 @@ public class MatchDefensesFragment extends Fragment
                 .setActionBarTitle("Defenses");
     }
 
-    public Thread getCheckBoxReferences = new Thread(new Runnable()
+    private final Thread getCheckBoxReferences = new Thread(new Runnable()
     {
         @Override
         public void run()

@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -22,7 +21,6 @@ import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.AutonomousInfoFragment;
 import org.team2635.scoutnetclient.fragments.FieldInfoFragment;
 import org.team2635.scoutnetclient.fragments.MatchDefensesFragment;
-import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 import org.team2635.scoutnetclient.fragments.TeleopInfoFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.FieldPagerAdapter;
@@ -30,6 +28,7 @@ import org.team2635.scoutnetclient.utilities.FieldPagerAdapter;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,8 +36,6 @@ import java.net.URL;
 public class FieldInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     private static final String TAG = "FieldInfo";
-    private String[] urls;
-    private ViewPager viewpager;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -51,7 +48,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        viewpager = (ViewPager) findViewById(R.id.fieldPager);
+        ViewPager viewpager = (ViewPager) findViewById(R.id.fieldPager);
         FieldPagerAdapter padapter = new FieldPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(padapter);
     }
@@ -100,12 +97,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
 
-        urls = manager.getURLArray();
+        String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
         final String address = sharedPref.getString("pref_key_server_ip", "");
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
 
-
+        //TODO: Test new data post functionality
         for(final String s : urls)
         {
             Thread thread = new Thread(new Runnable() {
@@ -116,6 +113,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                     {
                         URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setDoOutput(true);
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Content-Type", "application/json");
+                        urlConnection.connect();
+
+                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                        out.write(s);
+                        out.close();
 
                         try
                         {
@@ -126,14 +131,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                         {
                             urlConnection.disconnect();
                         }
-                    }
-
-                    catch(MalformedURLException e)
-                    {
-                        e.printStackTrace();
-                    }
-
-                    catch(IOException e)
+                    } catch(IOException e)
                     {
                         e.printStackTrace();
                     }
@@ -155,6 +153,19 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
+
+        final String scoutName = sharedPref.getString("key_pref_scout_name", "");
+
+        try
+        {
+            jsonObject.accumulate("DATATYPE", "matchData");
+            jsonObject.accumulate("SCOUTNAME", scoutName);
+        }
+        catch(Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
         AutonomousInfoFragment autoFrag = new AutonomousInfoFragment();
         TeleopInfoFragment teleFrag = new TeleopInfoFragment();
         FieldInfoFragment fieldFrag = new FieldInfoFragment();

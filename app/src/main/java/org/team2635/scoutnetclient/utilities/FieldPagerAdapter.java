@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import org.team2635.scoutnetclient.fragments.AutonomousInfoFragment;
 import org.team2635.scoutnetclient.fragments.FieldInfoFragment;
 import org.team2635.scoutnetclient.fragments.MatchDefensesFragment;
-import org.team2635.scoutnetclient.fragments.TeamInfoFragment;
-import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 import org.team2635.scoutnetclient.fragments.TeleopInfoFragment;
 
 public class FieldPagerAdapter extends FragmentPagerAdapter {

@@ -29,15 +29,15 @@ import android.util.Log;
  * IT was posted as an Answer to this question: http://stackoverflow.com/questions/2253061/secure-http-post-in-android
  */
 
-public class HttpRequest{
+class HttpRequest{
 
-    DefaultHttpClient httpClient;
-    HttpContext localContext;
+    private DefaultHttpClient httpClient;
+    private HttpContext localContext;
     private String ret;
 
-    HttpResponse response = null;
-    HttpPost httpPost = null;
-    HttpGet httpGet = null;
+    private HttpResponse response = null;
+    private HttpPost httpPost = null;
+    private HttpGet httpGet = null;
 
     public HttpRequest(){
         HttpParams myParams = new BasicHttpParams();
@@ -71,7 +71,7 @@ public class HttpRequest{
         return sendPost(url, data.toString(), "application/json");
     }
 
-    public String sendPost(String url, String data, String contentType) {
+    private String sendPost(String url, String data, String contentType) {
         ret = null;
 
         httpClient.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.RFC_2109);

@@ -12,14 +12,13 @@ import android.widget.TextView;
 
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
-import org.w3c.dom.Text;
 
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    public int highScores = 0;
-    public int lowScores = 0;
-    public int defenseCrosses = 0;
+    private int highScores = 0;
+    private int lowScores = 0;
+    private int defenseCrosses = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,7 +86,7 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         updateCounts();
     }
 
-    public void updateCounts()
+    private void updateCounts()
     {
         TextView high = (TextView) getActivity().findViewById(R.id.teleopHighGoalNum);
         TextView low = (TextView) getActivity().findViewById(R.id.teleopLowGoalNum);

@@ -90,13 +90,7 @@ public class AssignmentsFragment extends ListFragment implements AdapterView.OnI
                     items.add(jo.getString("food_name"));
                 }
             }
-        } catch (MalformedURLException e) {
-
-            e.printStackTrace();
-        } catch (IOException e) {
-
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (JSONException | IOException e) {
 
             e.printStackTrace();
         }

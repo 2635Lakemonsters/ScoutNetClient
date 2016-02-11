@@ -24,13 +24,13 @@ import org.team2635.scoutnetclient.utilities.DataManager;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
-    private String[] urls;
     private static final String TAG = "MainActivity";
 
     @Override
@@ -104,12 +104,12 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
 
-        urls = manager.getURLArray();
+        String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
         final String address = sharedPref.getString("pref_key_server_ip", "");
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
 
-
+        //TODO: Test new data post functionality
         for(final String s : urls)
         {
             Thread thread = new Thread(new Runnable() {
@@ -120,6 +120,14 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                     {
                         URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setDoOutput(true);
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Content-Type", "application/json");
+                        urlConnection.connect();
+
+                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                        out.write(s);
+                        out.close();
 
                         try
                         {
@@ -130,14 +138,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                         {
                             urlConnection.disconnect();
                         }
-                    }
-
-                    catch(MalformedURLException e)
-                    {
-                        e.printStackTrace();
-                    }
-
-                    catch(IOException e)
+                    } catch(IOException e)
                     {
                         e.printStackTrace();
                     }

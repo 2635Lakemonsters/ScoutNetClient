@@ -18,7 +18,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     //TODO: Test this
-    public CheckBox[] checkBoxReferences = new CheckBox[8];
+    private CheckBox[] checkBoxReferences = new CheckBox[8];
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +37,7 @@ public class RobotInfoFragment extends Fragment
                 .setActionBarTitle("Robot Capabilities");
     }
 
-    public Thread getCheckBoxReferences = new Thread(new Runnable()
+    private Thread getCheckBoxReferences = new Thread(new Runnable()
     {
         @Override
         public void run()
@@ -106,9 +106,8 @@ public class RobotInfoFragment extends Fragment
     {
         NumberPicker picker = (NumberPicker) getActivity().findViewById(R.id.numberOfWheels);
         int i = picker.getValue();
-        String num = Integer.toString(i);
 
-        return num;
+        return Integer.toString(i);
     }
 
     public String getLocomotionType()
@@ -117,10 +116,8 @@ public class RobotInfoFragment extends Fragment
         int id = group.getCheckedRadioButtonId();
 
         String idString = getResources().getResourceEntryName(id);
-        String substring = idString.substring(5);
-        String type = substring;
 
-        return type;
+        return idString.substring(5);
     }
 
     public String getUsingVision()
@@ -129,16 +126,14 @@ public class RobotInfoFragment extends Fragment
         int id = group.getCheckedRadioButtonId();
 
         String idString = getResources().getResourceEntryName(id);
-        String substring = idString.substring(7);
 
-        return substring;
+        return idString.substring(7);
     }
 
     public String getVisionUsage()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.visionUsage);
-        String string = usage.getText().toString();
-        return string;
+        return usage.getText().toString();
     }
 
     public String getUsingAuto()
@@ -147,16 +142,14 @@ public class RobotInfoFragment extends Fragment
         int id = group.getCheckedRadioButtonId();
 
         String idString = getResources().getResourceEntryName(id);
-        String substring = idString.substring(5);
 
-        return substring;
+        return idString.substring(5);
     }
 
     public String getAutoUsage()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.autoUsage);
-        String string = usage.getText().toString();
-        return string;
+        return usage.getText().toString();
     }
 
     public String getDriveTrain()
@@ -165,9 +158,7 @@ public class RobotInfoFragment extends Fragment
         int id = group.getCheckedRadioButtonId();
 
         String idString = getResources().getResourceEntryName(id);
-        String substring = idString.substring(6);
-        String type = substring;
 
-        return type;
+        return idString.substring(6);
     }
 }

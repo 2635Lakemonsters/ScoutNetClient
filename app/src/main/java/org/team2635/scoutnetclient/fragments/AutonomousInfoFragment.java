@@ -128,7 +128,7 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return Integer.toString(lowScores);
     }
 
-    public void updateCounts()
+    private void updateCounts()
     {
         TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
         TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);

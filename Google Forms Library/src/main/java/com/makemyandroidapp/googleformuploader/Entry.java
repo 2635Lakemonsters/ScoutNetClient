@@ -1,6 +1,6 @@
 package com.makemyandroidapp.googleformuploader;
 
-public class Entry {
+class Entry {
 
 	public Entry(String entryId, String data){
 		this.entryId = entryId;
