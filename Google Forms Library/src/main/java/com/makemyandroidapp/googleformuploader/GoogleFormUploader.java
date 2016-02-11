@@ -55,23 +55,6 @@ public class GoogleFormUploader {
 		t.start();
 	}
 
-	//TODO: Deprecated method, remove before release
-	/**
-    public void runURL(String adress, String urlData)
-    {
-        final String m_adress = adress;
-        final String m_urlData = urlData;
-
-        Thread t = new Thread(new Runnable(){
-            public void run(){
-                HttpRequest mReq = new HttpRequest();
-                String response = mReq.sendPost(m_adress, m_urlData);
-                onUploadComplete(response);
-            }
-        });
-    }
-	 **/
-
 	public String getUrlData()
 	{
 

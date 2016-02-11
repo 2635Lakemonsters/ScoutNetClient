@@ -14,16 +14,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.makemyandroidapp.googleformuploader.GoogleFormUploader;
 
-import org.team2635.scoutnetclient.dialogs.SuccessDialog;
+import org.json.JSONObject;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.DefensesFragment;
 import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 import org.team2635.scoutnetclient.fragments.StrategyInfoFragment;
+import org.team2635.scoutnetclient.fragments.TeamInfoFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
 import org.team2635.scoutnetclient.utilities.PitPagerAdapter;
 
@@ -54,6 +54,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(padapter);
 
+        //TODO: Implement this
         /**
         Intent intent = getIntent();
         String teamNumber = intent.getStringExtra("TEAMNUMBER");
@@ -118,15 +119,18 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         // User touched the dialog's negative button
     }
 
+    //TODO: Convert data saving to json object
     private void saveData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
         GoogleFormUploader uploader = new GoogleFormUploader("1954rZGc8hvXG4V8i3A_8a5t77kVQf2jI2oigtZjuktk");
+        JSONObject jsonObject = new JSONObject();
         DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
         RobotInfoFragment robotFrag = (RobotInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
+        TeamInfoFragment teamFrag = (TeamInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
 
         //Get data from defenses selection fragment
         String[] defenseSelections = defensesFrag.getSelections();
@@ -136,7 +140,14 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         int i = 0;
         for(String s : defenseSelections)
         {
-            uploader.addEntry(defenseOptions[i], s);
+            try
+            {
+                jsonObject.accumulate(defenseOptions[i], s);
+            }
+            catch(Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
             ++i;
         }
 
@@ -148,7 +159,14 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         i = 0;
         for(String s : strategySelections)
         {
-            uploader.addEntry(strategyOptions[i], s);
+            try
+            {
+                jsonObject.accumulate(strategyOptions[i], s);
+            }
+            catch(Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
             ++i;
         }
 
@@ -162,13 +180,21 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String auto = robotFrag.getUsingAuto();
         String autoUsage = robotFrag.getAutoUsage();
 
-        uploader.addEntry("NUMOFWHEELS", wheels);
-        uploader.addEntry("LOCOMOION", locomotion);
-        uploader.addEntry("VISION", vision);
-        uploader.addEntry("VISIONUSAGE", visionUsage);
-        uploader.addEntry("DRIVETRAIN", driveTrain);
-        uploader.addEntry("AUTO", auto);
-        uploader.addEntry("AUTOUSAGE", autoUsage);
+        try
+        {
+            jsonObject.accumulate("NUMOFWHEELS", wheels);
+            jsonObject.accumulate("LOCOMOION", locomotion);
+            jsonObject.accumulate("VISION", vision);
+            jsonObject.accumulate("VISIONUSAGE", visionUsage);
+            jsonObject.accumulate("DRIVETRAIN", driveTrain);
+            jsonObject.accumulate("AUTO", auto);
+            jsonObject.accumulate("AUTOUSAGE", autoUsage);
+        }
+        catch(Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
 
         String[] robotSelections = robotFrag.getCheckBoxData();
         String[] robotOptions = robotFrag.getOptions();
@@ -177,25 +203,39 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         i = 0;
         for(String s : robotSelections)
         {
-            uploader.addEntry(robotOptions[i], s);
+            try
+            {
+                jsonObject.accumulate(robotOptions[i], s);
+            }
+            catch(Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
             ++i;
         }
 
+        //Get data from teaminfo fragment
+        String teamNumber = teamFrag.getTeamNumber();
+        String teamName = teamFrag.getTeamName();
+        String robotName = teamFrag.getRobotName();
 
-        EditText v_teamName = (EditText) findViewById(R.id.teamName);
-        EditText v_teamNumber = (EditText) findViewById(R.id.teamNumber);
-        EditText v_robotName = (EditText) findViewById(R.id.robotName);
+        try
+        {
+            jsonObject.accumulate("TEAMNUMBER", teamNumber);
+            jsonObject.accumulate("TEAMNAME", teamName);
+            jsonObject.accumulate("ROBOTNAME", robotName);
 
-        String teamName = v_teamName.getText().toString();
-        String teamNumber = v_teamNumber.getText().toString();
-        String robotName = v_robotName.getText().toString();
+        }
+        catch(Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
 
-        v_robotName.setText("");
-        v_teamName.setText("");
-        v_teamNumber.setText("");
-
-        uploader.addEntry("NAME", robotName);
         manager.write(uploader.getUrlData());
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
         showDialog("dataSaved");
     }
     private void submitData()

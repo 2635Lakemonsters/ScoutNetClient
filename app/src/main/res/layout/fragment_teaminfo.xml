@@ -20,7 +20,7 @@
         android:hint="Enter Team Name"
         android:backgroundTint="@color/background_material_dark"/>
 
-    <android.support.v4.widget.Space
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.04" />
@@ -40,7 +40,7 @@
         android:hint="Enter Team Number"
         android:backgroundTint="@color/background_material_dark"/>
 
-    <android.support.v4.widget.Space
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight=".04" />
@@ -57,33 +57,5 @@
         android:id="@+id/robotName"
         android:hint="Enter Robot Name"
         android:backgroundTint="@color/background_material_dark"/>
-
-    <android.support.v4.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".04" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:text="@string/driverNumberTitle" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:text="@string/driverNumberTitle">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="5dp"
-            android:text="@string/one"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/two"/>
-    </RadioGroup>
-
 
 </LinearLayout>

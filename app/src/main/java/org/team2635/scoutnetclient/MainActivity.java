@@ -3,7 +3,6 @@ package org.team2635.scoutnetclient;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
@@ -18,7 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import org.team2635.scoutnetclient.dialogs.SuccessDialog;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
 import org.team2635.scoutnetclient.fragments.AssignmentsFragment;
 import org.team2635.scoutnetclient.utilities.DataManager;
@@ -173,11 +171,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         switch(dialog)
         {
             case("success"):
-                //DialogFragment successDialog = new SuccessDialog();
-                //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
-
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-
                 break;
             case("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();

@@ -37,11 +37,8 @@ import java.net.URL;
 public class FieldInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     private static final String TAG = "FieldInfo";
-    //TODO:Create field scouting page/design
     private String[] urls;
     private ViewPager viewpager;
-    private int highGoalCount;
-    private int lowGoalCount;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -152,23 +149,103 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         showDialog("success");
     }
 
-    //TODO: Add saveData() functionality
     private void saveData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         DataManager manager = new DataManager(sharedPref);
-        JSONObject object = new JSONObject();
+        JSONObject jsonObject = new JSONObject();
         AutonomousInfoFragment autoFrag = new AutonomousInfoFragment();
         TeleopInfoFragment teleFrag = new TeleopInfoFragment();
         FieldInfoFragment fieldFrag = new FieldInfoFragment();
         MatchDefensesFragment defenseFrag = new MatchDefensesFragment();
 
+        //Get data from field info
+        String teamnum = fieldFrag.getTeamNum();
+        String matchNum = fieldFrag.getMatchNum();
+        String teamScore = fieldFrag.getTeamScore();
+        String defenseRating = fieldFrag.getDefenseRating();
 
+        try
+        {
+            jsonObject.accumulate("TEAMNNUM", teamnum);
+            jsonObject.accumulate("MATCHNUM", matchNum);
+            jsonObject.accumulate("TEAMSCORE", teamScore);
+            jsonObject.accumulate("DEFENSERATING", defenseRating);
+        }
+        catch (Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
 
+        //Get data from match defenses
+        String[] defenseSelections = defenseFrag.getCheckBoxData();
+        String[] defenseOptions = defenseFrag.getOptions();
 
+        //TODO: Test this
+        int i = 0;
+        for(String s : defenseSelections)
+        {
+            try
+            {
+                jsonObject.accumulate(defenseOptions[i], s);
+            }
+            catch (Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
 
-        showDialog("success");
+            ++i;
+        }
+
+        //Get info from autonomous fragment
+        String autonomous = autoFrag.getAutonomous();
+        String defenseReached = autoFrag.defenseReached();
+        String defenseCrossed = autoFrag.defenseCrossed();
+        String autoHighScores = autoFrag.getHighScores();
+        String autoLowScores = autoFrag.getLowScores();
+
+        try
+        {
+            jsonObject.accumulate("DOESAUTO", autonomous);
+            jsonObject.accumulate("DEFENSEREACHED", defenseReached);
+            jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
+            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
+            jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
+        }
+        catch (Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        //Get info from teleop fragment
+        String teleHighScores = teleFrag.getHighScores();
+        String teleLowScores = teleFrag.getLowScores();
+        String didChallenge = teleFrag.towerChallenged();
+        String didScale = teleFrag.towerScaled();
+        String defenseCrosses = teleFrag.getDefenseCrosses();
+        String defenseBreached = teleFrag.defenseBreached();
+
+        try
+        {
+            jsonObject.accumulate("TELEHIGHSCORES", teleHighScores);
+            jsonObject.accumulate("TELELOWSCORES", teleLowScores);
+            jsonObject.accumulate("TOWERCHALLENGED", didChallenge);
+            jsonObject.accumulate("TOWERSCALED", didScale);
+            jsonObject.accumulate("DEFENSECROSSES", defenseCrosses);
+            jsonObject.accumulate("DEFENSEBREACHED", defenseBreached);
+        }
+        catch (Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        manager.write(jsonObject.toString());
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+        showDialog("dataSaved");
     }
 
 
@@ -176,12 +253,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     // Fragment.onAttach() callback, which it uses to call the following methods
     // defined by the NoticeDialogFragment.NoticeDialogListener interface
     @Override
-    public void onDialogPositiveClick(DialogFragment uploadPromptDialog) {
+    public void onDialogPositiveClick(DialogFragment uploadPromptDialog)
+    {
         submitData();
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment uploadPromptDialog) {
+    public void onDialogNegativeClick(DialogFragment uploadPromptDialog)
+    {
         // User touched the dialog's negative button
     }
 
@@ -190,11 +269,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         switch(dialog)
         {
             case("success"):
-                //DialogFragment successDialog = new SuccessDialog();
-                //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
-
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
-
                 break;
             case("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
