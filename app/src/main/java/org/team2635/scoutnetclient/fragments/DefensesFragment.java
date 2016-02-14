@@ -14,9 +14,13 @@ import org.team2635.scoutnetclient.R;
 public class DefensesFragment extends Fragment
 {
     //TODO: Test this
-    private ReadDataListener mCallback;
     private RadioGroup[] groups;
     private String[] selections;
+
+    public DefensesFragment()
+    {
+
+    }
 
 
     @Override
@@ -26,34 +30,13 @@ public class DefensesFragment extends Fragment
     }
 
     @Override
-    public void onAttach(Context context)
-    {
-        super.onAttach(context);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            mCallback = (ReadDataListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnHeadlineSelectedListener");
-        }
-    }
-
-    @Override
     public void onStart()
     {
-        groupGetThread.start();
-
         // Set title bar
         ((PitInfoActivity) getActivity())
                 .setActionBarTitle("Crossable Defenses");
-    }
 
-    // Container Activity must implement this interface
-    interface ReadDataListener
-    {
-        void onArticleSelected(int position);
+        super.onStart();
     }
 
     private final Thread groupGetThread = new Thread(new Runnable()
@@ -75,13 +58,13 @@ public class DefensesFragment extends Fragment
 
             groups[0] = A1;
             groups[1] = A2;
-            groups[3] = B1;
-            groups[4] = B2;
-            groups[5] = C1;
-            groups[6] = C2;
-            groups[7] = D1;
-            groups[8] = D2;
-            groups[9] = LB;
+            groups[2] = B1;
+            groups[3] = B2;
+            groups[4] = C1;
+            groups[5] = C2;
+            groups[6] = D1;
+            groups[7] = D2;
+            groups[8] = LB;
         }
     });
 
@@ -106,6 +89,7 @@ public class DefensesFragment extends Fragment
 
     public String[] getSelections()
     {
+        groupGetThread.start();
         readData();
         return selections;
     }
@@ -114,15 +98,15 @@ public class DefensesFragment extends Fragment
     {
         String[] defenses = new String[9];
 
-        defenses[1] = "A1";
-        defenses[2] = "A2";
-        defenses[3] = "B1";
-        defenses[4] = "B2";
-        defenses[5] = "C1";
-        defenses[6] = "C2";
-        defenses[7] = "D1";
-        defenses[8] = "D2";
-        defenses[9] = "LB";
+        defenses[0] = "A1";
+        defenses[1] = "A2";
+        defenses[2] = "B1";
+        defenses[3] = "B2";
+        defenses[4] = "C1";
+        defenses[5] = "C2";
+        defenses[6] = "D1";
+        defenses[7] = "D2";
+        defenses[8] = "LB";
 
         return defenses;
     }

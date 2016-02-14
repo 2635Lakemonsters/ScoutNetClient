@@ -20,6 +20,11 @@ public class RobotInfoFragment extends Fragment
     //TODO: Test this
     private CheckBox[] checkBoxReferences = new CheckBox[8];
 
+    public RobotInfoFragment()
+    {
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -30,12 +35,14 @@ public class RobotInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-        getCheckBoxReferences.start();
-
         // Set title bar
         ((PitInfoActivity) getActivity())
                 .setActionBarTitle("Robot Capabilities");
+
+        super.onStart();
     }
+
+
 
     private Thread getCheckBoxReferences = new Thread(new Runnable()
     {
@@ -53,19 +60,20 @@ public class RobotInfoFragment extends Fragment
             CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
             CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
 
-            checkBoxReferences[1] = S1;
-            checkBoxReferences[2] = S2;
-            checkBoxReferences[3] = S3;
-            checkBoxReferences[4] = S4;
-            checkBoxReferences[5] = S5;
-            checkBoxReferences[6] = S6;
-            checkBoxReferences[7] = S7;
-            checkBoxReferences[8] = S8;
+            checkBoxReferences[0] = S1;
+            checkBoxReferences[1] = S2;
+            checkBoxReferences[2] = S3;
+            checkBoxReferences[3] = S4;
+            checkBoxReferences[4] = S5;
+            checkBoxReferences[5] = S6;
+            checkBoxReferences[6] = S7;
+            checkBoxReferences[7] = S8;
         }
     });
 
     public String[] getCheckBoxData()
     {
+        getCheckBoxReferences.start();
         int position = 0;
         String[] selections = new String[8];
 
@@ -90,14 +98,14 @@ public class RobotInfoFragment extends Fragment
     {
         String[] options = new String[8];
 
-        options[1] = "B1";
-        options[2] = "B2";
-        options[3] = "B3";
-        options[4] = "B4";
-        options[5] = "B5";
-        options[6] = "B6";
-        options[7] = "B7";
-        options[8] = "B8";
+        options[0] = "B1";
+        options[1] = "B2";
+        options[2] = "B3";
+        options[3] = "B4";
+        options[4] = "B5";
+        options[5] = "B6";
+        options[6] = "B7";
+        options[7] = "B8";
 
         return options;
     }

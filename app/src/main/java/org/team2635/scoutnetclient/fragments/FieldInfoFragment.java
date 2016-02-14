@@ -14,6 +14,11 @@ import org.team2635.scoutnetclient.R;
 
 public class FieldInfoFragment extends Fragment {
 
+    public FieldInfoFragment()
+    {
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -27,6 +32,8 @@ public class FieldInfoFragment extends Fragment {
         // Set title bar
         ((FieldInfoActivity) getActivity())
                 .setActionBarTitle("Basic Info");
+
+        super.onStart();
     }
 
     public String getTeamNum()

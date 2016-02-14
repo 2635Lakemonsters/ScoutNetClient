@@ -62,7 +62,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.nosaveactionmenu, menu);
+        inflater.inflate(R.menu.actionmenu, menu);
         return true;
     }
 

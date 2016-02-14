@@ -35,6 +35,7 @@ import java.net.URL;
 public class PitInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     private static final String TAG = "PitInfoActivity";
+    PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         ab.setDisplayHomeAsUpEnabled(true);
 
         ViewPager viewpager = (ViewPager) findViewById(R.id.pitPager);
-        PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
+        //PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
         viewpager.setAdapter(padapter);
 
         //TODO: Implement this
@@ -139,6 +140,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
         RobotInfoFragment robotFrag = (RobotInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
         TeamInfoFragment teamFrag = (TeamInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
+
 
         //Get data from defenses selection fragment
         String[] defenseSelections = defensesFrag.getSelections();

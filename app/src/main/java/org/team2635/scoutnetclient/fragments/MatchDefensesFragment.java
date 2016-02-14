@@ -14,6 +14,11 @@ public class MatchDefensesFragment extends Fragment
 {
     private CheckBox[] checkBoxReferences = new CheckBox[9];
 
+    public MatchDefensesFragment()
+    {
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -23,10 +28,12 @@ public class MatchDefensesFragment extends Fragment
     @Override
     public void onStart()
     {
-        getCheckBoxReferences.start();
+
         // Set title bar
         ((FieldInfoActivity) getActivity())
                 .setActionBarTitle("Defenses");
+
+        super.onStart();
     }
 
     private final Thread getCheckBoxReferences = new Thread(new Runnable()
@@ -46,22 +53,23 @@ public class MatchDefensesFragment extends Fragment
             CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.MatchD2);
             CheckBox S9 = (CheckBox) getActivity().findViewById(R.id.MatchLB);
 
-            checkBoxReferences[1] = S1;
-            checkBoxReferences[2] = S2;
-            checkBoxReferences[3] = S3;
-            checkBoxReferences[4] = S4;
-            checkBoxReferences[5] = S5;
-            checkBoxReferences[6] = S6;
-            checkBoxReferences[7] = S7;
-            checkBoxReferences[8] = S8;
-            checkBoxReferences[9] = S9;
+            checkBoxReferences[0] = S1;
+            checkBoxReferences[1] = S2;
+            checkBoxReferences[2] = S3;
+            checkBoxReferences[3] = S4;
+            checkBoxReferences[4] = S5;
+            checkBoxReferences[5] = S6;
+            checkBoxReferences[6] = S7;
+            checkBoxReferences[7] = S8;
+            checkBoxReferences[8] = S9;
         }
     });
 
     public String[] getCheckBoxData()
     {
+        getCheckBoxReferences.start();
         int position = 0;
-        String[] selections = new String[8];
+        String[] selections = new String[9];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
@@ -84,14 +92,14 @@ public class MatchDefensesFragment extends Fragment
     {
         String[] options = new String[8];
 
-        options[1] = "B1";
-        options[2] = "B2";
-        options[3] = "B3";
-        options[4] = "B4";
-        options[5] = "B5";
-        options[6] = "B6";
-        options[7] = "B7";
-        options[8] = "B8";
+        options[0] = "B1";
+        options[1] = "B2";
+        options[2] = "B3";
+        options[3] = "B4";
+        options[4] = "B5";
+        options[5] = "B6";
+        options[6] = "B7";
+        options[7] = "B8";
 
         return options;
     }

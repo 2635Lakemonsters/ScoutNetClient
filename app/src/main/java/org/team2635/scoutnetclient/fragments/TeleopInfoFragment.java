@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
@@ -19,6 +20,11 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     private int highScores = 0;
     private int lowScores = 0;
     private int defenseCrosses = 0;
+
+    public TeleopInfoFragment()
+    {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,8 +52,10 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     public void onStart()
     {
         // Set title bar
-        ((PitInfoActivity) getActivity())
+        ((FieldInfoActivity) getActivity())
                 .setActionBarTitle("Teleop Activities");
+
+        super.onStart();
     }
 
     @Override
@@ -91,9 +99,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         TextView high = (TextView) getActivity().findViewById(R.id.teleopHighGoalNum);
         TextView low = (TextView) getActivity().findViewById(R.id.teleopLowGoalNum);
         TextView defense = (TextView) getActivity().findViewById(R.id.teleDefenseNum);
-        high.setText(highScores);
-        low.setText(lowScores);
-        defense.setText(defenseCrosses);
+        high.setText(String.valueOf(highScores));
+        low.setText(String.valueOf(lowScores));
+        defense.setText(String.valueOf(defenseCrosses));
     }
 
     public String getHighScores()

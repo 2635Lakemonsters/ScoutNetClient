@@ -19,6 +19,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     private int highScores;
     private int lowScores;
 
+    public AutonomousInfoFragment()
+    {
+        //Required
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +48,8 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         // Set title bar
         ((FieldInfoActivity) getActivity())
                 .setActionBarTitle("Autonomous Info");
+
+        super.onStart();
     }
 
     @Override
@@ -132,7 +139,7 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
         TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
-        high.setText(highScores);
-        low.setText(lowScores);
+        high.setText(String.valueOf(highScores));
+        low.setText(String.valueOf(lowScores));
     }
 }

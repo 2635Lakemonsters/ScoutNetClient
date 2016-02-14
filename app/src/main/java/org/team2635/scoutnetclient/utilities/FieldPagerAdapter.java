@@ -37,7 +37,17 @@ public class FieldPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
 
-        return 3;
+        return 4;
+    }
+
+    public String getFragmentReference(int viewId, int index)
+    {
+        return makeFragmentName(viewId, index);
+    }
+
+    private String makeFragmentName(int viewPagerId, int index)
+    {
+        return "android:switcher:"+ viewPagerId + ":" + index;
     }
 
 }
