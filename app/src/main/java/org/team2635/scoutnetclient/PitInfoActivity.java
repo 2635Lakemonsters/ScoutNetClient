@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -47,9 +50,9 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        ViewPager viewpager = (ViewPager) findViewById(R.id.pitPager);
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pitPager);
         //PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
-        viewpager.setAdapter(padapter);
+        viewPager.setAdapter(padapter);
 
         //TODO: Implement this
         /**
@@ -124,6 +127,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
+        //TODO: Fix getting of scout name
         final String scoutName = sharedPref.getString("key_pref_scout_name", "");
 
         try
@@ -136,10 +140,19 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        DefensesFragment defensesFrag = (DefensesFragment)  getSupportFragmentManager().findFragmentById(R.id.pitPager);
-        StrategyInfoFragment strategyFrag = (StrategyInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
-        RobotInfoFragment robotFrag = (RobotInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
-        TeamInfoFragment teamFrag = (TeamInfoFragment) getSupportFragmentManager().findFragmentById(R.id.pitPager);
+        /**
+        Fragment fr = padapter.getItem(1);
+        if(fr instanceof RobotInfoFragment)
+        {
+            String s = ((RobotInfoFragment) fr).getLocomotionType();
+            Log.d(TAG, s);
+        }
+         **/
+
+        TeamInfoFragment teamFrag = (TeamInfoFragment) padapter.getItem(0);
+        RobotInfoFragment robotFrag = (RobotInfoFragment) padapter.getItem(1);
+        StrategyInfoFragment strategyFrag = (StrategyInfoFragment) padapter.getItem(2);
+        DefensesFragment defensesFrag = (DefensesFragment)  padapter.getItem(3);
 
 
         //Get data from defenses selection fragment
@@ -160,6 +173,9 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             }
             ++i;
         }
+
+        //Set view to strategy info fragment
+        
 
         //Get data from strategy info fragment
         String[] strategySelections = strategyFrag.getData();
@@ -248,6 +264,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
         showDialog("dataSaved");
     }
+
     private void submitData()
     {
         SharedPreferences sharedPref = getSharedPreferences(

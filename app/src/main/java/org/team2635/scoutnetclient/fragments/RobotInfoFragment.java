@@ -2,6 +2,7 @@ package org.team2635.scoutnetclient.fragments;
 
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import org.team2635.scoutnetclient.R;
 
 public class RobotInfoFragment extends Fragment
 {
+    protected View mView;
     //TODO: Test this
     private CheckBox[] checkBoxReferences = new CheckBox[8];
 
@@ -28,8 +30,11 @@ public class RobotInfoFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_robot_info,container,false);
 
-        return inflater.inflate(R.layout.fragment_robot_info,container,false);
+        this.mView = v;
+
+        return v;
     }
 
     @Override
@@ -112,20 +117,24 @@ public class RobotInfoFragment extends Fragment
 
     public String getNumberOfWheels()
     {
-        NumberPicker picker = (NumberPicker) getActivity().findViewById(R.id.numberOfWheels);
-        int i = picker.getValue();
-
-        return Integer.toString(i);
+        EditText picker = (EditText) getActivity().findViewById(R.id.numberOfWheels);
+        String i = picker.getText().toString();
+        return i;
     }
 
     public String getLocomotionType()
     {
-        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.locomotionType);
+        //RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.locomotionType);
+
+        View v = getView();
+        RadioGroup group = (RadioGroup) mView.findViewById(R.id.locomotionType);
+
+
         int id = group.getCheckedRadioButtonId();
 
         String idString = getResources().getResourceEntryName(id);
 
-        return idString.substring(5);
+        return idString.substring(4);
     }
 
     public String getUsingVision()

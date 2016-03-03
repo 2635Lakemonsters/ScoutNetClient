@@ -50,10 +50,13 @@
             android:text="@string/numberOfWheels"
             android:textColor="@android:color/black" />
 
-        <NumberPicker
+        <EditText
             android:layout_width="wrap_content"
-            android:layout_height="33dp"
-            android:id="@+id/numberOfWheels" />
+            android:layout_height="45dp"
+            android:id="@+id/numberOfWheels"
+            android:inputType="number"
+            android:text="0"
+            />
 
         <Space
             android:layout_width="match_parent"

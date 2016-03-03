@@ -9,10 +9,17 @@ import org.team2635.scoutnetclient.fragments.DefensesFragment;
 import org.team2635.scoutnetclient.fragments.StrategyInfoFragment;
 import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 
-public class PitPagerAdapter extends FragmentPagerAdapter {
+public class PitPagerAdapter extends FragmentPagerAdapter
+{
+
+    TeamInfoFragment teamFrag = new TeamInfoFragment();
+    RobotInfoFragment robotFrag = new RobotInfoFragment();
+    StrategyInfoFragment strategyFrag = new StrategyInfoFragment();
+    DefensesFragment defenseFrag = new DefensesFragment();
 
     public PitPagerAdapter(FragmentManager fm) {
         super(fm);
+
 
     }
 
@@ -21,13 +28,13 @@ public class PitPagerAdapter extends FragmentPagerAdapter {
 
         switch (arg0) {
             case 0:
-                return new TeamInfoFragment();
+                return teamFrag;
             case 1:
-                return new RobotInfoFragment();
+                return robotFrag;
             case 2:
-                return new StrategyInfoFragment();
+                return strategyFrag;
             case 3:
-                return new DefensesFragment();
+                return defenseFrag;
             default:
                 break;
         }

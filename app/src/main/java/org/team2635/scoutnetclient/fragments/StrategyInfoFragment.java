@@ -41,11 +41,8 @@ public class StrategyInfoFragment extends Fragment
         super.onStart();
     }
 
-    private Thread getReferences = new Thread(new Runnable()
+    private void getReferences()
     {
-        @Override
-        public void run()
-        {
             //For reference sheet, see github wiki page: Strategy info fragment
             CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesChallengeTower);
             CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesScaleTower);
@@ -67,11 +64,10 @@ public class StrategyInfoFragment extends Fragment
             references[7] = S8;
             references[8] = S9;
         }
-    });
 
     public String[] getData()
     {
-        getReferences.start();
+        getReferences();
         int position = 0;
         String[] selections = new String[10];
         EditText generalNotes = (EditText) getActivity().findViewById(R.id.generalStrategyNotes);
@@ -90,7 +86,7 @@ public class StrategyInfoFragment extends Fragment
             }
         }
 
-        selections[10] = generalNotes.getText().toString();
+        selections[9] = generalNotes.getText().toString();
 
         return selections;
     }

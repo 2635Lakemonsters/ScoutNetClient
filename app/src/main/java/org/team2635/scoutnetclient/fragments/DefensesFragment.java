@@ -3,6 +3,7 @@ package org.team2635.scoutnetclient.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ public class DefensesFragment extends Fragment
     //TODO: Test this
     private RadioGroup[] groups;
     private String[] selections;
+    private static final String TAG = " Pit Defenses Fragment";
 
     public DefensesFragment()
     {
@@ -39,34 +41,31 @@ public class DefensesFragment extends Fragment
         super.onStart();
     }
 
-    private final Thread groupGetThread = new Thread(new Runnable()
+    private void getGroups()
     {
-        @Override
-        public void run()
-        {
-            RadioGroup A1 = (RadioGroup) getActivity().findViewById(R.id.A1);
-            RadioGroup A2 = (RadioGroup) getActivity().findViewById(R.id.A2);
-            RadioGroup B1 = (RadioGroup) getActivity().findViewById(R.id.B1);
-            RadioGroup B2 = (RadioGroup) getActivity().findViewById(R.id.B2);
-            RadioGroup C1 = (RadioGroup) getActivity().findViewById(R.id.C1);
-            RadioGroup C2 = (RadioGroup) getActivity().findViewById(R.id.C2);
-            RadioGroup D1 = (RadioGroup) getActivity().findViewById(R.id.D1);
-            RadioGroup D2 = (RadioGroup) getActivity().findViewById(R.id.D2);
-            RadioGroup LB = (RadioGroup) getActivity().findViewById(R.id.Lowbar);
+        RadioGroup A1 = (RadioGroup) getActivity().findViewById(R.id.A1);
+        RadioGroup A2 = (RadioGroup) getActivity().findViewById(R.id.A2);
+        RadioGroup B1 = (RadioGroup) getActivity().findViewById(R.id.B1);
+        RadioGroup B2 = (RadioGroup) getActivity().findViewById(R.id.B2);
+        RadioGroup C1 = (RadioGroup) getActivity().findViewById(R.id.C1);
+        RadioGroup C2 = (RadioGroup) getActivity().findViewById(R.id.C2);
+        RadioGroup D1 = (RadioGroup) getActivity().findViewById(R.id.D1);
+        RadioGroup D2 = (RadioGroup) getActivity().findViewById(R.id.D2);
+        RadioGroup LB = (RadioGroup) getActivity().findViewById(R.id.Lowbar);
 
-            groups = new RadioGroup[9];
+        groups = new RadioGroup[9];
 
-            groups[0] = A1;
-            groups[1] = A2;
-            groups[2] = B1;
-            groups[3] = B2;
-            groups[4] = C1;
-            groups[5] = C2;
-            groups[6] = D1;
-            groups[7] = D2;
-            groups[8] = LB;
-        }
-    });
+        groups[0] = A1;
+        groups[1] = A2;
+        groups[2] = B1;
+        groups[3] = B2;
+        groups[4] = C1;
+        groups[5] = C2;
+        groups[6] = D1;
+        groups[7] = D2;
+        groups[8] = LB;
+
+    }
 
     //TODO: Read data in a separate thread?
     private void readData()
@@ -77,11 +76,20 @@ public class DefensesFragment extends Fragment
         {
             //Gets checked buttons ID, converts it to a string, then extracts ending bit (Yes, Unknown, or No)
             int id = g.getCheckedRadioButtonId();
-            String idString = getResources().getResourceEntryName(id);
-            String substring = idString.substring(3);
+            if(id == -1)
+            {
+                //No button was selected, this just prevents the app from crashing, belive it or not
+                selections[position] = "";
+            }
+            else
+            {
+                //Button selected, good to proceed!
+                String idString = getResources().getResourceEntryName(id);
+                String substring = idString.substring(3);
+                //Commits substring to position in array
+                selections[position] = substring;
+            }
 
-            //Commits substring to position in array, then increments position
-            selections[position] = substring;
             position++;
         }
 
@@ -89,7 +97,7 @@ public class DefensesFragment extends Fragment
 
     public String[] getSelections()
     {
-        groupGetThread.start();
+        getGroups();
         readData();
         return selections;
     }
