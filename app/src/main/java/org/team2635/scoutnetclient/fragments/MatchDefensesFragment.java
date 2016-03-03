@@ -36,12 +36,8 @@ public class MatchDefensesFragment extends Fragment
         super.onStart();
     }
 
-    private final Thread getCheckBoxReferences = new Thread(new Runnable()
+    private void getCheckBoxReferences()
     {
-        @Override
-        public void run()
-        {
-
             //For reference sheet, see github wiki page: Robot info fragment
             CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.MatchA1);
             CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.MatchA2);
@@ -62,12 +58,12 @@ public class MatchDefensesFragment extends Fragment
             checkBoxReferences[6] = S7;
             checkBoxReferences[7] = S8;
             checkBoxReferences[8] = S9;
-        }
-    });
+    }
+
 
     public String[] getCheckBoxData()
     {
-        getCheckBoxReferences.start();
+        getCheckBoxReferences();
         int position = 0;
         String[] selections = new String[9];
 

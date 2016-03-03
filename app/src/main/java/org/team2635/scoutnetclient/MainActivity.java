@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        DataManager manager = new DataManager(sharedPref);
+        final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
@@ -116,8 +116,10 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 @Override
                 public void run()
                 {
+                    boolean success = true;
                     try
                     {
+
                         URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
@@ -132,26 +134,57 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                         try
                         {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            System.out.println(in);
+                            Log.d(TAG, in.toString());
                         }
                         finally
                         {
                             urlConnection.disconnect();
                         }
-                    } catch(IOException e)
+
+                    }
+                    catch(IOException e)
                     {
-                        e.printStackTrace();
+                        Log.e(TAG, e.toString());
+                        MainActivity.this.runOnUiThread(new Runnable()
+                                                        {
+                                                            @Override
+                                                            public void run()
+                                                            {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
+
+                        );
+                        success = false;
+                    }
+                    finally
+                    {
+                        if(success)
+                        {
+                            manager.clearData();
+                            MainActivity.this.runOnUiThread(new Runnable()
+                                                            {
+                                                                @Override
+                                                                public void run()
+                                                                {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
+
+                            );
+                        }
                     }
                 }
             });
             thread.start();
 
-            System.out.println("Extracted and ran a URL! Data: " + s);
+            Log.d(TAG, "Extracted and ran a URL! Data: " + s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
-        manager.clearData();
-        showDialog("success");
+        //TODO: Implement checking from server
+
+
     }
 
     // The dialog fragment receives a reference to this Activity through the
@@ -180,6 +213,10 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 break;
             case("dataSaved"):
                 Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
+                break;
+            case("uploadFailure"):
+                Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

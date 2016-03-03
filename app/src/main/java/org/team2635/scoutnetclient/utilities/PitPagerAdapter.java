@@ -17,10 +17,9 @@ public class PitPagerAdapter extends FragmentPagerAdapter
     StrategyInfoFragment strategyFrag = new StrategyInfoFragment();
     DefensesFragment defenseFrag = new DefensesFragment();
 
-    public PitPagerAdapter(FragmentManager fm) {
+    public PitPagerAdapter(FragmentManager fm)
+    {
         super(fm);
-
-
     }
 
     @Override
@@ -46,16 +45,5 @@ public class PitPagerAdapter extends FragmentPagerAdapter
 
         return 4;
     }
-
-    public String getFragmentReference(int viewId, int index)
-    {
-        return makeFragmentName(viewId, index);
-    }
-
-    private String makeFragmentName(int viewPagerId, int index)
-    {
-        return "android:switcher:"+ viewPagerId + ":" + index;
-    }
-
 }
 

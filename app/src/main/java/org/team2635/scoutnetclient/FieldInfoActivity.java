@@ -36,6 +36,8 @@ import java.net.URL;
 public class FieldInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
 {
     private static final String TAG = "FieldInfo";
+    ViewPager viewpager;
+    FieldPagerAdapter padapter = new FieldPagerAdapter(getSupportFragmentManager());
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -48,8 +50,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        ViewPager viewpager = (ViewPager) findViewById(R.id.fieldPager);
-        FieldPagerAdapter padapter = new FieldPagerAdapter(getSupportFragmentManager());
+        viewpager = (ViewPager) findViewById(R.id.fieldPager);
         viewpager.setAdapter(padapter);
     }
 
@@ -95,7 +96,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        DataManager manager = new DataManager(sharedPref);
+        final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
@@ -109,8 +110,10 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 @Override
                 public void run()
                 {
+                    boolean success = true;
                     try
                     {
+
                         URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
@@ -125,26 +128,57 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                         try
                         {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            System.out.println(in);
+                            Log.d(TAG, in.toString());
                         }
                         finally
                         {
                             urlConnection.disconnect();
                         }
-                    } catch(IOException e)
+
+                    }
+                    catch(IOException e)
                     {
-                        e.printStackTrace();
+                        Log.e(TAG, e.toString());
+                        FieldInfoActivity.this.runOnUiThread(new Runnable()
+                                                        {
+                                                            @Override
+                                                            public void run()
+                                                            {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
+
+                        );
+                        success = false;
+                    }
+                    finally
+                    {
+                        if(success)
+                        {
+                            manager.clearData();
+                            FieldInfoActivity.this.runOnUiThread(new Runnable()
+                                                            {
+                                                                @Override
+                                                                public void run()
+                                                                {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
+
+                            );
+                        }
                     }
                 }
             });
             thread.start();
 
-            System.out.println("Extracted and ran a URL! Data: " + s);
+            Log.d(TAG, "Extracted and ran a URL! Data: " + s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
-        manager.clearData();
-        showDialog("success");
+        //TODO: Implement checking from server
+
+
     }
 
     private void saveData()
@@ -154,7 +188,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
-        final String scoutName = sharedPref.getString("key_pref_scout_name", "");
+        //TODO: Fix getting of scout name
+        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
 
         try
         {
@@ -166,10 +201,15 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        AutonomousInfoFragment autoFrag = new AutonomousInfoFragment();
-        TeleopInfoFragment teleFrag = new TeleopInfoFragment();
-        FieldInfoFragment fieldFrag = new FieldInfoFragment();
-        MatchDefensesFragment defenseFrag = new MatchDefensesFragment();
+        FieldInfoFragment fieldFrag = (FieldInfoFragment) padapter.getItem(0);
+        AutonomousInfoFragment autoFrag = (AutonomousInfoFragment) padapter.getItem(1);
+        TeleopInfoFragment teleFrag = (TeleopInfoFragment) padapter.getItem(2);
+        MatchDefensesFragment defenseFrag = (MatchDefensesFragment) padapter.getItem(3);
+
+
+
+        //Set page to field info
+        viewpager.setCurrentItem(0, false);
 
         //Get data from field info
         String teamnum = fieldFrag.getTeamNum();
@@ -189,25 +229,10 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        //Get data from match defenses
-        String[] defenseSelections = defenseFrag.getCheckBoxData();
-        String[] defenseOptions = defenseFrag.getOptions();
 
-        //TODO: Test this
-        int i = 0;
-        for(String s : defenseSelections)
-        {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            }
-            catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
 
-            ++i;
-        }
+        //Set page to autonomous info
+        viewpager.setCurrentItem(1, false);
 
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
@@ -228,6 +253,11 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
+
+
+
+        //Set page to teleop fragment
+        viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
         String teleHighScores = teleFrag.getHighScores();
@@ -250,6 +280,33 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
+
+
+
+        //Set page to match defense
+        viewpager.setCurrentItem(3, false);
+
+        //Get data from match defenses
+        String[] defenseSelections = defenseFrag.getCheckBoxData();
+        String[] defenseOptions = defenseFrag.getOptions();
+
+        //TODO: Test this
+        int i = 0;
+        for(String s : defenseSelections)
+        {
+            try
+            {
+                jsonObject.accumulate(defenseOptions[i], s);
+            }
+            catch (Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
+
+            ++i;
+        }
+
+
 
         manager.write(jsonObject.toString());
 
@@ -288,6 +345,10 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 break;
             case("dataSaved"):
                 Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
+                break;
+            case("uploadFailure"):
+                Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

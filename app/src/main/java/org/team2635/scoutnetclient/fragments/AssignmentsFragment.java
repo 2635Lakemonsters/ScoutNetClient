@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class AssignmentsFragment extends ListFragment implements AdapterView.OnI
     @SuppressWarnings("unchecked")
 
     private int teamNumber = 0000;
+    private final String TAG = "AssignmentsFragment";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class AssignmentsFragment extends ListFragment implements AdapterView.OnI
             }
         } catch (JSONException | IOException e) {
 
-            e.printStackTrace();
+            Log.e(TAG, e.toString());
         }
         return items;
     }

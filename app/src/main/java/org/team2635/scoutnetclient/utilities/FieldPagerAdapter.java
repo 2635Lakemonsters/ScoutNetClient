@@ -9,9 +9,15 @@ import org.team2635.scoutnetclient.fragments.FieldInfoFragment;
 import org.team2635.scoutnetclient.fragments.MatchDefensesFragment;
 import org.team2635.scoutnetclient.fragments.TeleopInfoFragment;
 
-public class FieldPagerAdapter extends FragmentPagerAdapter {
+public class FieldPagerAdapter extends FragmentPagerAdapter
+{
+    FieldInfoFragment fieldInfoFragment = new FieldInfoFragment();
+    AutonomousInfoFragment autonomousInfoFragment = new AutonomousInfoFragment();
+    TeleopInfoFragment teleopInfoFragment = new TeleopInfoFragment();
+    MatchDefensesFragment matchDefensesFragment = new MatchDefensesFragment();
 
-    public FieldPagerAdapter(FragmentManager fm) {
+    public FieldPagerAdapter(FragmentManager fm)
+    {
         super(fm);
     }
 
@@ -21,13 +27,13 @@ public class FieldPagerAdapter extends FragmentPagerAdapter {
         //TODO: Test field view pager
         switch (arg0) {
             case 0:
-                return new FieldInfoFragment();
+                return fieldInfoFragment;
             case 1:
-                return new AutonomousInfoFragment();
+                return autonomousInfoFragment;
             case 2:
-                return new TeleopInfoFragment();
+                return teleopInfoFragment;
             case 3:
-                return new MatchDefensesFragment();
+                return matchDefensesFragment;
             default:
                 break;
         }
@@ -39,16 +45,5 @@ public class FieldPagerAdapter extends FragmentPagerAdapter {
 
         return 4;
     }
-
-    public String getFragmentReference(int viewId, int index)
-    {
-        return makeFragmentName(viewId, index);
-    }
-
-    private String makeFragmentName(int viewPagerId, int index)
-    {
-        return "android:switcher:"+ viewPagerId + ":" + index;
-    }
-
 }
 

@@ -31,6 +31,7 @@ import org.team2635.scoutnetclient.utilities.PitPagerAdapter;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,6 +40,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 {
     private static final String TAG = "PitInfoActivity";
     PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
+    ViewPager viewPager;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +52,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pitPager);
-        //PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
+        viewPager = (ViewPager) findViewById(R.id.pitPager);
         viewPager.setAdapter(padapter);
 
         //TODO: Implement this
@@ -128,8 +129,9 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         JSONObject jsonObject = new JSONObject();
 
         //TODO: Fix getting of scout name
-        final String scoutName = sharedPref.getString("key_pref_scout_name", "");
+        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
 
+        //2 Fields
         try
         {
             jsonObject.accumulate("DATATYPE", "pitData");
@@ -140,62 +142,38 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        /**
-        Fragment fr = padapter.getItem(1);
-        if(fr instanceof RobotInfoFragment)
-        {
-            String s = ((RobotInfoFragment) fr).getLocomotionType();
-            Log.d(TAG, s);
-        }
-         **/
-
+        //Get references to fragments
         TeamInfoFragment teamFrag = (TeamInfoFragment) padapter.getItem(0);
         RobotInfoFragment robotFrag = (RobotInfoFragment) padapter.getItem(1);
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) padapter.getItem(2);
         DefensesFragment defensesFrag = (DefensesFragment)  padapter.getItem(3);
 
 
-        //Get data from defenses selection fragment
-        String[] defenseSelections = defensesFrag.getSelections();
-        String[] defenseOptions = defensesFrag.getDefenses();
 
-        //TODO: Test this
-        int i = 0;
-        for(String s : defenseSelections)
+        //Set page to teaminfo fragment
+        viewPager.setCurrentItem(0, false);
+
+        //Get data from teaminfo fragment; 3 fields
+        String teamNumber = teamFrag.getTeamNumber();
+        String teamName = teamFrag.getTeamName();
+        String robotName = teamFrag.getRobotName();
+
+        try
         {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            }
-            catch(Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            ++i;
+            jsonObject.accumulate("TEAMNUMBER", teamNumber);
+            jsonObject.accumulate("TEAMNAME", teamName);
+            jsonObject.accumulate("ROBOTNAME", robotName);
+
+        }
+        catch(Exception e)
+        {
+            Log.d("InputStream", e.getLocalizedMessage());
         }
 
-        //Set view to strategy info fragment
-        
 
-        //Get data from strategy info fragment
-        String[] strategySelections = strategyFrag.getData();
-        String[] strategyOptions = strategyFrag.getOptions();
 
-        //TODO: Test this
-        i = 0;
-        for(String s : strategySelections)
-        {
-            try
-            {
-                jsonObject.accumulate(strategyOptions[i], s);
-            }
-            catch(Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            ++i;
-        }
-
+        //Set page to robot info
+        viewPager.setCurrentItem(1, false);
 
         //Get data from robot info
         String wheels = robotFrag.getNumberOfWheels();
@@ -221,12 +199,11 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-
         String[] robotSelections = robotFrag.getCheckBoxData();
         String[] robotOptions = robotFrag.getOptions();
 
         //TODO: Test this
-        i = 0;
+        int i = 0;
         for(String s : robotSelections)
         {
             try
@@ -240,22 +217,55 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             ++i;
         }
 
-        //Get data from teaminfo fragment
-        String teamNumber = teamFrag.getTeamNumber();
-        String teamName = teamFrag.getTeamName();
-        String robotName = teamFrag.getRobotName();
 
-        try
-        {
-            jsonObject.accumulate("TEAMNUMBER", teamNumber);
-            jsonObject.accumulate("TEAMNAME", teamName);
-            jsonObject.accumulate("ROBOTNAME", robotName);
 
-        }
-        catch(Exception e)
+        //Set view to strategy info fragment
+        viewPager.setCurrentItem(2, false);
+
+        //Get data from strategy info fragment
+        String[] strategySelections = strategyFrag.getData();
+        String[] strategyOptions = strategyFrag.getOptions();
+
+        //TODO: Test this
+        i = 0;
+        for(String s : strategySelections)
         {
-            Log.d("InputStream", e.getLocalizedMessage());
+            try
+            {
+                jsonObject.accumulate(strategyOptions[i], s);
+            }
+            catch(Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
+            ++i;
         }
+
+
+
+        //Set page to defenses fragment
+        viewPager.setCurrentItem(3, false);
+
+        //Get data from defenses selection fragment
+        String[] defenseSelections = defensesFrag.getSelections();
+        String[] defenseOptions = defensesFrag.getDefenses();
+
+        //TODO: Test this
+        i = 0;
+        for(String s : defenseSelections)
+        {
+            try
+            {
+                jsonObject.accumulate(defenseOptions[i], s);
+            }
+            catch(Exception e)
+            {
+                Log.d("InputStream", e.getLocalizedMessage());
+            }
+            ++i;
+        }
+
+
 
         manager.write(jsonObject.toString());
 
@@ -269,48 +279,89 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        DataManager manager = new DataManager(sharedPref);
+        final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
         final String address = sharedPref.getString("pref_key_server_ip", "");
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
 
-
+        //TODO: Test new data post functionality
         for(final String s : urls)
         {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run()
                 {
+                    boolean success = true;
                     try
                     {
+
                         URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setDoOutput(true);
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Content-Type", "application/json");
+                        urlConnection.connect();
+
+                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                        out.write(s);
+                        out.close();
 
                         try
                         {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            System.out.println(in);
+                            Log.d(TAG, in.toString());
                         }
                         finally
                         {
                             urlConnection.disconnect();
                         }
-                    } catch(IOException e)
+
+                    }
+                    catch(IOException e)
                     {
-                        e.printStackTrace();
+                        Log.e(TAG, e.toString());
+                        PitInfoActivity.this.runOnUiThread(new Runnable()
+                                                        {
+                                                            @Override
+                                                            public void run()
+                                                            {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
+
+                        );
+                        success = false;
+                    }
+                    finally
+                    {
+                        if(success)
+                        {
+                            manager.clearData();
+                            PitInfoActivity.this.runOnUiThread(new Runnable()
+                                                            {
+                                                                @Override
+                                                                public void run()
+                                                                {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
+
+                            );
+                        }
                     }
                 }
             });
             thread.start();
 
-            System.out.println("Extracted and ran a URL! Data: " + s);
+            Log.d(TAG, "Extracted and ran a URL! Data: " + s);
         }
 
         //Clears saved data sets from memory. Prevents duplicate uploads.
-        manager.clearData();
-        showDialog("success");
+        //TODO: Implement checking from server
+
+
     }
 
     private void showDialog(String dialog)
@@ -330,6 +381,10 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 break;
             case("dataSaved"):
                 Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
+                break;
+            case("uploadFailure"):
+                Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 Log.e(TAG, "Expected 'success' or 'uploadPrompt' for showDialog(), got " + dialog);
                 break;

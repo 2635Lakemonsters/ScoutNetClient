@@ -49,11 +49,9 @@ public class RobotInfoFragment extends Fragment
 
 
 
-    private Thread getCheckBoxReferences = new Thread(new Runnable()
-    {
-        @Override
-        public void run()
-        {
+   public void getCheckBoxReferences()
+   {
+
 
             //For reference sheet, see github wiki page: Robot info fragment
             CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canShootLow);
@@ -73,12 +71,11 @@ public class RobotInfoFragment extends Fragment
             checkBoxReferences[5] = S6;
             checkBoxReferences[6] = S7;
             checkBoxReferences[7] = S8;
-        }
-    });
+    }
 
     public String[] getCheckBoxData()
     {
-        getCheckBoxReferences.start();
+        getCheckBoxReferences();
         int position = 0;
         String[] selections = new String[8];
 
@@ -124,27 +121,46 @@ public class RobotInfoFragment extends Fragment
 
     public String getLocomotionType()
     {
-        //RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.locomotionType);
-
-        View v = getView();
+        String returnString = "";
         RadioGroup group = (RadioGroup) mView.findViewById(R.id.locomotionType);
 
 
         int id = group.getCheckedRadioButtonId();
 
-        String idString = getResources().getResourceEntryName(id);
+        if(id == -1)
+        {
+            //No button checked, not to worry
+            returnString = "";
+        }
+        else
+        {
+            String idString = getResources().getResourceEntryName(id);
+            returnString = idString.substring(4);
+        }
 
-        return idString.substring(4);
+
+        return returnString;
     }
 
     public String getUsingVision()
     {
         RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.usesVision);
+        String returnString = "";
         int id = group.getCheckedRadioButtonId();
 
-        String idString = getResources().getResourceEntryName(id);
+        if(id == -1)
+        {
+            //No option selected, don't cry yet
+            returnString = "";
+        }
+        else
+        {
+            String idString = getResources().getResourceEntryName(id);
+            returnString = idString.substring(6);
+        }
 
-        return idString.substring(7);
+
+        return returnString;
     }
 
     public String getVisionUsage()
@@ -156,11 +172,22 @@ public class RobotInfoFragment extends Fragment
     public String getUsingAuto()
     {
         RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.usesAuto);
+        String returnString = "";
         int id = group.getCheckedRadioButtonId();
 
-        String idString = getResources().getResourceEntryName(id);
+        if(id == -1)
+        {
+            //No option selected, but we shouldn't get depressed. Probably.
+            returnString = "";
+        }
+        else
+        {
+            String idString = getResources().getResourceEntryName(id);
+            returnString = idString.substring(4);
+        }
 
-        return idString.substring(5);
+
+        return returnString;
     }
 
     public String getAutoUsage()
@@ -172,10 +199,21 @@ public class RobotInfoFragment extends Fragment
     public String getDriveTrain()
     {
         RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.driveTrain);
+        String returnString = "";
         int id = group.getCheckedRadioButtonId();
 
-        String idString = getResources().getResourceEntryName(id);
+        if(id == -1)
+        {
+            //Fine! Maybe you didn't want to select anything. See if I care! I'm only a computer anyways...
+            returnString = "";
+        }
+        else
+        {
+            String idString = getResources().getResourceEntryName(id);
+            returnString = idString.substring(5);
+        }
 
-        return idString.substring(6);
+
+        return returnString;
     }
 }

@@ -1,10 +1,12 @@
 package org.team2635.scoutnetclient.utilities;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class DataManager
 {
     private final SharedPreferences m_sharedPref;
+    private final String TAG = "DataManager";
     private int urlCount = 0;
 
     public DataManager(SharedPreferences sharedPref)
@@ -34,9 +36,9 @@ public class DataManager
 
         editor.apply();
 
-        System.out.println("Url data logged to memory! Data: " + url);
-        System.out.println("Url count: " + urlCount);
-        System.out.println("Stored URL: " + m_sharedPref.getInt("count", 999));
+        Log.d(TAG, "Url data logged to memory! Data: " + url);
+        Log.d(TAG, "Url count: " + urlCount);
+        Log.d(TAG, "Stored URL: " + m_sharedPref.getInt("count", 999));
     }
 
     public String[] getURLArray()
@@ -46,7 +48,7 @@ public class DataManager
         {
             String url = m_sharedPref.getString("url"+i, "");
             urls[i] = url;
-            System.out.println("Data assigned to array! Place in array " + i + ". Data: " + url);
+            Log.d(TAG, "Data assigned to array! Place in array " + i + ". Data: " + url);
         }
         return urls;
     }
