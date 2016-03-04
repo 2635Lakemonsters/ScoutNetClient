@@ -14,7 +14,6 @@ import org.team2635.scoutnetclient.R;
 
 public class DefensesFragment extends Fragment
 {
-    //TODO: Test this
     private RadioGroup[] groups;
     private String[] selections;
     private static final String TAG = " Pit Defenses Fragment";
@@ -67,7 +66,6 @@ public class DefensesFragment extends Fragment
 
     }
 
-    //TODO: Read data in a separate thread?
     private void readData()
     {
         selections = new String[9];
@@ -85,11 +83,10 @@ public class DefensesFragment extends Fragment
             {
                 //Button selected, good to proceed!
                 String idString = getResources().getResourceEntryName(id);
-                String substring = idString.substring(3);
+                String substring = idString.substring(2);
                 //Commits substring to position in array
                 selections[position] = substring;
             }
-
             position++;
         }
 

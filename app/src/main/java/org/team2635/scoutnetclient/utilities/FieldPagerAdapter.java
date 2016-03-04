@@ -22,9 +22,8 @@ public class FieldPagerAdapter extends FragmentPagerAdapter
     }
 
     @Override
-    public Fragment getItem(int arg0) {
-
-        //TODO: Test field view pager
+    public Fragment getItem(int arg0)
+    {
         switch (arg0) {
             case 0:
                 return fieldInfoFragment;

@@ -120,7 +120,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         // User touched the dialog's negative button
     }
 
-    //TODO: Convert data saving to json object
+
     private void saveData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
@@ -175,7 +175,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         //Set page to robot info
         viewPager.setCurrentItem(1, false);
 
-        //Get data from robot info
+        //Get data from robot info, 15 fields
         String wheels = robotFrag.getNumberOfWheels();
         String locomotion = robotFrag.getLocomotionType();
         String vision = robotFrag.getUsingVision();
@@ -202,7 +202,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] robotSelections = robotFrag.getCheckBoxData();
         String[] robotOptions = robotFrag.getOptions();
 
-        //TODO: Test this
         int i = 0;
         for(String s : robotSelections)
         {
@@ -226,7 +225,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] strategySelections = strategyFrag.getData();
         String[] strategyOptions = strategyFrag.getOptions();
 
-        //TODO: Test this
         i = 0;
         for(String s : strategySelections)
         {
@@ -250,7 +248,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] defenseSelections = defensesFrag.getSelections();
         String[] defenseOptions = defensesFrag.getDefenses();
 
-        //TODO: Test this
         i = 0;
         for(String s : defenseSelections)
         {

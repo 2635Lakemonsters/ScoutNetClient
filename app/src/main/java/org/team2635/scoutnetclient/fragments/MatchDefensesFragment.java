@@ -79,6 +79,7 @@ public class MatchDefensesFragment extends Fragment
             {
                 selections[position] = "No";
             }
+            position++;
         }
 
         return selections;

@@ -14,7 +14,6 @@ import org.team2635.scoutnetclient.R;
 
 public class StrategyInfoFragment extends Fragment
 {
-    //TODO: Test this class's functionality
     private CheckBox[] references = new CheckBox[9];
 
     public StrategyInfoFragment()
@@ -84,6 +83,7 @@ public class StrategyInfoFragment extends Fragment
             {
                 selections[position] = "No";
             }
+            position++;
         }
 
         selections[9] = generalNotes.getText().toString();

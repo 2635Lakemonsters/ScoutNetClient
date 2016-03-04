@@ -58,8 +58,8 @@ public class FieldInfoFragment extends Fragment {
     public String getDefenseRating()
     {
         RatingBar bar = (RatingBar) getActivity().findViewById(R.id.defensiveRating);
-        int i = bar.getNumStars();
-        return Integer.toString(i);
+        float i = bar.getRating();
+        return Float.toString(i);
     }
 
 }

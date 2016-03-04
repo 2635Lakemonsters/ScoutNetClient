@@ -19,7 +19,6 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    //TODO: Test this
     private CheckBox[] checkBoxReferences = new CheckBox[8];
 
     public RobotInfoFragment()
@@ -91,6 +90,7 @@ public class RobotInfoFragment extends Fragment
             {
                 selections[position] = "No";
             }
+            position++;
         }
 
         return selections;
@@ -100,14 +100,14 @@ public class RobotInfoFragment extends Fragment
     {
         String[] options = new String[8];
 
-        options[0] = "B1";
-        options[1] = "B2";
-        options[2] = "B3";
-        options[3] = "B4";
-        options[4] = "B5";
-        options[5] = "B6";
-        options[6] = "B7";
-        options[7] = "B8";
+        options[0] = "R1";
+        options[1] = "R2";
+        options[2] = "R3";
+        options[3] = "R4";
+        options[4] = "R5";
+        options[5] = "R6";
+        options[6] = "R7";
+        options[7] = "R8";
 
         return options;
     }
