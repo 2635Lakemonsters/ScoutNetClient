@@ -1,30 +1,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="org.team2635.scoutnetclient.FieldInfoActivity"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="org.team2635.scoutnetclient.FieldInfoActivity"
+              android:orientation="vertical">
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/doesAutonomous"
         android:id="@+id/matchDoesAutonomous"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/defenseReached"
         android:id="@+id/matchDefenseReached"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/defenseCrossed"
         android:id="@+id/matchDefenseCrossed"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/tower"
-                android:scaleType="centerInside" />
+                android:scaleType="centerInside"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,13 +53,13 @@
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="24dp" />
+                android:layout_height="24dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="High Goal"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/autoHighGoalNumber"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -89,14 +89,14 @@
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="120dp" />
+                android:layout_height="120dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Low Goal"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/textView11" />
+                android:id="@+id/textView11"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:id="@+id/autoLowGoalNumber"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"/>
 
             <Button
                 style="?android:attr/buttonStyleSmall"

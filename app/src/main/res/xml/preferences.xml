@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
 
-        <PreferenceCategory
-            android:title="Server Settings"
-            android:key="pref_key_server_settings">
-            <EditTextPreference
-                android:key="pref_key_server_ip"
-                android:summary="IP Address of the ScoutNet Server. Get this from scouting manager."
-                android:title="IP Address"
-                android:defaultValue="192.168.7.2" />
+    <PreferenceCategory
+        android:title="Server Settings"
+        android:key="pref_key_server_settings">
+        <EditTextPreference
+            android:key="pref_key_server_ip"
+            android:summary="IP Address of the ScoutNet Server. Get this from scouting manager."
+            android:title="IP Address"
+            android:defaultValue="192.168.7.2"/>
 
-            <EditTextPreference
-                android:key="pref_key_server_data_page"
-                android:summary="Data page of the ScoutNet Server. Get this from scouting manager."
-                android:title="Data Page"
-                android:defaultValue="pitdata.php" />
+        <EditTextPreference
+            android:key="pref_key_server_data_page"
+            android:summary="Data page of the ScoutNet Server. Get this from scouting manager."
+            android:title="Data Page"
+            android:defaultValue="pitdata.php"/>
 
-        </PreferenceCategory>
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="Scout Settings"
@@ -27,7 +27,7 @@
             android:key="pref_key_scout_name"
             android:summary="Your name, in the form the Scouting Manager told you"
             android:title="Scout Name"
-            android:defaultValue="Default" />
+            android:defaultValue="Default"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -1,10 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="org.team2635.scoutnetclient.fragments.FieldInfoFragment"
-    android:baselineAligned="false">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              tools:context="org.team2635.scoutnetclient.fragments.FieldInfoFragment"
+              android:baselineAligned="false">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/teamNumberTitle"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 android:inputType="number"
                 android:ems="10"
                 android:hint="@string/hintTeamNumber"
-                android:id="@+id/fieldTeamNumber" />
+                android:id="@+id/fieldTeamNumber"/>
 
         </LinearLayout>
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/matchNumberTitle"
-                android:textColor="@android:color/black" />
+                android:textColor="@android:color/black"/>
 
             <EditText
                 android:layout_width="wrap_content"
@@ -53,20 +53,20 @@
                 android:inputType="number"
                 android:ems="10"
                 android:hint="@string/hintMatchNumber"
-                android:id="@+id/fieldMatchNumber" />
+                android:id="@+id/fieldMatchNumber"/>
         </LinearLayout>
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="24dp" />
+        android:layout_height="24dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/teamScore"
         android:textColor="@android:color/black"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -76,18 +76,18 @@
         android:id="@+id/fieldTeamScore"
         android:hint="@string/hintTeamScore"
         android:gravity="center_vertical"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="24dp" />
+        android:layout_height="24dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/defensiveRating"
         android:textColor="@android:color/black"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <RatingBar
         android:layout_width="wrap_content"

@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
@@ -34,19 +33,19 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     private static final String TAG = "MainActivity";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar =
                 (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar ab = getSupportActionBar();
-
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.nosaveactionmenu, menu);
         return true;
@@ -82,10 +81,12 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.action_settings:
-                    showSettingsActivity();
+                showSettingsActivity();
                 return true;
             case R.id.action_submit:
                 showDialog("uploadPrompt");
@@ -110,9 +111,10 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
-        for(final String s : urls)
+        for (final String s : urls)
         {
-            Thread thread = new Thread(new Runnable() {
+            Thread thread = new Thread(new Runnable()
+            {
                 @Override
                 public void run()
                 {
@@ -135,14 +137,12 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                         {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                             Log.d(TAG, in.toString());
-                        }
-                        finally
+                        } finally
                         {
                             urlConnection.disconnect();
                         }
 
-                    }
-                    catch(IOException e)
+                    } catch (IOException e)
                     {
                         Log.e(TAG, e.toString());
                         MainActivity.this.runOnUiThread(new Runnable()
@@ -156,10 +156,9 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
 
                         );
                         success = false;
-                    }
-                    finally
+                    } finally
                     {
-                        if(success)
+                        if (success)
                         {
                             manager.clearData();
                             MainActivity.this.runOnUiThread(new Runnable()
@@ -191,30 +190,32 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     // Fragment.onAttach() callback, which it uses to call the following methods
     // defined by the NoticeDialogFragment.NoticeDialogListener interface
     @Override
-    public void onDialogPositiveClick(DialogFragment uploadPromptDialog) {
+    public void onDialogPositiveClick(DialogFragment uploadPromptDialog)
+    {
         submitData();
     }
 
     @Override
-    public void onDialogNegativeClick(DialogFragment uploadPromptDialog) {
+    public void onDialogNegativeClick(DialogFragment uploadPromptDialog)
+    {
         // User touched the dialog's negative button
     }
 
     private void showDialog(String dialog)
     {
-        switch(dialog)
+        switch (dialog)
         {
-            case("success"):
+            case ("success"):
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                 break;
-            case("uploadPrompt"):
+            case ("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
                 uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
-            case("dataSaved"):
+            case ("dataSaved"):
                 Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 break;
-            case("uploadFailure"):
+            case ("uploadFailure"):
                 Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                 break;
             default:

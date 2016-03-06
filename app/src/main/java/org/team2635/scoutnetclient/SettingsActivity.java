@@ -1,7 +1,5 @@
 package org.team2635.scoutnetclient;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +11,8 @@ import org.team2635.scoutnetclient.fragments.SettingsFragment;
 public class SettingsActivity extends AppCompatActivity
 {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
@@ -30,9 +29,10 @@ public class SettingsActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-       // MenuInflater inflater = getMenuInflater();
-       // inflater.inflate(R.menu.actionmenu, menu);
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        // MenuInflater inflater = getMenuInflater();
+        // inflater.inflate(R.menu.actionmenu, menu);
         return true;
     }
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,76 +10,76 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/doesRobotCheckAll"
         android:id="@+id/textView10"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/challengeTower"
-        android:id="@+id/doesChallengeTower" />
+        android:id="@+id/doesChallengeTower"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/scaleTower"
-        android:id="@+id/doesScaleTower" />
+        android:id="@+id/doesScaleTower"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/breachDefenses"
-        android:id="@+id/doesBreachDefenses" />
+        android:id="@+id/doesBreachDefenses"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/holdSallyPort"
-        android:id="@+id/doesHoldSally" />
+        android:id="@+id/doesHoldSally"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/holdDrawBridge"
-        android:id="@+id/doesHoldBridge" />
+        android:id="@+id/doesHoldBridge"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/lowGoal"
-        android:id="@+id/doesLowGoal" />
+        android:id="@+id/doesLowGoal"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/highGoal"
-        android:id="@+id/doesHighGoal" />
+        android:id="@+id/doesHighGoal"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/playDefense"
-        android:id="@+id/isDefensive" />
+        android:id="@+id/isDefensive"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/isOffensive"
-        android:text="@string/playOffense" />
+        android:text="@string/playOffense"/>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="24dp" />
+        android:layout_height="24dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/generalStrategyNotes"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/generalStrategyNotes" />
+        android:id="@+id/generalStrategyNotes"/>
 </LinearLayout>

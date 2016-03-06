@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class PitInfoActivity extends AppCompatActivity implements UploadPromptDialog.NoticeDialogListener
@@ -42,7 +38,8 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     PitPagerAdapter padapter = new PitPagerAdapter(getSupportFragmentManager());
     ViewPager viewPager;
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pitinfo);
 
@@ -57,26 +54,29 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
         //TODO: Implement this
         /**
-        Intent intent = getIntent();
-        String teamNumber = intent.getStringExtra("TEAMNUMBER");
-        final EditText field = (EditText) findViewById(R.id.teamNumber);
-        if (!teamNumber.equals(null))
-        {
-            field.setText(teamNumber);
-        }
+         Intent intent = getIntent();
+         String teamNumber = intent.getStringExtra("TEAMNUMBER");
+         final EditText field = (EditText) findViewById(R.id.teamNumber);
+         if (!teamNumber.equals(null))
+         {
+         field.setText(teamNumber);
+         }
          **/
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.actionmenu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
                 Intent intent = new Intent(this, SettingsActivity.class);
@@ -101,7 +101,8 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     }
 
     //TODO: Test fragment titles on action bar
-    public void setActionBarTitle(String title) {
+    public void setActionBarTitle(String title)
+    {
         getSupportActionBar().setSubtitle(title);
     }
 
@@ -136,8 +137,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         {
             jsonObject.accumulate("DATATYPE", "pitData");
             jsonObject.accumulate("SCOUTNAME", scoutName);
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
@@ -146,8 +146,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         TeamInfoFragment teamFrag = (TeamInfoFragment) padapter.getItem(0);
         RobotInfoFragment robotFrag = (RobotInfoFragment) padapter.getItem(1);
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) padapter.getItem(2);
-        DefensesFragment defensesFrag = (DefensesFragment)  padapter.getItem(3);
-
+        DefensesFragment defensesFrag = (DefensesFragment) padapter.getItem(3);
 
 
         //Set page to teaminfo fragment
@@ -164,12 +163,10 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             jsonObject.accumulate("TEAMNAME", teamName);
             jsonObject.accumulate("ROBOTNAME", robotName);
 
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
-
 
 
         //Set page to robot info
@@ -193,8 +190,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             jsonObject.accumulate("DRIVETRAIN", driveTrain);
             jsonObject.accumulate("AUTO", auto);
             jsonObject.accumulate("AUTOUSAGE", autoUsage);
-        }
-        catch(Exception e)
+        } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
@@ -203,19 +199,17 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] robotOptions = robotFrag.getOptions();
 
         int i = 0;
-        for(String s : robotSelections)
+        for (String s : robotSelections)
         {
             try
             {
                 jsonObject.accumulate(robotOptions[i], s);
-            }
-            catch(Exception e)
+            } catch (Exception e)
             {
                 Log.d("InputStream", e.getLocalizedMessage());
             }
             ++i;
         }
-
 
 
         //Set view to strategy info fragment
@@ -226,19 +220,17 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] strategyOptions = strategyFrag.getOptions();
 
         i = 0;
-        for(String s : strategySelections)
+        for (String s : strategySelections)
         {
             try
             {
                 jsonObject.accumulate(strategyOptions[i], s);
-            }
-            catch(Exception e)
+            } catch (Exception e)
             {
                 Log.d("InputStream", e.getLocalizedMessage());
             }
             ++i;
         }
-
 
 
         //Set page to defenses fragment
@@ -249,19 +241,17 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         String[] defenseOptions = defensesFrag.getDefenses();
 
         i = 0;
-        for(String s : defenseSelections)
+        for (String s : defenseSelections)
         {
             try
             {
                 jsonObject.accumulate(defenseOptions[i], s);
-            }
-            catch(Exception e)
+            } catch (Exception e)
             {
                 Log.d("InputStream", e.getLocalizedMessage());
             }
             ++i;
         }
-
 
 
         manager.write(jsonObject.toString());
@@ -284,9 +274,10 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         final String pageID = sharedPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
-        for(final String s : urls)
+        for (final String s : urls)
         {
-            Thread thread = new Thread(new Runnable() {
+            Thread thread = new Thread(new Runnable()
+            {
                 @Override
                 public void run()
                 {
@@ -309,41 +300,38 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                         {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                             Log.d(TAG, in.toString());
-                        }
-                        finally
+                        } finally
                         {
                             urlConnection.disconnect();
                         }
 
-                    }
-                    catch(IOException e)
+                    } catch (IOException e)
                     {
                         Log.e(TAG, e.toString());
                         PitInfoActivity.this.runOnUiThread(new Runnable()
-                                                        {
-                                                            @Override
-                                                            public void run()
-                                                            {
-                                                                showDialog("uploadFailure");
-                                                            }
-                                                        }
+                                                           {
+                                                               @Override
+                                                               public void run()
+                                                               {
+                                                                   showDialog("uploadFailure");
+                                                               }
+                                                           }
 
                         );
                         success = false;
-                    }
-                    finally
+                    } finally
                     {
-                        if(success)
+                        if (success)
                         {
                             manager.clearData();
                             PitInfoActivity.this.runOnUiThread(new Runnable()
-                                                            {
-                                                                @Override
-                                                                public void run()
-                                                                {
-                                                                    showDialog("success");
-                                                                }
-                                                            }
+                                                               {
+                                                                   @Override
+                                                                   public void run()
+                                                                   {
+                                                                       showDialog("success");
+                                                                   }
+                                                               }
 
                             );
                         }
@@ -363,23 +351,23 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
     private void showDialog(String dialog)
     {
-        switch(dialog)
+        switch (dialog)
         {
-            case("success"):
+            case ("success"):
                 //DialogFragment successDialog = new SuccessDialog();
                 //successDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
 
                 Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
 
                 break;
-            case("uploadPrompt"):
+            case ("uploadPrompt"):
                 DialogFragment uploadPromptDialog = new UploadPromptDialog();
                 uploadPromptDialog.show(getSupportFragmentManager(), "NoticeDialogFragment");
                 break;
-            case("dataSaved"):
+            case ("dataSaved"):
                 Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_SHORT).show();
                 break;
-            case("uploadFailure"):
+            case ("uploadFailure"):
                 Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                 break;
             default:
