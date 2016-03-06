@@ -11,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
-import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
 

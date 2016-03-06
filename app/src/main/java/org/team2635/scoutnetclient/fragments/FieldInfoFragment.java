@@ -39,8 +39,7 @@ public class FieldInfoFragment extends Fragment {
     public String getTeamNum()
     {
         EditText picker = (EditText) getActivity().findViewById(R.id.fieldTeamNumber);
-        String i = picker.getText().toString();
-        return i;
+        return picker.getText().toString();
     }
 
     public String getMatchNum()

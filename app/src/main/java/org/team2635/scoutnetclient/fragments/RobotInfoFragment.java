@@ -2,7 +2,6 @@ package org.team2635.scoutnetclient.fragments;
 
 
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.RadioGroup;
 
 import org.team2635.scoutnetclient.PitInfoActivity;
@@ -115,8 +113,7 @@ public class RobotInfoFragment extends Fragment
     public String getNumberOfWheels()
     {
         EditText picker = (EditText) getActivity().findViewById(R.id.numberOfWheels);
-        String i = picker.getText().toString();
-        return i;
+        return picker.getText().toString();
     }
 
     public String getLocomotionType()
