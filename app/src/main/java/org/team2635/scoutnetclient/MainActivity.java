@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -79,6 +80,12 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
         startActivity(intent);
     }
 
+    private void showAboutActivity()
+    {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -90,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
             case R.id.action_submit:
                 showDialog("uploadPrompt");
                 return true;
+            case R.id.action_about:
+                showAboutActivity();
+
             default:
                 // If we got here, the user's action was not recognized.
                 // Invoke the superclass to handle it.
@@ -102,12 +112,13 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
-        //TODO: Test address retrieval from settings
-        final String address = sharedPref.getString("pref_key_server_ip", "");
-        final String pageID = sharedPref.getString("pref_key_server_data_page", "");
+
+        final String address = settingsPref.getString("pref_key_server_ip", "");
+        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
         for (final String s : urls)

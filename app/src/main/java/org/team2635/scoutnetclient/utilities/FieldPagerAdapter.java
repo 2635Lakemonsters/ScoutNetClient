@@ -31,8 +31,8 @@ public class FieldPagerAdapter extends FragmentPagerAdapter
                 return autonomousInfoFragment;
             case 2:
                 return teleopInfoFragment;
-            case 3:
-                return matchDefensesFragment;
+            //case 3:
+                //return matchDefensesFragment;
             default:
                 break;
         }
@@ -42,7 +42,8 @@ public class FieldPagerAdapter extends FragmentPagerAdapter
     @Override
     public int getCount() {
 
-        return 4;
+        //return 4;
+        return 3;
     }
 }
 

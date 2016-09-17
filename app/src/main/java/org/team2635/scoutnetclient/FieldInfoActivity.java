@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -52,7 +53,6 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setAdapter(padapter);
     }
 
-    //TODO: Test fragment titles on action bar
     public void setActionBarTitle(String title)
     {
         getSupportActionBar().setSubtitle(title);
@@ -77,6 +77,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 startActivity(intent);
                 return true;
 
+            case R.id.action_about:
+                // User chose the "Settings" item, show the app settings UI...
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+
             case R.id.action_save:
                 saveData();
                 return true;
@@ -97,12 +103,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
-        //TODO: Test address retrieval from settings
-        final String address = sharedPref.getString("pref_key_server_ip", "");
-        final String pageID = sharedPref.getString("pref_key_server_data_page", "");
+
+        final String address = settingsPref.getString("pref_key_server_ip", "");
+        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
         for (final String s : urls)
@@ -184,11 +191,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
         //TODO: Fix getting of scout name
-        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
+        String scoutName = settingsPref.getString("pref_key_scout_name", "");
 
         try
         {
@@ -202,23 +210,19 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         FieldInfoFragment fieldFrag = (FieldInfoFragment) padapter.getItem(0);
         AutonomousInfoFragment autoFrag = (AutonomousInfoFragment) padapter.getItem(1);
         TeleopInfoFragment teleFrag = (TeleopInfoFragment) padapter.getItem(2);
-        MatchDefensesFragment defenseFrag = (MatchDefensesFragment) padapter.getItem(3);
-
 
         //Set page to field info
         viewpager.setCurrentItem(0, false);
 
         //Get data from field info
         String teamnum = fieldFrag.getTeamNum();
-        String matchNum = fieldFrag.getMatchNum();
-        String teamScore = fieldFrag.getTeamScore();
+        String matchNum = fieldFrag.getMatchNum();;
         String defenseRating = fieldFrag.getDefenseRating();
 
         try
         {
             jsonObject.accumulate("TEAMNNUM", teamnum);
             jsonObject.accumulate("MATCHNUM", matchNum);
-            jsonObject.accumulate("TEAMSCORE", teamScore);
             jsonObject.accumulate("DEFENSERATING", defenseRating);
         } catch (Exception e)
         {
@@ -231,18 +235,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
-        String defenseReached = autoFrag.defenseReached();
-        String defenseCrossed = autoFrag.defenseCrossed();
-        String autoHighScores = autoFrag.getHighScores();
-        String autoLowScores = autoFrag.getLowScores();
+        String autoLineScores = autoFrag.getLinesCrossed();
+        String autoBunnyScores = autoFrag.getBunnyScores();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
-            jsonObject.accumulate("DEFENSEREACHED", defenseReached);
-            jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
-            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
-            jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
+            jsonObject.accumulate("ALINECROSSES", autoLineScores);
+            jsonObject.accumulate("ABUNNIES", autoBunnyScores);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -253,49 +253,21 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleHighScores = teleFrag.getHighScores();
-        String teleLowScores = teleFrag.getLowScores();
-        String didChallenge = teleFrag.towerChallenged();
-        String didScale = teleFrag.towerScaled();
-        String defenseCrosses = teleFrag.getDefenseCrosses();
-        String defenseBreached = teleFrag.defenseBreached();
+        String teleBunnyScores = teleFrag.getBunnies();
+        String teleShotDarts = teleFrag.getShotDarts();
+        String teleLineCrosses = teleFrag.getLineCrosses();
+        String teleHitDarts = teleFrag.getHitDarts();
 
         try
         {
-            jsonObject.accumulate("TELEHIGHSCORES", teleHighScores);
-            jsonObject.accumulate("TELELOWSCORES", teleLowScores);
-            jsonObject.accumulate("TOWERCHALLENGED", didChallenge);
-            jsonObject.accumulate("TOWERSCALED", didScale);
-            jsonObject.accumulate("DEFENSECROSSES", defenseCrosses);
-            jsonObject.accumulate("DEFENSEBREACHED", defenseBreached);
+            jsonObject.accumulate("TBUNNIES", teleBunnyScores);
+            jsonObject.accumulate("TSHOTDARTS", teleShotDarts);
+            jsonObject.accumulate("TLINECROSSES", teleLineCrosses);
+            jsonObject.accumulate("THITDARTS", teleHitDarts);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
         }
-
-
-        //Set page to match defense
-        viewpager.setCurrentItem(3, false);
-
-        //Get data from match defenses
-        String[] defenseSelections = defenseFrag.getCheckBoxData();
-        String[] defenseOptions = defenseFrag.getOptions();
-
-        //TODO: Test this
-        int i = 0;
-        for (String s : defenseSelections)
-        {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            } catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-
-            ++i;
-        }
-
 
         manager.write(jsonObject.toString());
 

@@ -16,8 +16,8 @@ import org.team2635.scoutnetclient.R;
 
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int highScores;
-    private int lowScores;
+    private int linesCrossed;
+    private int bunnyScores;
 
     public AutonomousInfoFragment()
     {
@@ -29,10 +29,10 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_autonomous_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.autoHighAdd);
-        Button button2 = (Button) view.findViewById(R.id.autoHighSub);
-        Button button3 = (Button) view.findViewById(R.id.autoLowAdd);
-        Button button4 = (Button) view.findViewById(R.id.autoLowSub);
+        Button button1 = (Button) view.findViewById(R.id.autoLineAdd);
+        Button button2 = (Button) view.findViewById(R.id.autoLineSub);
+        Button button3 = (Button) view.findViewById(R.id.autoBunnyAdd);
+        Button button4 = (Button) view.findViewById(R.id.autoBunnySub);
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -45,11 +45,18 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Autonomous Info");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Autonomous Info");
+        }
     }
 
     @Override
@@ -57,22 +64,22 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         switch(v.getId())
         {
-            case R.id.autoHighAdd:
-                ++highScores;
+            case R.id.autoLineAdd:
+                ++linesCrossed;
                 break;
-            case R.id.autoHighSub:
-                if(highScores > 0)
+            case R.id.autoLineSub:
+                if(linesCrossed > 0)
                 {
-                    --highScores;
+                    --linesCrossed;
                 }
                 break;
-            case R.id.autoLowAdd:
-                ++lowScores;
+            case R.id.autoBunnyAdd:
+                ++bunnyScores;
                 break;
-            case R.id.autoLowSub:
-                if(lowScores > 0)
+            case R.id.autoBunnySub:
+                if(bunnyScores > 0)
                 {
-                    --lowScores;
+                    --bunnyScores;
                 }
                 break;
         }
@@ -95,51 +102,21 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String defenseReached()
+    public String getLinesCrossed()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseReached);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
+        return Integer.toString(linesCrossed);
     }
 
-    public String defenseCrossed()
+    public String getBunnyScores()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseCrossed);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
-    }
-
-    public String getHighScores()
-    {
-        return Integer.toString(highScores);
-    }
-
-    public String getLowScores()
-    {
-        return Integer.toString(lowScores);
+        return Integer.toString(bunnyScores);
     }
 
     private void updateCounts()
     {
-        TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
-        TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
-        high.setText(String.valueOf(highScores));
-        low.setText(String.valueOf(lowScores));
+        TextView high = (TextView) getActivity().findViewById(R.id.autoLineNumber);
+        TextView low = (TextView) getActivity().findViewById(R.id.autoBunnyNumber);
+        high.setText(String.valueOf(linesCrossed));
+        low.setText(String.valueOf(bunnyScores));
     }
 }

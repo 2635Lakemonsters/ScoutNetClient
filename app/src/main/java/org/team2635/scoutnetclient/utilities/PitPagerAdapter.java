@@ -14,8 +14,8 @@ public class PitPagerAdapter extends FragmentPagerAdapter
 
     TeamInfoFragment teamFrag = new TeamInfoFragment();
     RobotInfoFragment robotFrag = new RobotInfoFragment();
-    StrategyInfoFragment strategyFrag = new StrategyInfoFragment();
-    DefensesFragment defenseFrag = new DefensesFragment();
+    //StrategyInfoFragment strategyFrag = new StrategyInfoFragment();
+    //DefensesFragment defenseFrag = new DefensesFragment();
 
     public PitPagerAdapter(FragmentManager fm)
     {
@@ -30,10 +30,10 @@ public class PitPagerAdapter extends FragmentPagerAdapter
                 return teamFrag;
             case 1:
                 return robotFrag;
-            case 2:
-                return strategyFrag;
-            case 3:
-                return defenseFrag;
+            //case 2:
+                //return strategyFrag;
+            //case 3:
+               // return defenseFrag;
             default:
                 break;
         }
@@ -43,7 +43,7 @@ public class PitPagerAdapter extends FragmentPagerAdapter
     @Override
     public int getCount() {
 
-        return 4;
+        return 2;
     }
 }
 

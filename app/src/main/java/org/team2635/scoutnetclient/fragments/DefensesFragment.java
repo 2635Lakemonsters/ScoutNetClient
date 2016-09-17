@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
-
+@Deprecated
 public class DefensesFragment extends Fragment
 {
     private RadioGroup[] groups;

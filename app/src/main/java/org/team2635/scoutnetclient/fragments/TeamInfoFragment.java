@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
 
@@ -28,11 +29,18 @@ public class TeamInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Basic Info");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Basic Info");
+        }
     }
 
     public String getTeamNumber()

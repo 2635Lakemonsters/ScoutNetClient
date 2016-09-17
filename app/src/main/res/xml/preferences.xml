@@ -4,8 +4,7 @@
                   android:layout_height="wrap_content">
 
     <PreferenceCategory
-        android:title="Server Settings"
-        android:key="pref_key_server_settings">
+        android:title="Server Settings">
         <EditTextPreference
             android:key="pref_key_server_ip"
             android:summary="IP Address of the ScoutNet Server. Get this from scouting manager."
@@ -21,8 +20,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="Scout Settings"
-        android:key="pref_key_scout_settings">
+        android:title="Scout Settings">
         <EditTextPreference
             android:key="pref_key_scout_name"
             android:summary="Your name, in the form the Scouting Manager told you"

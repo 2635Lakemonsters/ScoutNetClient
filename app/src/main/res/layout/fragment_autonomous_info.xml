@@ -10,56 +10,34 @@
         android:layout_height="wrap_content"
         android:text="@string/doesAutonomous"
         android:id="@+id/matchDoesAutonomous"
-        android:layout_gravity="center_horizontal"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/defenseReached"
-        android:id="@+id/matchDefenseReached"
-        android:layout_gravity="center_horizontal"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/defenseCrossed"
-        android:id="@+id/matchDefenseCrossed"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:checked="false" />
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:baselineAligned="false">
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lines"
+            android:layout_gravity="center_horizontal"/>
 
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tower"
-                android:scaleType="centerInside"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:baselineAligned="false" >
 
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High Goal"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_width="128dp"
+                android:layout_height="20dp" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -67,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/autoHighAdd"
+                android:id="@+id/autoLineAdd"
                 android:nestedScrollingEnabled="false"
                 />
 
@@ -75,8 +53,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/autoHighGoalNumber"
-                android:layout_gravity="center_horizontal"/>
+                android:id="@+id/autoLineNumber"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="14dp" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -84,19 +63,29 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/autoHighSub"
+                android:id="@+id/autoLineSub"
                 android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bunnies"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/textView11"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <Space
-                android:layout_width="wrap_content"
-                android:layout_height="120dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Low Goal"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/textView11"/>
+                android:layout_width="128dp"
+                android:layout_height="20dp" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -104,15 +93,16 @@
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/autoLowAdd"
+                android:id="@+id/autoBunnyAdd"
                 android:nestedScrollingEnabled="false"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:id="@+id/autoLowGoalNumber"
-                android:layout_gravity="center_horizontal"/>
+                android:id="@+id/autoBunnyNumber"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="14dp" />
 
             <Button
                 style="?android:attr/buttonStyleSmall"
@@ -120,9 +110,10 @@
                 android:layout_height="wrap_content"
                 android:text="-"
                 android:layout_gravity="center_horizontal"
-                android:id="@+id/autoLowSub"
+                android:id="@+id/autoBunnySub"
                 android:nestedScrollingEnabled="false"/>
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

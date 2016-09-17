@@ -3,12 +3,14 @@ package org.team2635.scoutnetclient.fragments;
 
 
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import org.team2635.scoutnetclient.PitInfoActivity;
@@ -17,7 +19,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    private CheckBox[] checkBoxReferences = new CheckBox[8];
+    private CheckBox[] checkBoxReferences = new CheckBox[7];
 
     public RobotInfoFragment()
     {
@@ -37,11 +39,18 @@ public class RobotInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Robot Capabilities");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Robot Capabilities");
+        }
     }
 
 
@@ -51,14 +60,13 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canShootLow);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canShootHigh);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canHoldDrawbridge);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canHoldSallyPort);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canChallenge);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canScale);
-            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
-            CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.teleBurrowBunnies);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.autoBurrowBunnies);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.shootsDarts);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.usesPitLane);
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.removesBunnies);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
+            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
 
             checkBoxReferences[0] = S1;
             checkBoxReferences[1] = S2;
@@ -67,14 +75,13 @@ public class RobotInfoFragment extends Fragment
             checkBoxReferences[4] = S5;
             checkBoxReferences[5] = S6;
             checkBoxReferences[6] = S7;
-            checkBoxReferences[7] = S8;
     }
 
     public String[] getCheckBoxData()
     {
         getCheckBoxReferences();
         int position = 0;
-        String[] selections = new String[8];
+        String[] selections = new String[7];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
@@ -96,7 +103,7 @@ public class RobotInfoFragment extends Fragment
 
     public String[] getOptions()
     {
-        String[] options = new String[8];
+        String[] options = new String[7];
 
         options[0] = "R1";
         options[1] = "R2";
@@ -105,7 +112,6 @@ public class RobotInfoFragment extends Fragment
         options[4] = "R5";
         options[5] = "R6";
         options[6] = "R7";
-        options[7] = "R8";
 
         return options;
     }
@@ -131,39 +137,17 @@ public class RobotInfoFragment extends Fragment
         }
         else
         {
-            String idString = getResources().getResourceEntryName(id);
-            returnString = idString.substring(4);
+            View radioButton = group.findViewById(id);
+            int radioId = group.indexOfChild(radioButton);
+            RadioButton btn = (RadioButton) group.getChildAt(radioId);
+            returnString = (String) btn.getText();
+
+            //String idString = getResources().getResourceEntryName(id);
+            //returnString = idString.substring(4);
         }
 
 
         return returnString;
-    }
-
-    public String getUsingVision()
-    {
-        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.usesVision);
-        String returnString = "";
-        int id = group.getCheckedRadioButtonId();
-
-        if(id == -1)
-        {
-            //No option selected, don't cry yet
-            returnString = "";
-        }
-        else
-        {
-            String idString = getResources().getResourceEntryName(id);
-            returnString = idString.substring(6);
-        }
-
-
-        return returnString;
-    }
-
-    public String getVisionUsage()
-    {
-        EditText usage = (EditText) getActivity().findViewById(R.id.visionUsage);
-        return usage.getText().toString();
     }
 
     public String getUsingAuto()
@@ -179,8 +163,13 @@ public class RobotInfoFragment extends Fragment
         }
         else
         {
-            String idString = getResources().getResourceEntryName(id);
-            returnString = idString.substring(4);
+            View radioButton = group.findViewById(id);
+            int radioId = group.indexOfChild(radioButton);
+            RadioButton btn = (RadioButton) group.getChildAt(radioId);
+            returnString = (String) btn.getText();
+
+            // idString = getResources().getResourceEntryName(id);
+            //returnString = idString.substring(4);
         }
 
 
@@ -206,8 +195,13 @@ public class RobotInfoFragment extends Fragment
         }
         else
         {
-            String idString = getResources().getResourceEntryName(id);
-            returnString = idString.substring(5);
+            View radioButton = group.findViewById(id);
+            int radioId = group.indexOfChild(radioButton);
+            RadioButton btn = (RadioButton) group.getChildAt(radioId);
+            returnString = (String) btn.getText();
+
+            //String idString = getResources().getResourceEntryName(id);
+            //returnString = idString.substring(5);
         }
 
 

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ScoutNet Client</string>
+    <string name="app_version">Version Alpha 1.0</string>
+    <string name="createdCodedBy">Created and Coded By:</string>
+    <string name="matthewM">Matthew Martin</string>
 
     <string name="teamNameTitle">Team Name</string>
     <string name="teamNumberTitle">Team Number</string>
@@ -75,13 +78,23 @@
     <string name="teamScore">Team Score</string>
     <string name="defensiveRating">Defensive Rating</string>
     <string name="doesAutonomous">Does Autonomous</string>
-    <string name="defenseReached">Defense Reached</string>
-    <string name="defenseCrossed">Defense Crossed</string>
     <string name="auto">Autonomous?</string>
     <string name="defensesCrossed">Defenses Crossed</string>
     <string name="challenged">Challenged</string>
     <string name="scaled">Scaled</string>
     <string name="breached">Breached</string>
+
+    <string name="title_about_activity">About</string>
+    <string name="close">Close</string>
+    <string name="bunnies">Bunnies</string>
+    <string name="lines">Lines</string>
+    <string name="linesCrossed">Lines Crossed</string>
+    <string name="clear_stored_data">Clear stored data</string>
+    <string name="use_the_pit_lane">Use the pit lane</string>
+    <string name="shoot_darts">Shoot darts</string>
+    <string name="bunny_during_auto">Bunny during auto</string>
+    <string name="bunny_in_burrow">Bunny in burrow</string>
+    <string name="remove_bunnies">Remove bunnies</string>
 
 
 </resources>

@@ -29,11 +29,18 @@ public class FieldInfoFragment extends Fragment {
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Basic Info");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Basic Info");
+        }
     }
 
     public String getTeamNum()
@@ -45,12 +52,6 @@ public class FieldInfoFragment extends Fragment {
     public String getMatchNum()
     {
         EditText usage = (EditText) getActivity().findViewById(R.id.fieldMatchNumber);
-        return usage.getText().toString();
-    }
-
-    public String getTeamScore()
-    {
-        EditText usage = (EditText) getActivity().findViewById(R.id.fieldTeamScore);
         return usage.getText().toString();
     }
 

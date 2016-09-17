@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="horizontal"
-              tools:context="org.team2635.scoutnetclient.RobotInfoFragment"
+              tools:context=".PitInfoActivity"
               android:baselineAligned="false">
 
 
@@ -29,14 +29,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:text="Option 1"
-                android:id="@+id/trainOption1"/>
+                android:text="Tank"
+                android:id="@+id/trainOption1"
+                android:checked="false" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Option 2"
-                android:id="@+id/trainOption2"/>
+                android:text="Mechanum"
+                android:id="@+id/trainOption2"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="H-Drive"
+                android:id="@+id/trainOption3" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swerve"
+                android:id="@+id/trainOption4" />
         </RadioGroup>
 
 
@@ -71,42 +84,37 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lowGoal"
-            android:id="@+id/canShootLow"
+            android:text="@string/bunny_in_burrow"
+            android:id="@+id/teleBurrowBunnies"
             android:checked="false"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/highGoal"
-            android:id="@+id/canShootHigh"
+            android:text="@string/bunny_during_auto"
+            android:id="@+id/autoBurrowBunnies"
             android:checked="false"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/holdDrawBridge"
-            android:id="@+id/canHoldDrawbridge"
+            android:text="@string/remove_bunnies"
+            android:id="@+id/removesBunnies"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shoot_darts"
+            android:id="@+id/shootsDarts"
             android:checked="false"/>
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/holdSallyPort"
-            android:id="@+id/canHoldSallyPort"
+            android:text="@string/use_the_pit_lane"
+            android:id="@+id/usesPitLane"
             android:checked="false"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/challengeTower"
-            android:id="@+id/canChallenge"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/scaleTower"
-            android:id="@+id/canScale"/>
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -153,41 +161,6 @@
                 android:text="@string/wheels"
                 android:id="@+id/usesWheels"/>
         </RadioGroup>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="24dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/visionProcessing"
-            android:textColor="@android:color/black"/>
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/usesVision">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:id="@+id/visionYes"/>
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:id="@+id/visionNo"/>
-        </RadioGroup>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/visionUsage"
-            android:hint="@string/whatFor"/>
 
         <Space
             android:layout_width="match_parent"

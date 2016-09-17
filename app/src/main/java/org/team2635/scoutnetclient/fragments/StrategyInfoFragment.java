@@ -9,9 +9,10 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.PitInfoActivity;
 import org.team2635.scoutnetclient.R;
-
+@Deprecated
 public class StrategyInfoFragment extends Fragment
 {
     private CheckBox[] references = new CheckBox[9];
@@ -31,13 +32,18 @@ public class StrategyInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-
-
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Strategies");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Strategies");
+        }
     }
 
     private void getReferences()

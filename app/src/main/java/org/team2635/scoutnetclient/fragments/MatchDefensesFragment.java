@@ -9,7 +9,7 @@ import android.widget.CheckBox;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
 import org.team2635.scoutnetclient.R;
-
+@Deprecated
 public class MatchDefensesFragment extends Fragment
 {
     private CheckBox[] checkBoxReferences = new CheckBox[9];
@@ -28,12 +28,18 @@ public class MatchDefensesFragment extends Fragment
     @Override
     public void onStart()
     {
-
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Defenses");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Defenses");
+        }
     }
 
     private void getCheckBoxReferences()

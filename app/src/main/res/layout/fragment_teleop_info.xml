@@ -9,15 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/defensesCrossed"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#000000"/>
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:src="@drawable/bump"
-        android:scaleType="fitStart"/>
+        android:text="@string/linesCrossed"
+        android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <android.support.v4.widget.Space
-            android:layout_width="140dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"/>
 
         <Button
@@ -33,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
-            android:id="@+id/teleDefenseAdd"
+            android:id="@+id/teleLinesAdd"
             android:layout_gravity="center"
             android:nestedScrollingEnabled="false"/>
 
@@ -41,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
-            android:id="@+id/teleDefenseNum"
+            android:id="@+id/teleLinesNum"
             android:layout_gravity="center"
             />
 
@@ -51,127 +44,147 @@
             android:layout_height="wrap_content"
             android:text="-"
             android:layout_gravity="center"
-            android:id="@+id/teleDefenseSub"
+            android:id="@+id/teleLinesSub"
             android:nestedScrollingEnabled="false"/>
+
     </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bunnies"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView12"/>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Space
+            android:layout_width="128dp"
+            android:layout_height="20dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleBunniesAdd"
+            android:nestedScrollingEnabled="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/teleopBunniesNum"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="14dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleBunniesSub"/>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:baselineAligned="false">
+        android:text="Darts shot"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView15"/>
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Space
+            android:layout_width="128dp"
+            android:layout_height="20dp" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:text="+"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleShotDartsAdd"
+            />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tower"
-                android:scaleType="centerInside"
-                android:id="@+id/imageView2"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:text="0"
+            android:id="@+id/teleopShotDartsNum"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="14dp" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="24dp"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleShotDartsSub"
+            />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High Goal"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/textView12"/>
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/teleHighGoalAdd"
-                android:nestedScrollingEnabled="false"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Darts hit by"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/textView5" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/teleopHighGoalNum"
-                android:layout_gravity="center_horizontal"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/teleHighGoalSub"/>
+        <Space
+            android:layout_width="128dp"
+            android:layout_height="20dp" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="120dp">
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleHitDartsAdd" />
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/challenged"
-                    android:id="@+id/didChallenge"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/teleHitDarts"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="14dp" />
 
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/scaled"
-                    android:id="@+id/didScale"/>
-
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/breached"
-                    android:id="@+id/didBreach"/>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Low Goal"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/textView15"/>
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/teleLowAdd"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/teleopLowGoalNum"
-                android:layout_gravity="center_horizontal"/>
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/teleLowSub"
-                />
-        </LinearLayout>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/teleHitDartsSub" />
     </LinearLayout>
 
 </LinearLayout>

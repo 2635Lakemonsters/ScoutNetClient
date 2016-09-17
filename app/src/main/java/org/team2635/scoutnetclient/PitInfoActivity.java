@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -83,6 +84,12 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 startActivity(intent);
                 return true;
 
+            case R.id.action_about:
+                // User chose the "Settings" item, show the app settings UI...
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+
             case R.id.action_save:
                 saveData();
                 return true;
@@ -126,11 +133,12 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
         //TODO: Fix getting of scout name
-        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
+        String scoutName = settingsPref.getString("pref_key_scout_name", "");
 
         //2 Fields
         try
@@ -145,8 +153,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         //Get references to fragments
         TeamInfoFragment teamFrag = (TeamInfoFragment) padapter.getItem(0);
         RobotInfoFragment robotFrag = (RobotInfoFragment) padapter.getItem(1);
-        StrategyInfoFragment strategyFrag = (StrategyInfoFragment) padapter.getItem(2);
-        DefensesFragment defensesFrag = (DefensesFragment) padapter.getItem(3);
+
 
 
         //Set page to teaminfo fragment
@@ -175,8 +182,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         //Get data from robot info, 15 fields
         String wheels = robotFrag.getNumberOfWheels();
         String locomotion = robotFrag.getLocomotionType();
-        String vision = robotFrag.getUsingVision();
-        String visionUsage = robotFrag.getVisionUsage();
         String driveTrain = robotFrag.getDriveTrain();
         String auto = robotFrag.getUsingAuto();
         String autoUsage = robotFrag.getAutoUsage();
@@ -185,8 +190,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         {
             jsonObject.accumulate("NUMOFWHEELS", wheels);
             jsonObject.accumulate("LOCOMOION", locomotion);
-            jsonObject.accumulate("VISION", vision);
-            jsonObject.accumulate("VISIONUSAGE", visionUsage);
             jsonObject.accumulate("DRIVETRAIN", driveTrain);
             jsonObject.accumulate("AUTO", auto);
             jsonObject.accumulate("AUTOUSAGE", autoUsage);
@@ -211,49 +214,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             ++i;
         }
 
-
-        //Set view to strategy info fragment
-        viewPager.setCurrentItem(2, false);
-
-        //Get data from strategy info fragment
-        String[] strategySelections = strategyFrag.getData();
-        String[] strategyOptions = strategyFrag.getOptions();
-
-        i = 0;
-        for (String s : strategySelections)
-        {
-            try
-            {
-                jsonObject.accumulate(strategyOptions[i], s);
-            } catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            ++i;
-        }
-
-
-        //Set page to defenses fragment
-        viewPager.setCurrentItem(3, false);
-
-        //Get data from defenses selection fragment
-        String[] defenseSelections = defensesFrag.getSelections();
-        String[] defenseOptions = defensesFrag.getDefenses();
-
-        i = 0;
-        for (String s : defenseSelections)
-        {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            } catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            ++i;
-        }
-
-
         manager.write(jsonObject.toString());
 
         Intent intent = new Intent(this, MainActivity.class);
@@ -266,12 +226,13 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
-        //TODO: Test address retrieval from settings
-        final String address = sharedPref.getString("pref_key_server_ip", "");
-        final String pageID = sharedPref.getString("pref_key_server_data_page", "");
+
+        final String address = settingsPref.getString("pref_key_server_ip", "");
+        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
         for (final String s : urls)
