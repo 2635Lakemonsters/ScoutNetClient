@@ -24,10 +24,10 @@
         android:title="Scout Settings"
         android:key="pref_key_scout_settings">
         <EditTextPreference
+            android:defaultValue="Robbie"
             android:key="pref_key_scout_name"
             android:summary="Your name, in the form the Scouting Manager told you"
-            android:title="Scout Name"
-            android:defaultValue="Default"/>
+            android:title="Scout Name" />
     </PreferenceCategory>
 
 </PreferenceScreen>
