@@ -225,7 +225,6 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
             Log.d("InputStream", e.getLocalizedMessage());
         }
 
-
         //Set page to autonomous info
         viewpager.setCurrentItem(1, false);
 

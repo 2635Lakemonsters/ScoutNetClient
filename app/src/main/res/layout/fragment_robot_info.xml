@@ -30,13 +30,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="5dp"
-                android:text="Option 1" />
+                android:text="Tank" />
 
             <RadioButton
+                android:id="@+id/trainOption2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Option 2"
-                android:id="@+id/trainOption2"/>
+                android:text="Swerve" />
+
+            <RadioButton
+                android:id="@+id/trainOption3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Slide" />
+
+            <RadioButton
+                android:id="@+id/trainOption4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mecanum" />
+
+            <RadioButton
+                android:id="@+id/trainOption5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Holonomic" />
         </RadioGroup>
 
 
@@ -200,22 +218,22 @@
             android:textColor="@android:color/black"/>
 
         <RadioGroup
+            android:id="@+id/usesAuto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/usesAuto">
+            android:orientation="vertical">
 
             <RadioButton
+                android:id="@+id/autoYes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yes"
-                android:id="@+id/autoYes"/>
+                android:text="@string/yes" />
 
             <RadioButton
+                android:id="@+id/autoNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/no"
-                android:id="@+id/autoNo"/>
+                android:text="@string/no" />
         </RadioGroup>
 
         <EditText
