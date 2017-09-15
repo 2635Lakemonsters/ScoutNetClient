@@ -39,12 +39,10 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/org/team2635/scoutnetclient/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="170">
               <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
               <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#6994#6995#0" expanded="false" />
-                <element signature="e#7022#7023#0" expanded="false" />
+                <element signature="e#3128#3167#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2209,12 +2207,10 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/java/org/team2635/scoutnetclient/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="170">
           <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#6994#6995#0" expanded="false" />
-            <element signature="e#7022#7023#0" expanded="false" />
+            <element signature="e#3128#3167#0" expanded="true" />
           </folding>
         </state>
       </provider>
