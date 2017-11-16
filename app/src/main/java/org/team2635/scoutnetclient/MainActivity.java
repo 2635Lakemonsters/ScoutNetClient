@@ -118,60 +118,52 @@ public class MainActivity extends AppCompatActivity implements UploadPromptDialo
                 public void run()
                 {
                     boolean success = true;
-                    try
-                    {
 
-                        URL url = new URL("http://" + address + "/" + pageID + "?" + s);
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("POST");
-                        urlConnection.setRequestProperty("Content-Type", "application/json");
-                        urlConnection.connect();
+                        try {
 
-                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-                        out.write(s);
-                        out.close();
+                            //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
+                            URL url = new URL("http://71.236.237.255/scouting.php?DATA=" + s);
+                            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                            urlConnection.setDoOutput(true);
+                            urlConnection.setRequestMethod("GET");
+                            urlConnection.setRequestProperty("Content-Type", "application/json");
+                            urlConnection.connect();
 
-                        try
-                        {
-                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            Log.d(TAG, in.toString());
-                        } finally
-                        {
-                            urlConnection.disconnect();
-                        }
+                            OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                            out.write(s);
+                            out.close();
 
-                    } catch (IOException e)
-                    {
-                        Log.e(TAG, e.toString());
-                        MainActivity.this.runOnUiThread(new Runnable()
-                                                        {
-                                                            @Override
-                                                            public void run()
-                                                            {
-                                                                showDialog("uploadFailure");
-                                                            }
-                                                        }
+                            try {
+                                InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                                Log.d(TAG, in.toString());
+                            } finally {
+                                urlConnection.disconnect();
+                            }
 
-                        );
-                        success = false;
-                    } finally
-                    {
-                        if (success)
-                        {
-                            manager.clearData();
-                            MainActivity.this.runOnUiThread(new Runnable()
-                                                            {
+                        } catch (IOException e) {
+                            Log.e(TAG, e.toString());
+                            MainActivity.this.runOnUiThread(new Runnable() {
                                                                 @Override
-                                                                public void run()
-                                                                {
-                                                                    showDialog("success");
+                                                                public void run() {
+                                                                    showDialog("uploadFailure");
                                                                 }
                                                             }
 
                             );
+                            success = false;
+                        } finally {
+                            if (success) {
+                                manager.clearData();
+                                MainActivity.this.runOnUiThread(new Runnable() {
+                                                                    @Override
+                                                                    public void run() {
+                                                                        showDialog("success");
+                                                                    }
+                                                                }
+
+                                );
+                            }
                         }
-                    }
                 }
             });
             thread.start();

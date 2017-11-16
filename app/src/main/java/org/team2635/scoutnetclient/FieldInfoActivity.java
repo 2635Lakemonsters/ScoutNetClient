@@ -300,7 +300,6 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
         showDialog("dataSaved");
     }
 

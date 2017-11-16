@@ -13,10 +13,10 @@
             android:defaultValue="192.168.7.2"/>
 
         <EditTextPreference
+            android:defaultValue="pitdata.php"
             android:key="pref_key_server_data_page"
             android:summary="Data page of the ScoutNet Server. Get this from scouting manager."
-            android:title="Data Page"
-            android:defaultValue="pitdata.php"/>
+            android:title="Data Page" />
 
     </PreferenceCategory>
 
