@@ -230,18 +230,20 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
-        String defenseReached = autoFrag.defenseReached();
         String defenseCrossed = autoFrag.defenseCrossed();
         String autoHighScores = autoFrag.getHighScores();
-        String autoLowScores = autoFrag.getLowScores();
+        String ownBucketLifted = autoFrag.ownBucketLifted();
+        String enemyBucketLifted = autoFrag.enemyBucketLifted();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
-            jsonObject.accumulate("DEFENSEREACHED", defenseReached);
+
             jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
-            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
-            jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
+            jsonObject.accumulate("OWNBUCKETLIFTED", ownBucketLifted);
+            jsonObject.accumulate("ENEMYBUCKETLIFTED", enemyBucketLifted);
+            jsonObject.accumulate("AUTOBUNNIES", autoHighScores);
+
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -253,20 +255,19 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Get info from teleop fragment
         String teleHighScores = teleFrag.getHighScores();
-        String teleLowScores = teleFrag.getLowScores();
-        String didChallenge = teleFrag.towerChallenged();
-        String didScale = teleFrag.towerScaled();
-        String defenseCrosses = teleFrag.getDefenseCrosses();
-        String defenseBreached = teleFrag.defenseBreached();
+
+        String didMalfunction = teleFrag.didMalfunction();
+        String foundBunny = teleFrag.foundBunny();
+        String stoleBunny = teleFrag.stoleBunny();
+        String teleNotes = teleFrag.getNotes();
 
         try
         {
             jsonObject.accumulate("TELEHIGHSCORES", teleHighScores);
-            jsonObject.accumulate("TELELOWSCORES", teleLowScores);
-            jsonObject.accumulate("TOWERCHALLENGED", didChallenge);
-            jsonObject.accumulate("TOWERSCALED", didScale);
-            jsonObject.accumulate("DEFENSECROSSES", defenseCrosses);
-            jsonObject.accumulate("DEFENSEBREACHED", defenseBreached);
+            jsonObject.accumulate("MALFUNCTION", didMalfunction);
+            jsonObject.accumulate("FOUNDBUNNY", foundBunny);
+            jsonObject.accumulate("STOLEBUNNY", stoleBunny);
+            jsonObject.accumulate("TELENOTES", teleNotes);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -276,23 +277,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         //Set page to match defense
         viewpager.setCurrentItem(3, false);
 
-        //Get data from match defenses
-        String[] defenseSelections = defenseFrag.getCheckBoxData();
-        String[] defenseOptions = defenseFrag.getOptions();
+        String story = defenseFrag.getStory();
 
-        //TODO: Test this
-        int i = 0;
-        for (String s : defenseSelections)
-        {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            } catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-
-            ++i;
+        try{
+            jsonObject.accumulate("SPECIALNOTES", story);
+        } catch (Exception e){
+            Log.d("InputStream", e.getLocalizedMessage());
         }
 
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.team2635.scoutnetclient.FieldInfoActivity;
@@ -17,8 +18,7 @@ import org.team2635.scoutnetclient.R;
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
     private int highScores = 0;
-    private int lowScores = 0;
-    private int defenseCrosses = 0;
+
 
     public TeleopInfoFragment()
     {
@@ -32,17 +32,10 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
         Button button1 = (Button) view.findViewById(R.id.teleHighGoalAdd);
         Button button2 = (Button) view.findViewById(R.id.teleHighGoalSub);
-        Button button3 = (Button) view.findViewById(R.id.teleLowAdd);
-        Button button4 = (Button) view.findViewById(R.id.teleLowSub);
-        Button button5 = (Button) view.findViewById(R.id.teleDefenseAdd);
-        Button button6 = (Button) view.findViewById(R.id.teleDefenseSub);
+
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
 
         return view;
     }
@@ -71,24 +64,7 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                     --highScores;
                 }
                 break;
-            case R.id.teleLowAdd:
-                ++lowScores;
-                break;
-            case R.id.teleLowSub:
-                if(lowScores > 0)
-                {
-                    --lowScores;
-                }
-                break;
-            case R.id.teleDefenseAdd:
-                ++defenseCrosses;
-                break;
-            case R.id.teleDefenseSub:
-                if(defenseCrosses > 0)
-                {
-                    --defenseCrosses;
-                }
-                break;
+
         }
         updateCounts();
     }
@@ -96,11 +72,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     private void updateCounts()
     {
         TextView high = (TextView) getActivity().findViewById(R.id.teleopHighGoalNum);
-        TextView low = (TextView) getActivity().findViewById(R.id.teleopLowGoalNum);
-        TextView defense = (TextView) getActivity().findViewById(R.id.teleDefenseNum);
+
         high.setText(String.valueOf(highScores));
-        low.setText(String.valueOf(lowScores));
-        defense.setText(String.valueOf(defenseCrosses));
+
     }
 
     public String getHighScores()
@@ -108,19 +82,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return Integer.toString(highScores);
     }
 
-    public String getLowScores()
+    public String didMalfunction()
     {
-        return Integer.toString(lowScores);
-    }
-
-    public String getDefenseCrosses()
-    {
-        return Integer.toString(defenseCrosses);
-    }
-
-    public String towerChallenged()
-    {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.didChallenge);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.didMalfunction);
         String toReturn;
         if(box.isChecked())
         {
@@ -133,9 +97,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String towerScaled()
+    public String foundBunny()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.didScale);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.foundBunny);
         String toReturn;
         if(box.isChecked())
         {
@@ -148,9 +112,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String defenseBreached()
+    public String stoleBunny()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.didBreach);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.stoleBunny);
         String toReturn;
         if(box.isChecked())
         {
@@ -162,6 +126,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         }
         return toReturn;
     }
-
+    public String getNotes(){
+        EditText notes = (EditText) getActivity().findViewById(R.id.teleNotes);
+        return notes.getText().toString();
+    }
 
 }

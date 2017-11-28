@@ -76,7 +76,7 @@
     <string name="defensiveRating">Defensive Rating</string>
     <string name="doesAutonomous">Does Autonomous</string>
     <string name="defenseReached">Defense Reached</string>
-    <string name="defenseCrossed">Defense Crossed</string>
+    <string name="defenseCrossed">Middle Crossed</string>
     <string name="auto">Autonomous?</string>
     <string name="defensesCrossed">Defenses Crossed</string>
     <string name="challenged">Challenged</string>

@@ -6,19 +6,20 @@
               tools:context="org.team2635.scoutnetclient.FieldInfoActivity"
               android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Autonomous"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
     <Switch
         android:id="@+id/matchDoesAutonomous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/doesAutonomous" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/defenseReached"
-        android:id="@+id/matchDefenseReached"
-        android:layout_gravity="center_horizontal"/>
 
     <CheckBox
         android:id="@+id/matchDefenseCrossed"
@@ -28,6 +29,20 @@
         android:text="@string/defenseCrossed" />
 
 
+    <CheckBox
+        android:id="@+id/liftOwnBucket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Lift Own Bucket" />
+
+    <CheckBox
+        android:id="@+id/liftEnemyBucket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Lift Enemy Bucket" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,25 +50,28 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/bunnyView"
             android:layout_width="172dp"
             android:layout_height="match_parent"
+            android:scaleType="fitCenter"
             android:src="@drawable/bunny" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <Space
                 android:layout_width="wrap_content"
-                android:layout_height="24dp" />
+                android:layout_height="30dp"
+                android:layout_weight="0.59" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="High Goal" />
+                android:text="Bunnies" />
 
             <Button
                 android:id="@+id/autoHighAdd"
@@ -84,37 +102,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="120dp" />
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Low Goal" />
-
-            <Button
-                android:id="@+id/autoLowAdd"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:nestedScrollingEnabled="false"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/autoLowGoalNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/autoLowSub"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:nestedScrollingEnabled="false"
-                android:text="-" />
         </LinearLayout>
 
     </LinearLayout>

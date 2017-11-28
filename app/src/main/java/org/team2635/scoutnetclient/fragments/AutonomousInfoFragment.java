@@ -17,7 +17,6 @@ import org.team2635.scoutnetclient.R;
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
     private int highScores;
-    private int lowScores;
 
     public AutonomousInfoFragment()
     {
@@ -31,13 +30,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
 
         Button button1 = (Button) view.findViewById(R.id.autoHighAdd);
         Button button2 = (Button) view.findViewById(R.id.autoHighSub);
-        Button button3 = (Button) view.findViewById(R.id.autoLowAdd);
-        Button button4 = (Button) view.findViewById(R.id.autoLowSub);
+
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
+
 
         return view;
     }
@@ -66,15 +63,6 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                     --highScores;
                 }
                 break;
-            case R.id.autoLowAdd:
-                ++lowScores;
-                break;
-            case R.id.autoLowSub:
-                if(lowScores > 0)
-                {
-                    --lowScores;
-                }
-                break;
         }
         updateCounts();
     }
@@ -95,9 +83,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String defenseReached()
+    public String defenseCrossed()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseReached);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseCrossed);
         String toReturn;
         if(box.isChecked())
         {
@@ -110,9 +98,24 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String defenseCrossed()
+    public String ownBucketLifted()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseCrossed);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.liftOwnBucket);
+        String toReturn;
+        if(box.isChecked())
+        {
+            toReturn = "Yes";
+        }
+        else
+        {
+            toReturn = "No";
+        }
+        return toReturn;
+    }
+
+    public String enemyBucketLifted()
+    {
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.liftEnemyBucket);
         String toReturn;
         if(box.isChecked())
         {
@@ -130,16 +133,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return Integer.toString(highScores);
     }
 
-    public String getLowScores()
-    {
-        return Integer.toString(lowScores);
-    }
-
     private void updateCounts()
     {
         TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
-        TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
         high.setText(String.valueOf(highScores));
-        low.setText(String.valueOf(lowScores));
     }
 }
