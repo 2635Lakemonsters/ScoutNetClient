@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 import org.team2635.scoutnetclient.dialogs.UploadPromptDialog;
-import org.team2635.scoutnetclient.fragments.DefensesFragment;
 import org.team2635.scoutnetclient.fragments.RobotInfoFragment;
 import org.team2635.scoutnetclient.fragments.StrategyInfoFragment;
 import org.team2635.scoutnetclient.fragments.TeamInfoFragment;
@@ -146,7 +145,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         TeamInfoFragment teamFrag = (TeamInfoFragment) padapter.getItem(0);
         RobotInfoFragment robotFrag = (RobotInfoFragment) padapter.getItem(1);
         StrategyInfoFragment strategyFrag = (StrategyInfoFragment) padapter.getItem(2);
-        DefensesFragment defensesFrag = (DefensesFragment) padapter.getItem(3);
 
 
         //Set page to teaminfo fragment
@@ -232,26 +230,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
             ++i;
         }
 
-
-        //Set page to defenses fragment
-        viewPager.setCurrentItem(3, false);
-
-        //Get data from defenses selection fragment
-        String[] defenseSelections = defensesFrag.getSelections();
-        String[] defenseOptions = defensesFrag.getDefenses();
-
-        i = 0;
-        for (String s : defenseSelections)
-        {
-            try
-            {
-                jsonObject.accumulate(defenseOptions[i], s);
-            } catch (Exception e)
-            {
-                Log.d("InputStream", e.getLocalizedMessage());
-            }
-            ++i;
-        }
 
 
         manager.write(jsonObject.toString());
