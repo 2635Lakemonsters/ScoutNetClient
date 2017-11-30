@@ -13,46 +13,46 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
+        android:id="@+id/doesChallengeTower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/challengeTower"
-        android:id="@+id/doesChallengeTower"/>
+        android:text="Steal Bunnies" />
 
     <CheckBox
+        android:id="@+id/doesScaleTower"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/scaleTower"
-        android:id="@+id/doesScaleTower"/>
+        android:text="Get Bunnies from Buckets" />
 
     <CheckBox
+        android:id="@+id/doesBreachDefenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/breachDefenses"
-        android:id="@+id/doesBreachDefenses"/>
+        android:text="Bulldoze" />
 
     <CheckBox
+        android:id="@+id/doesHoldSally"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/holdSallyPort"
-        android:id="@+id/doesHoldSally"/>
+        android:text="Shoot" />
 
     <CheckBox
+        android:id="@+id/doesHoldBridge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/holdDrawBridge"
-        android:id="@+id/doesHoldBridge"/>
+        android:text="Lift Own Bucket" />
 
     <CheckBox
+        android:id="@+id/doesLowGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/lowGoal"
-        android:id="@+id/doesLowGoal"/>
+        android:text="Lift Enemy Bucket" />
 
     <CheckBox
+        android:id="@+id/doesHighGoal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/highGoal"
-        android:id="@+id/doesHighGoal"/>
+        android:text="Lift Own Bucket" />
 
     <CheckBox
         android:layout_width="wrap_content"

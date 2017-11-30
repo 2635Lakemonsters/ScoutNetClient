@@ -87,44 +87,32 @@
             android:textColor="@android:color/black"/>
 
         <CheckBox
+            android:id="@+id/canRetrieveBunnies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lowGoal"
-            android:id="@+id/canShootLow"
-            android:checked="false"/>
+            android:checked="false"
+            android:text="Take bunnies from Bucket" />
 
         <CheckBox
+            android:id="@+id/canLiftBucket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/highGoal"
-            android:id="@+id/canShootHigh"
-            android:checked="false"/>
+            android:checked="false"
+            android:text="Pick up Buckets" />
 
         <CheckBox
+            android:id="@+id/canBulldoze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/holdDrawBridge"
-            android:id="@+id/canHoldDrawbridge"
-            android:checked="false"/>
+            android:checked="false"
+            android:text="Bulldoze Bunnies" />
 
         <CheckBox
+            android:id="@+id/canLaunchBunnies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/holdSallyPort"
-            android:id="@+id/canHoldSallyPort"
-            android:checked="false"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/challengeTower"
-            android:id="@+id/canChallenge"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/scaleTower"
-            android:id="@+id/canScale"/>
+            android:checked="false"
+            android:text="Launch Bunnies" />
 
         <CheckBox
             android:layout_width="wrap_content"

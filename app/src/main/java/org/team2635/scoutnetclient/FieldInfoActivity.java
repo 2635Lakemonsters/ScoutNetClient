@@ -113,13 +113,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 public void run()
                 {
                     boolean success = true;
-                    try
-                    {
 
-                        URL url = new URL("http://" + address + "/" + pageID + "?" + s);
+                    try {
+
+                        //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
+                        URL url = new URL("http://71.236.237.255/scouting.php?DATA=" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestMethod("GET");
                         urlConnection.setRequestProperty("Content-Type", "application/json");
                         urlConnection.connect();
 
@@ -127,42 +128,33 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                         out.write(s);
                         out.close();
 
-                        try
-                        {
+                        try {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                             Log.d(TAG, in.toString());
-                        } finally
-                        {
+                        } finally {
                             urlConnection.disconnect();
                         }
 
-                    } catch (IOException e)
-                    {
+                    } catch (IOException e) {
                         Log.e(TAG, e.toString());
-                        FieldInfoActivity.this.runOnUiThread(new Runnable()
-                                                             {
-                                                                 @Override
-                                                                 public void run()
-                                                                 {
-                                                                     showDialog("uploadFailure");
-                                                                 }
-                                                             }
+                        FieldInfoActivity.this.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
 
                         );
                         success = false;
-                    } finally
-                    {
-                        if (success)
-                        {
+                    } finally {
+                        if (success) {
                             manager.clearData();
-                            FieldInfoActivity.this.runOnUiThread(new Runnable()
-                                                                 {
-                                                                     @Override
-                                                                     public void run()
-                                                                     {
-                                                                         showDialog("success");
-                                                                     }
-                                                                 }
+                            FieldInfoActivity.this.runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
 
                             );
                         }

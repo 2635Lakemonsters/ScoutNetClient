@@ -51,14 +51,13 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canShootLow);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canShootHigh);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canHoldDrawbridge);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canHoldSallyPort);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canChallenge);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canScale);
-            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
-            CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canRetrieveBunnies);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canLiftBucket);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBulldoze);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canLiftBucket);
+
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
 
             checkBoxReferences[0] = S1;
             checkBoxReferences[1] = S2;
@@ -66,15 +65,14 @@ public class RobotInfoFragment extends Fragment
             checkBoxReferences[3] = S4;
             checkBoxReferences[4] = S5;
             checkBoxReferences[5] = S6;
-            checkBoxReferences[6] = S7;
-            checkBoxReferences[7] = S8;
+
     }
 
     public String[] getCheckBoxData()
     {
         getCheckBoxReferences();
         int position = 0;
-        String[] selections = new String[8];
+        String[] selections = new String[6];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
@@ -104,8 +102,6 @@ public class RobotInfoFragment extends Fragment
         options[3] = "R4";
         options[4] = "R5";
         options[5] = "R6";
-        options[6] = "R7";
-        options[7] = "R8";
 
         return options;
     }

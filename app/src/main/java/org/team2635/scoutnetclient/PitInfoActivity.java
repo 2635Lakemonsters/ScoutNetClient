@@ -282,13 +282,14 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                 public void run()
                 {
                     boolean success = true;
-                    try
-                    {
 
-                        URL url = new URL("http://" + address + "/" + pageID + "?" + s);
+                    try {
+
+                        //URL url = new URL("http://" + address + "/" + pageID + "?DATA=" + s);
+                        URL url = new URL("http://71.236.237.255/scouting.php?DATA=" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestMethod("GET");
                         urlConnection.setRequestProperty("Content-Type", "application/json");
                         urlConnection.connect();
 
@@ -296,42 +297,33 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                         out.write(s);
                         out.close();
 
-                        try
-                        {
+                        try {
                             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
                             Log.d(TAG, in.toString());
-                        } finally
-                        {
+                        } finally {
                             urlConnection.disconnect();
                         }
 
-                    } catch (IOException e)
-                    {
+                    } catch (IOException e) {
                         Log.e(TAG, e.toString());
-                        PitInfoActivity.this.runOnUiThread(new Runnable()
-                                                           {
-                                                               @Override
-                                                               public void run()
-                                                               {
-                                                                   showDialog("uploadFailure");
-                                                               }
-                                                           }
+                        PitInfoActivity.this.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
 
                         );
                         success = false;
-                    } finally
-                    {
-                        if (success)
-                        {
+                    } finally {
+                        if (success) {
                             manager.clearData();
-                            PitInfoActivity.this.runOnUiThread(new Runnable()
-                                                               {
-                                                                   @Override
-                                                                   public void run()
-                                                                   {
-                                                                       showDialog("success");
-                                                                   }
-                                                               }
+                            PitInfoActivity.this.runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
 
                             );
                         }
@@ -346,8 +338,8 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         //Clears saved data sets from memory. Prevents duplicate uploads.
         //TODO: Implement checking from server
 
-
     }
+
 
     private void showDialog(String dialog)
     {
