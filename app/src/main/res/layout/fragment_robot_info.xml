@@ -8,22 +8,22 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="@string/driveTrain"/>
+            android:text="@string/driveTrain"
+            android:textColor="@android:color/black" />
 
         <RadioGroup
+            android:id="@+id/driveTrain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/driveTrain">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/trainOption1"
@@ -60,31 +60,30 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="24dp"/>
+            android:layout_height="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/numberOfWheels"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
         <EditText
+            android:id="@+id/numberOfWheels"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:id="@+id/numberOfWheels"
             android:inputType="number"
-            android:text="0"
-            />
+            android:text="0" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="24dp"/>
+            android:layout_height="24dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/canTheRobot"
-            android:textColor="@android:color/black"/>
+            android:textColor="@android:color/black" />
 
         <CheckBox
             android:id="@+id/canRetrieveBunnies"
@@ -115,16 +114,16 @@
             android:text="Launch Bunnies" />
 
         <CheckBox
+            android:id="@+id/canPlayDefense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/playDefense"
-            android:id="@+id/canPlayDefense"/>
+            android:text="@string/playDefense" />
 
         <CheckBox
+            android:id="@+id/canPlayOffense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/playOffense"
-            android:id="@+id/canPlayOffense"/>
+            android:text="@string/playOffense" />
 
     </LinearLayout>
 

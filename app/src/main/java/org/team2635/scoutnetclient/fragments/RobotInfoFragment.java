@@ -17,7 +17,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    private CheckBox[] checkBoxReferences = new CheckBox[8];
+    private CheckBox[] checkBoxReferences = new CheckBox[6];
 
     public RobotInfoFragment()
     {
@@ -54,7 +54,7 @@ public class RobotInfoFragment extends Fragment
             CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canRetrieveBunnies);
             CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canLiftBucket);
             CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBulldoze);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canLiftBucket);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canLaunchBunnies);
 
             CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
             CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
@@ -94,7 +94,7 @@ public class RobotInfoFragment extends Fragment
 
     public String[] getOptions()
     {
-        String[] options = new String[8];
+        String[] options = new String[6];
 
         options[0] = "R1";
         options[1] = "R2";

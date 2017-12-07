@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -77,6 +78,12 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                 startActivity(intent);
                 return true;
 
+            case R.id.action_about:
+                // User chose the "Settings" item, show the app settings UI...
+                Intent aboutIntent = new Intent(this, AboutActivity.class);
+                startActivity(aboutIntent);
+                return true;
+
             case R.id.action_save:
                 saveData();
                 return true;
@@ -97,12 +104,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         final DataManager manager = new DataManager(sharedPref);
 
         String[] urls = manager.getURLArray();
         //TODO: Test address retrieval from settings
-        final String address = sharedPref.getString("pref_key_server_ip", "");
-        final String pageID = sharedPref.getString("pref_key_server_data_page", "");
+        final String address = settingsPref.getString("pref_key_server_ip", "");
+        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
 
         //TODO: Test new data post functionality
         for (final String s : urls)
@@ -117,7 +125,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                     try {
 
                         //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
-                        URL url = new URL("http://71.236.237.255/scouting.php?DATA=" + s);
+                        URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
                         urlConnection.setRequestMethod("GET");

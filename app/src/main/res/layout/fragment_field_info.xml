@@ -100,12 +100,4 @@
         android:layout_width="match_parent"
         android:layout_height="153dp" />
 
-    <EditText
-        android:id="@+id/swipeInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Swipe for more panels" />
-
 </LinearLayout>

@@ -37,6 +37,12 @@
         </activity>
 
         <activity
+            android:name=".AboutActivity"
+            android:label="@string/title_about_activity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity
             android:name=".FieldInfoActivity"
             android:label="@string/title_activity_activity_fieldscouting"
             android:parentActivityName=".MainActivity">

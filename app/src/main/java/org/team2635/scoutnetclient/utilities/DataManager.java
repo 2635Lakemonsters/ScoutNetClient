@@ -2,6 +2,7 @@ package org.team2635.scoutnetclient.utilities;
 
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DataManager
 {
@@ -11,7 +12,7 @@ public class DataManager
 
     public DataManager(SharedPreferences sharedPref)
     {
-       m_sharedPref = sharedPref;
+        m_sharedPref = sharedPref;
         SharedPreferences.Editor editor = m_sharedPref.edit();
 
         urlCount = m_sharedPref.getInt("count", 999);
@@ -36,9 +37,9 @@ public class DataManager
 
         editor.apply();
 
-        Log.d(TAG, "Url data logged to memory! Data: " + url);
-        Log.d(TAG, "Url count: " + urlCount);
-        Log.d(TAG, "Stored URL: " + m_sharedPref.getInt("count", 999));
+        Log.d(TAG, "Data logged to memory! Data: " + url);
+        Log.d(TAG, "This URL: " + urlCount);
+        Log.d(TAG, "Stored data strings: " + m_sharedPref.getInt("count", 999));
     }
 
     public String[] getURLArray()
@@ -59,17 +60,21 @@ public class DataManager
     }
 
     //TODO:Test proper data clearing functionality
-    public void clearData()
+    public boolean clearData()
     {
         SharedPreferences.Editor editor = m_sharedPref.edit();
         urlCount = m_sharedPref.getInt("count", 999);
+        int deletionCount = 0;
 
-        for(int i=1; i<urlCount; ++i)
+        for(int i=0; i<urlCount; ++i)
         {
             editor.remove("url"+i);
+            ++deletionCount;
         }
-
+        Log.d(TAG, "Ready to remove " + deletionCount + " data strings!");
         editor.remove("count");
         editor.apply();
+        Log.d(TAG, "Complete!");
+        return true;
     }
 }

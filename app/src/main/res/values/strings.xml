@@ -10,6 +10,7 @@
 
     <!--Action Bar Titles-->
     <string name="menuSettings">Settings</string>
+    <string name="title_about_activity">About</string>
     <string name="menuSubmitData">Submit Data</string>
 
     <!--Preference Keys-->
