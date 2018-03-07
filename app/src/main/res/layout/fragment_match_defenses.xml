@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DefensesFragment"
+    tools:context="org.team2635.scoutnetclient.FieldInfoActivity"
     android:baselineAligned="false"
     android:weightSum="1">
 
@@ -21,8 +21,5 @@
         android:id="@+id/storyTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.06"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:selectAllOnFocus="false" />
+        android:layout_weight="0.06"/>
 </LinearLayout>

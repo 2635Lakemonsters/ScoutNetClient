@@ -30,11 +30,20 @@ public class MatchDefensesFragment extends Fragment
     public void onStart()
     {
 
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Defenses");
 
         super.onStart();
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Defenses");
+        }
     }
 
     public String getStory(){

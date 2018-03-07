@@ -125,15 +125,20 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
                     try {
 
                         //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
-                        URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
+                        //URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
+                        URL url = new URL("http://"+ address + "/" + pageID);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setRequestProperty("Content-Type", "application/json");
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Accept", "application/x-www-form-urlencoded");
+                        urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
                         urlConnection.connect();
 
                         OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-                        out.write(s);
+                        out.write("DATA=" + s);
+                        out.flush();
+
                         out.close();
 
                         try {
@@ -184,11 +189,11 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
-        //TODO: Fix getting of scout name
-        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
+        final String scoutName = settingsPref.getString("pref_key_scout_name", "");
 
         try
         {
@@ -209,14 +214,14 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(0, false);
 
         //Get data from field info
-        String teamnum = fieldFrag.getTeamNum();
+        String teamNum = fieldFrag.getTeamNum();
         String matchNum = fieldFrag.getMatchNum();
         String teamScore = fieldFrag.getTeamScore();
         String defenseRating = fieldFrag.getDefenseRating();
 
         try
         {
-            jsonObject.accumulate("TEAMNNUM", teamnum);
+            jsonObject.accumulate("TEAMNUM", teamNum);
             jsonObject.accumulate("MATCHNUM", matchNum);
             jsonObject.accumulate("TEAMSCORE", teamScore);
             jsonObject.accumulate("DEFENSERATING", defenseRating);
@@ -232,17 +237,19 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         String autonomous = autoFrag.getAutonomous();
         String defenseCrossed = autoFrag.defenseCrossed();
         String autoHighScores = autoFrag.getHighScores();
-        String ownBucketLifted = autoFrag.ownBucketLifted();
-        String enemyBucketLifted = autoFrag.enemyBucketLifted();
+        String autoLowScores = autoFrag.getLowScores();
+        String linesUp = autoFrag.linesUp();
+        String autoBroke = autoFrag.autoBroke();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
 
             jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
-            jsonObject.accumulate("OWNBUCKETLIFTED", ownBucketLifted);
-            jsonObject.accumulate("ENEMYBUCKETLIFTED", enemyBucketLifted);
-            jsonObject.accumulate("AUTOBUNNIES", autoHighScores);
+            jsonObject.accumulate("LINESUP", linesUp);
+            jsonObject.accumulate("AUTOBROKE", autoBroke);
+            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
+            jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
 
         } catch (Exception e)
         {
@@ -254,20 +261,27 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleHighScores = teleFrag.getHighScores();
+        String teleOSwitchScores = teleFrag.getOSwitchScores();
+        String teleScaleScores = teleFrag.getScaleScores();
+        String teleESwitchScores = teleFrag.getESwitchScores();
 
         String didMalfunction = teleFrag.didMalfunction();
-        String foundBunny = teleFrag.foundBunny();
-        String stoleBunny = teleFrag.stoleBunny();
+        String doesClimb = teleFrag.doesClimb();
+        String doesDefend = teleFrag.doesDefend();
         String teleNotes = teleFrag.getNotes();
+        String doesVault = teleFrag.doesVault();
 
         try
         {
-            jsonObject.accumulate("TELEHIGHSCORES", teleHighScores);
+            jsonObject.accumulate("TELEOSWITCHSCORES", teleOSwitchScores);
+            jsonObject.accumulate("TELESCALESCORES", teleScaleScores);
+            jsonObject.accumulate("TELEESWITCHSCORES", teleESwitchScores);
+
             jsonObject.accumulate("MALFUNCTION", didMalfunction);
-            jsonObject.accumulate("FOUNDBUNNY", foundBunny);
-            jsonObject.accumulate("STOLEBUNNY", stoleBunny);
+            jsonObject.accumulate("DOESCLIMB", doesClimb);
+            jsonObject.accumulate("DOESDEFEND", doesDefend);
             jsonObject.accumulate("TELENOTES", teleNotes);
+            jsonObject.accumulate("DOESVAULT", doesVault);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());

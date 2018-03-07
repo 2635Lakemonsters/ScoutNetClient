@@ -132,11 +132,11 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
     {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
         DataManager manager = new DataManager(sharedPref);
         JSONObject jsonObject = new JSONObject();
 
-        //TODO: Fix getting of scout name
-        final String scoutName = sharedPref.getString("pref_key_scout_name", "");
+        final String scoutName = settingsPref.getString("pref_key_scout_name", "");
 
         //2 Fields
         try
@@ -271,16 +271,22 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
                     try {
 
+
                         //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
-                        URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
+                        //URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
+                        URL url = new URL("http://"+ address + "/" + pageID);
                         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                         urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("GET");
-                        urlConnection.setRequestProperty("Content-Type", "application/json");
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Accept", "application/x-www-form-urlencoded");
+                        urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
                         urlConnection.connect();
 
                         OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-                        out.write(s);
+                        out.write("DATA=" + s);
+                        out.flush();
+
                         out.close();
 
                         try {

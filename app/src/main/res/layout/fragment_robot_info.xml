@@ -86,44 +86,32 @@
             android:textColor="@android:color/black" />
 
         <CheckBox
-            android:id="@+id/canRetrieveBunnies"
+            android:id="@+id/canGrab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Take bunnies from Bucket" />
+            android:text="Grab Cubes" />
 
         <CheckBox
-            android:id="@+id/canLiftBucket"
+            android:id="@+id/canLaunch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Pick up Buckets" />
+            android:text="Launch Cubes" />
 
         <CheckBox
             android:id="@+id/canBulldoze"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Bulldoze Bunnies" />
+            android:text="Bulldoze Cubes" />
 
         <CheckBox
-            android:id="@+id/canLaunchBunnies"
+            android:id="@+id/canHelpClimb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Launch Bunnies" />
-
-        <CheckBox
-            android:id="@+id/canPlayDefense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/playDefense" />
-
-        <CheckBox
-            android:id="@+id/canPlayOffense"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/playOffense" />
+            android:text="Help Others Climb" />
 
     </LinearLayout>
 

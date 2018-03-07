@@ -17,7 +17,9 @@ import org.team2635.scoutnetclient.R;
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int highScores = 0;
+    private int OSwitchScores = 0;
+    private int ScaleScores = 0;
+    private int ESwitchScores = 0;
 
 
     public TeleopInfoFragment()
@@ -30,12 +32,22 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teleop_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.teleHighGoalAdd);
-        Button button2 = (Button) view.findViewById(R.id.teleHighGoalSub);
+        Button button1 = (Button) view.findViewById(R.id.teleOSwitchGoalAdd);
+        Button button2 = (Button) view.findViewById(R.id.teleOSwitchGoalSub);
+        Button button3 = (Button) view.findViewById(R.id.teleScaleGoalAdd);
+        Button button4 = (Button) view.findViewById(R.id.teleScaleGoalSub);
+        Button button5 = (Button) view.findViewById(R.id.teleESwitchGoalAdd);
+        Button button6 = (Button) view.findViewById(R.id.teleESwitchGoalSub);
+
+
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
+        button5.setOnClickListener(this);
+        button6.setOnClickListener(this);
 
         return view;
     }
@@ -43,11 +55,25 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Teleop Activities");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Teleop Info");
+            TextView OSwitch = (TextView) getActivity().findViewById(R.id.teleopOSwitchGoalNum);
+            TextView Scale = (TextView) getActivity().findViewById(R.id.teleopScaleGoalNum);
+            TextView ESwitch = (TextView) getActivity().findViewById(R.id.teleopESwitchGoalNum);
+
+            OSwitch.setText(String.valueOf(OSwitchScores));
+            Scale.setText(String.valueOf(ScaleScores));
+            ESwitch.setText(String.valueOf(ESwitchScores));
+        }
     }
 
     @Override
@@ -55,13 +81,31 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     {
         switch(v.getId())
         {
-            case R.id.teleHighGoalAdd:
-                ++highScores;
+            case R.id.teleOSwitchGoalAdd:
+                ++OSwitchScores;
                 break;
-            case R.id.teleHighGoalSub:
-                if(highScores > 0)
+            case R.id.teleOSwitchGoalSub:
+                if(OSwitchScores > 0)
                 {
-                    --highScores;
+                    --OSwitchScores;
+                }
+                break;
+            case R.id.teleScaleGoalAdd:
+                ++ScaleScores;
+                break;
+            case R.id.teleScaleGoalSub:
+                if(ScaleScores > 0)
+                {
+                    --ScaleScores;
+                }
+                break;
+            case R.id.teleESwitchGoalAdd:
+                ++ESwitchScores;
+                break;
+            case R.id.teleESwitchGoalSub:
+                if(ESwitchScores > 0)
+                {
+                    --ESwitchScores;
                 }
                 break;
 
@@ -71,15 +115,27 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
     private void updateCounts()
     {
-        TextView high = (TextView) getActivity().findViewById(R.id.teleopHighGoalNum);
+        TextView OSwitch = (TextView) getActivity().findViewById(R.id.teleopOSwitchGoalNum);
+        TextView Scale = (TextView) getActivity().findViewById(R.id.teleopScaleGoalNum);
+        TextView ESwitch = (TextView) getActivity().findViewById(R.id.teleopESwitchGoalNum);
 
-        high.setText(String.valueOf(highScores));
+        OSwitch.setText(String.valueOf(OSwitchScores));
+        Scale.setText(String.valueOf(ScaleScores));
+        ESwitch.setText(String.valueOf(ESwitchScores));
 
     }
 
-    public String getHighScores()
+    public String getOSwitchScores()
     {
-        return Integer.toString(highScores);
+        return Integer.toString(OSwitchScores);
+    }
+    public String getScaleScores()
+    {
+        return Integer.toString(ScaleScores);
+    }
+    public String getESwitchScores()
+    {
+        return Integer.toString(ESwitchScores);
     }
 
     public String didMalfunction()
@@ -97,9 +153,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String foundBunny()
+    public String doesClimb()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.foundBunny);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesClimb);
         String toReturn;
         if(box.isChecked())
         {
@@ -112,9 +168,24 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String stoleBunny()
+    public String doesVault()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.stoleBunny);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesVault);
+        String toReturn;
+        if(box.isChecked())
+        {
+            toReturn = "Yes";
+        }
+        else
+        {
+            toReturn = "No";
+        }
+        return toReturn;
+    }
+
+    public String doesDefend()
+    {
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesDefend);
         String toReturn;
         if(box.isChecked())
         {

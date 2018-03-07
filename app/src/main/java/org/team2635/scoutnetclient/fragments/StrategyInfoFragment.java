@@ -31,27 +31,30 @@ public class StrategyInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-
-
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Strategies");
-
         super.onStart();
+    }
+
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Strategies");
+        }
     }
 
     private void getReferences()
     {
             //For reference sheet, see github wiki page: Strategy info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesChallengeTower);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesScaleTower);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesBreachDefenses);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesHoldSally);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesHoldBridge);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesLowGoal);
-            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.doesHighGoal);
-            CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.isDefensive);
-            CheckBox S9 = (CheckBox) getActivity().findViewById(R.id.isOffensive);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesSwitch);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesScale);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesLiftCubes);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesShootCubes);
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesVault);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesClimb);
+            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.isDefensive);
+            CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.isOffensive);
 
             references[0] = S1;
             references[1] = S2;
@@ -61,19 +64,21 @@ public class StrategyInfoFragment extends Fragment
             references[5] = S6;
             references[6] = S7;
             references[7] = S8;
-            references[8] = S9;
         }
 
     public String[] getData()
     {
         getReferences();
         int position = 0;
-        String[] selections = new String[10];
+        String[] selections = new String[9];
         EditText generalNotes = (EditText) getActivity().findViewById(R.id.generalStrategyNotes);
 
         //Iterate through references[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: references)
         {
+            if(position > 7){
+                break;
+            }
             //Putting a human-readable string value instead of boolean
             if(s.isChecked())
             {
@@ -86,14 +91,14 @@ public class StrategyInfoFragment extends Fragment
             position++;
         }
 
-        selections[9] = generalNotes.getText().toString();
+        selections[8] = generalNotes.getText().toString();
 
         return selections;
     }
 
     public String[] getOptions()
     {
-        String[] options = new String[10];
+        String[] options = new String[9];
 
         options[0] = "S1";
         options[1] = "S2";
@@ -103,8 +108,7 @@ public class StrategyInfoFragment extends Fragment
         options[5] = "S6";
         options[6] = "S7";
         options[7] = "S8";
-        options[8] = "S9";
-        options[9] = "GENERALNOTES";
+        options[8] = "GENERALNOTES";
 
         return options;
     }

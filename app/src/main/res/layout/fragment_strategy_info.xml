@@ -13,46 +13,40 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
-        android:id="@+id/doesChallengeTower"
+        android:id="@+id/doesSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Steal Bunnies" />
+        android:text="Can Deliver to Switch" />
 
     <CheckBox
-        android:id="@+id/doesScaleTower"
+        android:id="@+id/doesScale"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Bunnies from Buckets" />
+        android:text="Can Deliver to Scale" />
 
     <CheckBox
-        android:id="@+id/doesBreachDefenses"
+        android:id="@+id/doesLiftCubes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bulldoze" />
+        android:text="Lifts Cubes" />
 
     <CheckBox
-        android:id="@+id/doesHoldSally"
+        android:id="@+id/doesShootCubes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shoot" />
+        android:text="Shoots Cubes" />
 
     <CheckBox
-        android:id="@+id/doesHoldBridge"
+        android:id="@+id/doesVault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lift Own Bucket" />
+        android:text="Deliver to Vault" />
 
     <CheckBox
-        android:id="@+id/doesLowGoal"
+        android:id="@+id/doesClimb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lift Enemy Bucket" />
-
-    <CheckBox
-        android:id="@+id/doesHighGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lift Own Bucket" />
+        android:text="Climb" />
 
     <CheckBox
         android:layout_width="wrap_content"

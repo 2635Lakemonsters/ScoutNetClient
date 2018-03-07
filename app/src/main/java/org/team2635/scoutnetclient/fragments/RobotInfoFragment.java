@@ -17,7 +17,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    private CheckBox[] checkBoxReferences = new CheckBox[6];
+    private CheckBox[] checkBoxReferences = new CheckBox[4];
 
     public RobotInfoFragment()
     {
@@ -37,13 +37,19 @@ public class RobotInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Robot Capabilities");
-
         super.onStart();
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Robot Capabilities");
+        }
+    }
 
 
    public void getCheckBoxReferences()
@@ -51,20 +57,15 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canRetrieveBunnies);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canLiftBucket);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canGrab);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canLaunch);
             CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBulldoze);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canLaunchBunnies);
-
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canPlayDefense);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canPlayOffense);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canHelpClimb);
 
             checkBoxReferences[0] = S1;
             checkBoxReferences[1] = S2;
             checkBoxReferences[2] = S3;
             checkBoxReferences[3] = S4;
-            checkBoxReferences[4] = S5;
-            checkBoxReferences[5] = S6;
 
     }
 
@@ -72,11 +73,14 @@ public class RobotInfoFragment extends Fragment
     {
         getCheckBoxReferences();
         int position = 0;
-        String[] selections = new String[6];
+        String[] selections = new String[4];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
         {
+            if(position > 3) {
+                break;
+            }
             //Putting a human-readable string value instead of boolean
             if(s.isChecked())
             {
@@ -94,14 +98,12 @@ public class RobotInfoFragment extends Fragment
 
     public String[] getOptions()
     {
-        String[] options = new String[6];
+        String[] options = new String[4];
 
         options[0] = "R1";
         options[1] = "R2";
         options[2] = "R3";
         options[3] = "R4";
-        options[4] = "R5";
-        options[5] = "R6";
 
         return options;
     }

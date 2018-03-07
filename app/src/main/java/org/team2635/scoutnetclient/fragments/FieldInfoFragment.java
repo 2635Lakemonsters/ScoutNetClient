@@ -29,11 +29,19 @@ public class FieldInfoFragment extends Fragment {
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((FieldInfoActivity) getActivity())
-                .setActionBarTitle("Basic Info");
+
 
         super.onStart();
+    }
+
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((FieldInfoActivity) getActivity())
+                    .setActionBarTitle("Basic Info");
+        }
     }
 
     public String getTeamNum()

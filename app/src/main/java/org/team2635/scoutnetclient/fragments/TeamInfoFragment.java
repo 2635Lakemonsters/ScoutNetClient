@@ -28,11 +28,18 @@ public class TeamInfoFragment extends Fragment
     @Override
     public void onStart()
     {
-        // Set title bar
-        ((PitInfoActivity) getActivity())
-                .setActionBarTitle("Basic Info");
-
         super.onStart();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser)
+    {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser)
+        {
+            ((PitInfoActivity) getActivity())
+                    .setActionBarTitle("Basic Info");
+        }
     }
 
     public String getTeamNumber()
