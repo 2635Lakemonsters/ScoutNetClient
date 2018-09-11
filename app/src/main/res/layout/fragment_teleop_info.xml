@@ -95,7 +95,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/textVew12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -137,7 +137,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView12"
+                        android:id="@+id/textViw12"
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
