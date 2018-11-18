@@ -236,21 +236,15 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
         String defenseCrossed = autoFrag.defenseCrossed();
-        String autoHighScores = autoFrag.getHighScores();
         String autoLowScores = autoFrag.getLowScores();
-        String linesUp = autoFrag.linesUp();
         String autoBroke = autoFrag.autoBroke();
-        String testBox = autoFrag.testChecked();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
             jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
-            jsonObject.accumulate("LINESUP", linesUp);
             jsonObject.accumulate("AUTOBROKE", autoBroke);
-            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
             jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
-            jsonObject.accumulate("TESTCHECKED", autonomous);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());

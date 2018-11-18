@@ -26,15 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Auto Line Crossed" />
-
-
-    <CheckBox
-        android:id="@+id/linesUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Lines Up For Teleop" />
+        android:text="Center Line Crossed" />
 
     <CheckBox
         android:id="@+id/autoBroke"
@@ -43,12 +35,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Auto Broke" />
 
-    <CheckBox
-        android:id="@+id/testBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Test Check Box" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -63,55 +49,6 @@
             android:layout_height="match_parent"
             android:scaleType="centerInside"
             android:src="@drawable/woodie2" />
-
-        <LinearLayout
-            android:layout_width="82dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1"
-            android:layout_weight="0.89">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_weight="0.59" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="Scale Cubes" />
-
-            <Button
-                android:id="@+id/autoHighAdd"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:nestedScrollingEnabled="false"
-                android:text="+" />
-
-            <TextView
-                android:id="@+id/autoHighGoalNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/autoHighSub"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:nestedScrollingEnabled="false"
-                android:text="-" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="120dp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="94dp"
