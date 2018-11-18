@@ -124,6 +124,21 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
+    public String testChecked()
+    {
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.testBox);
+        String toReturn;
+        if(box.isChecked())
+        {
+            toReturn = "Yes";
+        }
+        else
+        {
+            toReturn = "No";
+        }
+        return toReturn;
+    }
+
     public String linesUp()
     {
         CheckBox box = (CheckBox) getActivity().findViewById(R.id.linesUp);

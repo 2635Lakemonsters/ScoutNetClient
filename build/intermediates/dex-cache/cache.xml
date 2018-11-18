@@ -3,57 +3,39 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\tpbur\.android\build-cache\f674bd77f281effd44ffebc2b7aed8e8463180b5\output\jars\classes.jar"
+        jar="C:\Users\atmec\.android\build-cache\fd261dea2beeaf91037245977cef1536186d5d21\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\classes_b3454a98d378f22bff12297ba49d1c102e26c44d.jar" />
+        <dex dex="C:\Projects\Scouting\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\classes_ea5451d8cae29228c62d10fe25b2e080ea672c79.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\tpbur\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jar="C:\Users\atmec\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_011637178beda978bf421212b312c5b8dde93b7d.jar" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_c2f023bd241b04314ff8b9ac3dbefd98159be8d9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="6bbc15b93578e157d2ff7469fc0c4219ac4f68de">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_de70f5bc721ae52b172e30d1ea3470460cf2f1fa\classes.dex" />
+        <dex dex="C:\Projects\Scouting\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_5215e98b82f3d27a0fe7fdd30c9153056cb1c8d2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\tpbur\.android\build-cache\f674bd77f281effd44ffebc2b7aed8e8463180b5\output\jars\libs\internal_impl-23.1.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_a2eca8c8e204f7d6e94f479c1785d32f430fc26c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\tpbur\.android\build-cache\1aacacb5045b93101dd06ab39e43fe681ca56f63\output\jars\classes.jar"
+        jar="C:\Users\atmec\.android\build-cache\3f7d9a7922a8932d5d226770965531e79e2cbf41\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="C:\Users\tpbur\Documents\Scoutnet\Client\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\classes_435cb38c9f5aa7cb39c71c1e9d225bcebeeb3032.jar" />
+        <dex dex="C:\Projects\Scouting\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\classes_4f0e57a8ab6a4315c311ee093678e1f2f21c1c97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\atmec\.android\build-cache\fd261dea2beeaf91037245977cef1536186d5d21\output\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Projects\Scouting\Scoutnet-Client\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_adbc6f2c2229d7caa0d4f8b2e9d115bdb910c84b.jar" />
     </item>
 
 </items>

@@ -43,6 +43,13 @@
         android:layout_gravity="center_horizontal"
         android:text="Auto Broke" />
 
+    <CheckBox
+        android:id="@+id/testBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Test Check Box" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
