@@ -16,8 +16,8 @@ import org.team2635.scoutnetclient.R;
 
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int highScores = 0;
-    private int lowScores = 0;
+    private int cratesFilled = 0;
+    //private int lowScores = 0;
 
     public AutonomousInfoFragment()
     {
@@ -29,16 +29,16 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_autonomous_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.autoHighAdd);
-        Button button2 = (Button) view.findViewById(R.id.autoHighSub);
-        Button button3 = (Button) view.findViewById(R.id.autoLowAdd);
-        Button button4 = (Button) view.findViewById(R.id.autoLowSub);
+        Button button1 = (Button) view.findViewById(R.id.autoCrateAdd);
+        Button button2 = (Button) view.findViewById(R.id.autoCrateSub);
+//        Button button3 = (Button) view.findViewById(R.id.autoLowAdd);
+//        Button button4 = (Button) view.findViewById(R.id.autoLowSub);
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
+//        button3.setOnClickListener(this);
+//        button4.setOnClickListener(this);
 
 
         return view;
@@ -58,11 +58,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Autonomous Info");
-            TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
-            TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
+            TextView crates = (TextView) getActivity().findViewById(R.id.autoCrateNumber);
+            //TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
 
-            high.setText(String.valueOf(highScores));
-            low.setText(String.valueOf(lowScores));
+            crates.setText(String.valueOf(cratesFilled));
+            //low.setText(String.valueOf(lowScores));
         }
     }
 
@@ -71,24 +71,24 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         switch(v.getId())
         {
-            case R.id.autoHighAdd:
-                ++highScores;
+            case R.id.autoCrateAdd:
+                ++cratesFilled;
                 break;
-            case R.id.autoHighSub:
-                if(highScores > 0)
+            case R.id.autoCrateSub:
+                if(cratesFilled > 0)
                 {
-                    --highScores;
+                    --cratesFilled;
                 }
                 break;
-            case R.id.autoLowAdd:
-                ++lowScores;
-                break;
-            case R.id.autoLowSub:
-                if(lowScores > 0)
-                {
-                    --lowScores;
-                }
-                break;
+//            case R.id.autoLowAdd:
+//                ++lowScores;
+//                break;
+//            case R.id.autoLowSub:
+//                if(lowScores > 0)
+//                {
+//                    --lowScores;
+//                }
+//                break;
         }
         updateCounts();
     }
@@ -109,39 +109,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String defenseCrossed()
+    public String centerCrossed()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchDefenseCrossed);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
-    }
-
-    public String testChecked()
-    {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.testBox);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
-    }
-
-    public String linesUp()
-    {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.linesUp);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchCenterCrossed);
         String toReturn;
         if(box.isChecked())
         {
@@ -169,21 +139,18 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String getHighScores()
+    public String getCratesFilled()
     {
-        return Integer.toString(highScores);
+        return Integer.toString(cratesFilled);
     }
-    public String getLowScores()
-    {
-        return Integer.toString(lowScores);
-    }
+    //public String getLowScores() { return Integer.toString(lowScores);}
 
     private void updateCounts()
     {
-        TextView high = (TextView) getActivity().findViewById(R.id.autoHighGoalNumber);
-        TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
+        TextView crates = (TextView) getActivity().findViewById(R.id.autoCrateNumber);
+        //TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
 
-        high.setText(String.valueOf(highScores));
-        low.setText(String.valueOf(lowScores));
+        crates.setText(String.valueOf(cratesFilled));
+        //low.setText(String.valueOf(lowScores));
     }
 }

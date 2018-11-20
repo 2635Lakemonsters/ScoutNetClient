@@ -86,32 +86,32 @@
             android:textColor="@android:color/black" />
 
         <CheckBox
-            android:id="@+id/canGrab"
+            android:id="@+id/canMove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Grab Cubes" />
+            android:text="Move Crates" />
 
         <CheckBox
-            android:id="@+id/canLaunch"
+            android:id="@+id/canFill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Launch Cubes" />
+            android:text="Fill Crates" />
 
         <CheckBox
-            android:id="@+id/canBulldoze"
+            android:id="@+id/canBunny"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Bulldoze Cubes" />
+            android:text="Put Bunnies in Crates" />
 
         <CheckBox
-            android:id="@+id/canHelpClimb"
+            android:id="@+id/canSort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Help Others Climb" />
+            android:text="Sort Balls" />
 
     </LinearLayout>
 

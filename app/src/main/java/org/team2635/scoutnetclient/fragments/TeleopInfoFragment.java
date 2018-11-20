@@ -17,9 +17,8 @@ import org.team2635.scoutnetclient.R;
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int OSwitchScores = 0;
-    private int ScaleScores = 0;
-    private int ESwitchScores = 0;
+    private int cratesFilled = 0;
+    private int bunniesPlaced = 0;
 
 
     public TeleopInfoFragment()
@@ -32,20 +31,16 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teleop_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.teleOSwitchGoalAdd);
-        Button button2 = (Button) view.findViewById(R.id.teleOSwitchGoalSub);
-        Button button3 = (Button) view.findViewById(R.id.teleScaleGoalAdd);
-        Button button4 = (Button) view.findViewById(R.id.teleScaleGoalSub);
-        Button button5 = (Button) view.findViewById(R.id.teleESwitchGoalAdd);
-        Button button6 = (Button) view.findViewById(R.id.teleESwitchGoalSub);
+        Button button1 = (Button) view.findViewById(R.id.teleCrateAdd);
+        Button button2 = (Button) view.findViewById(R.id.teleCrateSub);
+        Button button5 = (Button) view.findViewById(R.id.teleBunnyAdd);
+        Button button6 = (Button) view.findViewById(R.id.teleBunnySub);
 
 
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
 
@@ -66,13 +61,11 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Teleop Info");
-            TextView OSwitch = (TextView) getActivity().findViewById(R.id.teleopOSwitchGoalNum);
-            TextView Scale = (TextView) getActivity().findViewById(R.id.teleopScaleGoalNum);
-            TextView ESwitch = (TextView) getActivity().findViewById(R.id.teleopESwitchGoalNum);
+            TextView CratesFilled = (TextView) getActivity().findViewById(R.id.teleopCratesFilledNum);
+            TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.teleopBunniesPlacedNum);
 
-            OSwitch.setText(String.valueOf(OSwitchScores));
-            Scale.setText(String.valueOf(ScaleScores));
-            ESwitch.setText(String.valueOf(ESwitchScores));
+            CratesFilled.setText(String.valueOf(cratesFilled));
+            BunniesPlaced.setText(String.valueOf(bunniesPlaced));
         }
     }
 
@@ -81,31 +74,22 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     {
         switch(v.getId())
         {
-            case R.id.teleOSwitchGoalAdd:
-                ++OSwitchScores;
+            case R.id.teleCrateAdd:
+                ++cratesFilled;
                 break;
-            case R.id.teleOSwitchGoalSub:
-                if(OSwitchScores > 0)
+            case R.id.teleCrateSub:
+                if(cratesFilled > 0)
                 {
-                    --OSwitchScores;
+                    --cratesFilled;
                 }
                 break;
-            case R.id.teleScaleGoalAdd:
-                ++ScaleScores;
+            case R.id.teleBunnyAdd:
+                ++bunniesPlaced;
                 break;
-            case R.id.teleScaleGoalSub:
-                if(ScaleScores > 0)
+            case R.id.teleBunnySub:
+                if(bunniesPlaced > 0)
                 {
-                    --ScaleScores;
-                }
-                break;
-            case R.id.teleESwitchGoalAdd:
-                ++ESwitchScores;
-                break;
-            case R.id.teleESwitchGoalSub:
-                if(ESwitchScores > 0)
-                {
-                    --ESwitchScores;
+                    --bunniesPlaced;
                 }
                 break;
 
@@ -115,62 +99,27 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
     private void updateCounts()
     {
-        TextView OSwitch = (TextView) getActivity().findViewById(R.id.teleopOSwitchGoalNum);
-        TextView Scale = (TextView) getActivity().findViewById(R.id.teleopScaleGoalNum);
-        TextView ESwitch = (TextView) getActivity().findViewById(R.id.teleopESwitchGoalNum);
+        TextView CratesFilled = (TextView) getActivity().findViewById(R.id.teleopCratesFilledNum);
+        TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.teleopBunniesPlacedNum);
 
-        OSwitch.setText(String.valueOf(OSwitchScores));
-        Scale.setText(String.valueOf(ScaleScores));
-        ESwitch.setText(String.valueOf(ESwitchScores));
+        CratesFilled.setText(String.valueOf(cratesFilled));
+
+        BunniesPlaced.setText(String.valueOf(bunniesPlaced));
 
     }
 
-    public String getOSwitchScores()
+    public String getCratesFilled()
     {
-        return Integer.toString(OSwitchScores);
+        return Integer.toString(cratesFilled);
     }
-    public String getScaleScores()
+    public String getBunniesPlaced()
     {
-        return Integer.toString(ScaleScores);
-    }
-    public String getESwitchScores()
-    {
-        return Integer.toString(ESwitchScores);
+        return Integer.toString(bunniesPlaced);
     }
 
     public String didMalfunction()
     {
         CheckBox box = (CheckBox) getActivity().findViewById(R.id.didMalfunction);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
-    }
-
-    public String doesClimb()
-    {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesClimb);
-        String toReturn;
-        if(box.isChecked())
-        {
-            toReturn = "Yes";
-        }
-        else
-        {
-            toReturn = "No";
-        }
-        return toReturn;
-    }
-
-    public String doesVault()
-    {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesVault);
         String toReturn;
         if(box.isChecked())
         {

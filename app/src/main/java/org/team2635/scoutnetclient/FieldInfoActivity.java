@@ -235,22 +235,18 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
-        String defenseCrossed = autoFrag.defenseCrossed();
-        String autoHighScores = autoFrag.getHighScores();
-        String autoLowScores = autoFrag.getLowScores();
-        String linesUp = autoFrag.linesUp();
+        String centerCrossed = autoFrag.centerCrossed();
+        String autoCratesFilled = autoFrag.getCratesFilled();
+        //String autoLowScores = autoFrag.getLowScores();
         String autoBroke = autoFrag.autoBroke();
-        String testBox = autoFrag.testChecked();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
-            jsonObject.accumulate("DEFENSECROSSED", defenseCrossed);
-            jsonObject.accumulate("LINESUP", linesUp);
+            jsonObject.accumulate("CENTERCROSSED", centerCrossed);
             jsonObject.accumulate("AUTOBROKE", autoBroke);
-            jsonObject.accumulate("AUTOHIGHSCORES", autoHighScores);
-            jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
-            jsonObject.accumulate("TESTCHECKED", autonomous);
+            jsonObject.accumulate("AUTOCRATESFILLED", autoCratesFilled);
+            //jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -261,27 +257,21 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleOSwitchScores = teleFrag.getOSwitchScores();
-        String teleScaleScores = teleFrag.getScaleScores();
-        String teleESwitchScores = teleFrag.getESwitchScores();
+        String teleCratesFilled = teleFrag.getCratesFilled();
+        String teleBunniesPlaced = teleFrag.getBunniesPlaced();
 
         String didMalfunction = teleFrag.didMalfunction();
-        String doesClimb = teleFrag.doesClimb();
         String doesDefend = teleFrag.doesDefend();
         String teleNotes = teleFrag.getNotes();
-        String doesVault = teleFrag.doesVault();
 
         try
         {
-            jsonObject.accumulate("TELEOSWITCHSCORES", teleOSwitchScores);
-            jsonObject.accumulate("TELESCALESCORES", teleScaleScores);
-            jsonObject.accumulate("TELEESWITCHSCORES", teleESwitchScores);
+            jsonObject.accumulate("TELECRATESFILLED", teleCratesFilled);
+            jsonObject.accumulate("TELEBUNNIESPLACED", teleBunniesPlaced);
 
             jsonObject.accumulate("MALFUNCTION", didMalfunction);
-            jsonObject.accumulate("DOESCLIMB", doesClimb);
             jsonObject.accumulate("DOESDEFEND", doesDefend);
             jsonObject.accumulate("TELENOTES", teleNotes);
-            jsonObject.accumulate("DOESVAULT", doesVault);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());

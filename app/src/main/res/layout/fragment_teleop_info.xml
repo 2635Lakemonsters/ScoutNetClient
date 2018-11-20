@@ -48,24 +48,24 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="227dp"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
                 <LinearLayout
-                    android:layout_width="60dp"
+                    android:layout_width="103dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView12"
-                        android:layout_width="44dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Own Switch" />
+                        android:text="Crates Filled" />
 
                     <Button
-                        android:id="@+id/teleOSwitchGoalAdd"
+                        android:id="@+id/teleCrateAdd"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,14 +74,14 @@
                         android:text="+" />
 
                     <TextView
-                        android:id="@+id/teleopOSwitchGoalNum"
+                        android:id="@+id/teleopCratesFilledNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="0" />
 
                     <Button
-                        android:id="@+id/teleOSwitchGoalSub"
+                        android:id="@+id/teleCrateSub"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -90,61 +90,20 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="60dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textVew12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Scale" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="17dp" />
-
-                    <Button
-                        android:id="@+id/teleScaleGoalAdd"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:nestedScrollingEnabled="false"
-                        android:text="+" />
-
-                    <TextView
-                        android:id="@+id/teleopScaleGoalNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/teleScaleGoalSub"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="-" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="60dp"
+                    android:layout_width="115dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.26"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textViw12"
-                        android:layout_width="50dp"
+                        android:layout_width="106dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:text="Enemy Switch" />
+                        android:text="Bunnies Placed" />
 
                     <Button
-                        android:id="@+id/teleESwitchGoalAdd"
+                        android:id="@+id/teleBunnyAdd"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -153,14 +112,14 @@
                         android:text="+" />
 
                     <TextView
-                        android:id="@+id/teleopESwitchGoalNum"
+                        android:id="@+id/teleopBunniesPlacedNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="0" />
 
                     <Button
-                        android:id="@+id/teleESwitchGoalSub"
+                        android:id="@+id/teleBunnySub"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -189,12 +148,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
 
-                <CheckBox
-                    android:id="@+id/doesClimb"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Robot Climbs" />
-
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
@@ -209,11 +162,6 @@
                     android:layout_width="159dp"
                     android:layout_height="10dp" />
 
-                <CheckBox
-                    android:id="@+id/doesVault"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Robot Delivers to Vault" />
             </LinearLayout>
 
         </LinearLayout>

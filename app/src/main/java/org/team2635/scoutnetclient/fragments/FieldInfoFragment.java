@@ -39,8 +39,7 @@ public class FieldInfoFragment extends Fragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser)
         {
-            ((FieldInfoActivity) getActivity())
-                    .setActionBarTitle("Basic Info");
+            //((FieldInfoActivity) getActivity()).setActionBarTitle("Basic Info");
         }
     }
 

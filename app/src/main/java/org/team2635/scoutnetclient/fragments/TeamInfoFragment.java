@@ -37,8 +37,7 @@ public class TeamInfoFragment extends Fragment
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser)
         {
-            ((PitInfoActivity) getActivity())
-                    .setActionBarTitle("Basic Info");
+            //((PitInfoActivity) getActivity()).setActionBarTitle("Basic Info");
         }
     }
 
