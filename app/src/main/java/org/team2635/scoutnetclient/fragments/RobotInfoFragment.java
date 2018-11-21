@@ -57,7 +57,7 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canMove);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canCollect);
             CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canFill);
             CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBunny);
             CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canSort);
@@ -100,10 +100,10 @@ public class RobotInfoFragment extends Fragment
     {
         String[] options = new String[4];
 
-        options[0] = "R1";
-        options[1] = "R2";
-        options[2] = "R3";
-        options[3] = "R4";
+        options[0] = "CANCOLLECT";
+        options[1] = "CANFILL";
+        options[2] = "CANBUNNY";
+        options[3] = "CANSORT";
 
         return options;
     }

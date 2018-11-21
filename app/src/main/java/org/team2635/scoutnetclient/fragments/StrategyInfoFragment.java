@@ -14,7 +14,7 @@ import org.team2635.scoutnetclient.R;
 
 public class StrategyInfoFragment extends Fragment
 {
-    private CheckBox[] references = new CheckBox[9];
+    private CheckBox[] references = new CheckBox[6];
 
     public StrategyInfoFragment()
     {
@@ -47,14 +47,13 @@ public class StrategyInfoFragment extends Fragment
     private void getReferences()
     {
             //For reference sheet, see github wiki page: Strategy info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesSwitch);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesScale);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesLiftCubes);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesShootCubes);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesVault);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesClimb);
-            CheckBox S7 = (CheckBox) getActivity().findViewById(R.id.isDefensive);
-            CheckBox S8 = (CheckBox) getActivity().findViewById(R.id.isOffensive);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesMove);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesBunny);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesAutoFill);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesRemove);
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesDefensive);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesOffensive);
+
 
             references[0] = S1;
             references[1] = S2;
@@ -62,21 +61,19 @@ public class StrategyInfoFragment extends Fragment
             references[3] = S4;
             references[4] = S5;
             references[5] = S6;
-            references[6] = S7;
-            references[7] = S8;
         }
 
     public String[] getData()
     {
         getReferences();
         int position = 0;
-        String[] selections = new String[9];
+        String[] selections = new String[7];
         EditText generalNotes = (EditText) getActivity().findViewById(R.id.generalStrategyNotes);
 
         //Iterate through references[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: references)
         {
-            if(position > 7){
+            if(position > 5){
                 break;
             }
             //Putting a human-readable string value instead of boolean
@@ -91,24 +88,22 @@ public class StrategyInfoFragment extends Fragment
             position++;
         }
 
-        selections[8] = generalNotes.getText().toString();
+        selections[6] = generalNotes.getText().toString();
 
         return selections;
     }
 
     public String[] getOptions()
     {
-        String[] options = new String[9];
+        String[] options = new String[7];
 
-        options[0] = "S1";
-        options[1] = "S2";
-        options[2] = "S3";
-        options[3] = "S4";
-        options[4] = "S5";
-        options[5] = "S6";
-        options[6] = "S7";
-        options[7] = "S8";
-        options[8] = "GENERALNOTES";
+        options[0] = "DOESMOVE";
+        options[1] = "DOESBUNNY";
+        options[2] = "DOESAUTOFILL";
+        options[3] = "DOESREMOVE";
+        options[4] = "DOESDEFENSIVE";
+        options[5] = "DOESOFFENSIVE";
+        options[6] = "GENERALNOTES";
 
         return options;
     }

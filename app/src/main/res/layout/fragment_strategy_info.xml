@@ -13,52 +13,40 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
-        android:id="@+id/doesSwitch"
+        android:id="@+id/doesMove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Can Deliver to Switch" />
+        android:text="Move Crates" />
 
     <CheckBox
-        android:id="@+id/doesScale"
+        android:id="@+id/doesBunny"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Can Deliver to Scale" />
+        android:text="Put Bunnies In Crates" />
 
     <CheckBox
-        android:id="@+id/doesLiftCubes"
+        android:id="@+id/doesAutoFill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lifts Cubes" />
+        android:text="Fill Crates During Auto" />
 
     <CheckBox
-        android:id="@+id/doesShootCubes"
+        android:id="@+id/doesRemove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shoots Cubes" />
+        android:text="Remove Enemy Balls" />
 
     <CheckBox
-        android:id="@+id/doesVault"
+        android:id="@+id/doesDefensive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Deliver to Vault" />
+        android:text="Play Defensively" />
 
     <CheckBox
-        android:id="@+id/doesClimb"
+        android:id="@+id/doesOffensive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Climb" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/playDefense"
-        android:id="@+id/isDefensive"/>
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/isOffensive"
-        android:text="@string/playOffense"/>
+        android:text="Play Offensively" />
 
     <Space
         android:layout_width="match_parent"
