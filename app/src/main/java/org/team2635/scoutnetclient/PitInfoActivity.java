@@ -271,7 +271,6 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
 
                     try {
 
-
                         //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
                         //URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
                         URL url = new URL("http://"+ address + "/" + pageID);
@@ -313,7 +312,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
                             PitInfoActivity.this.runOnUiThread(new Runnable() {
                                                                 @Override
                                                                 public void run() {
-                                                                    showDialog("success");
+                                                                   showDialog("success");
                                                                 }
                                                             }
 

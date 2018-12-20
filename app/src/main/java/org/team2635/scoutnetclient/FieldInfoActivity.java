@@ -100,91 +100,6 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         }
     }
 
-    private void submitData()
-    {
-        SharedPreferences sharedPref = getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
-        final DataManager manager = new DataManager(sharedPref);
-
-        String[] urls = manager.getURLArray();
-        //TODO: Test address retrieval from settings
-        final String address = settingsPref.getString("pref_key_server_ip", "");
-        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
-
-        //TODO: Test new data post functionality
-        for (final String s : urls)
-        {
-            Thread thread = new Thread(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    boolean success = true;
-
-                    try {
-
-                        //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
-                        //URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
-                        URL url = new URL("http://"+ address + "/" + pageID);
-                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                        urlConnection.setDoOutput(true);
-                        urlConnection.setRequestMethod("POST");
-                        urlConnection.setRequestProperty("Accept", "application/x-www-form-urlencoded");
-                        urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-
-                        urlConnection.connect();
-
-                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
-                        out.write("DATA=" + s);
-                        out.flush();
-
-                        out.close();
-
-                        try {
-                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                            Log.d(TAG, in.toString());
-                        } finally {
-                            urlConnection.disconnect();
-                        }
-
-                    } catch (IOException e) {
-                        Log.e(TAG, e.toString());
-                        FieldInfoActivity.this.runOnUiThread(new Runnable() {
-                                                            @Override
-                                                            public void run() {
-                                                                showDialog("uploadFailure");
-                                                            }
-                                                        }
-
-                        );
-                        success = false;
-                    } finally {
-                        if (success) {
-                            manager.clearData();
-                            FieldInfoActivity.this.runOnUiThread(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    showDialog("success");
-                                                                }
-                                                            }
-
-                            );
-                        }
-                    }
-                }
-            });
-            thread.start();
-
-            Log.d(TAG, "Extracted and ran a URL! Data: " + s);
-        }
-
-        //Clears saved data sets from memory. Prevents duplicate uploads.
-        //TODO: Implement checking from server
-
-
-    }
-
     private void saveData()
     {
         SharedPreferences sharedPref = getSharedPreferences(
@@ -297,6 +212,90 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         showDialog("dataSaved");
     }
 
+    private void submitData()
+    {
+        SharedPreferences sharedPref = getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+        SharedPreferences settingsPref = PreferenceManager.getDefaultSharedPreferences(this);
+        final DataManager manager = new DataManager(sharedPref);
+
+        String[] urls = manager.getURLArray();
+        //TODO: Test address retrieval from settings
+        final String address = settingsPref.getString("pref_key_server_ip", "");
+        final String pageID = settingsPref.getString("pref_key_server_data_page", "");
+
+        //TODO: Test new data post functionality
+        for (final String s : urls)
+        {
+            Thread thread = new Thread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    boolean success = true;
+
+                    try {
+
+                        //URL url = new URL("http://" + address + "/" + pageID + "?" + s);
+                        //URL url = new URL("http://"+ address + "/" + pageID + "?DATA=" + s);
+                        URL url = new URL("http://"+ address + "/" + pageID);
+                        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                        urlConnection.setDoOutput(true);
+                        urlConnection.setRequestMethod("POST");
+                        urlConnection.setRequestProperty("Accept", "application/x-www-form-urlencoded");
+                        urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+                        urlConnection.connect();
+
+                        OutputStreamWriter out = new OutputStreamWriter(urlConnection.getOutputStream());
+                        out.write("DATA=" + s);
+                        out.flush();
+
+                        out.close();
+
+                        try {
+                            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                            Log.d(TAG, in.toString());
+                        } finally {
+                            urlConnection.disconnect();
+                        }
+
+                    } catch (IOException e) {
+                        Log.e(TAG, e.toString());
+                        FieldInfoActivity.this.runOnUiThread(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                showDialog("uploadFailure");
+                                                            }
+                                                        }
+
+                        );
+                        success = false;
+                    } finally {
+                        if (success) {
+                            manager.clearData();
+                            FieldInfoActivity.this.runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    showDialog("success");
+                                                                }
+                                                            }
+
+                            );
+                        }
+                    }
+                }
+            });
+            thread.start();
+
+            Log.d(TAG, "Extracted and ran a URL! Data: " + s);
+        }
+
+        //Clears saved data sets from memory. Prevents duplicate uploads.
+        //TODO: Implement checking from server
+
+
+    }
 
     // The dialog fragment receives a reference to this Activity through the
     // Fragment.onAttach() callback, which it uses to call the following methods
