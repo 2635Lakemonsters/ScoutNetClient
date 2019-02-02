@@ -151,8 +151,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
         String centerCrossed = autoFrag.centerCrossed();
-        String autoCratesFilled = autoFrag.getCratesFilled();
-        //String autoLowScores = autoFrag.getLowScores();
+        String autoCargoDelivered = autoFrag.getCargoDelivered();
+        String autoPanelsAttached = autoFrag.getPanelsAttached();
         String autoBroke = autoFrag.autoBroke();
 
         try
@@ -160,8 +160,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
             jsonObject.accumulate("DOESAUTO", autonomous);
             jsonObject.accumulate("CENTERCROSSED", centerCrossed);
             jsonObject.accumulate("AUTOBROKE", autoBroke);
-            jsonObject.accumulate("AUTOCRATESFILLED", autoCratesFilled);
-            //jsonObject.accumulate("AUTOLOWSCORES", autoLowScores);
+            jsonObject.accumulate("AUTOCARGODELIVERED", autoCargoDelivered);
+            jsonObject.accumulate("AUTOPANELSATTACHED", autoPanelsAttached);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -172,8 +172,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleCratesFilled = teleFrag.getCratesFilled();
-        String teleBunniesPlaced = teleFrag.getBunniesPlaced();
+        String teleCargoDelivered = teleFrag.getCargoDelivered();
+        String telePanelsAttached = teleFrag.getPanelsAttached();
 
         String didMalfunction = teleFrag.didMalfunction();
         String doesDefend = teleFrag.doesDefend();
@@ -181,8 +181,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         try
         {
-            jsonObject.accumulate("TELECRATESFILLED", teleCratesFilled);
-            jsonObject.accumulate("TELEBUNNIESPLACED", teleBunniesPlaced);
+            jsonObject.accumulate("TELECARGODELIVERED", teleCargoDelivered);
+            jsonObject.accumulate("TELEPANELSATTACHED", telePanelsAttached);
 
             jsonObject.accumulate("MALFUNCTION", didMalfunction);
             jsonObject.accumulate("DOESDEFEND", doesDefend);
@@ -197,9 +197,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(3, false);
 
         String story = defenseFrag.getStory();
+        String climbLevel = defenseFrag.getClimbingLevel();
+        String helpsOthers = defenseFrag.getHelpOthers();
 
         try{
             jsonObject.accumulate("SPECIALNOTES", story);
+            jsonObject.accumulate("CLIMBLEVEL", climbLevel);
+            jsonObject.accumulate("HELPSOTHERS", helpsOthers);
         } catch (Exception e){
             Log.d("InputStream", e.getLocalizedMessage());
         }

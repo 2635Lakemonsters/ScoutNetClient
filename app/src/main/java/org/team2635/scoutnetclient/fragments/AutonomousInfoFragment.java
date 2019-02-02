@@ -16,8 +16,8 @@ import org.team2635.scoutnetclient.R;
 
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int cratesFilled = 0;
-    //private int lowScores = 0;
+    private int cargoDelivered = 0;
+    private int panelsAttached = 0;
 
     public AutonomousInfoFragment()
     {
@@ -29,16 +29,16 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_autonomous_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.autoCrateAdd);
-        Button button2 = (Button) view.findViewById(R.id.autoCrateSub);
-//        Button button3 = (Button) view.findViewById(R.id.autoLowAdd);
-//        Button button4 = (Button) view.findViewById(R.id.autoLowSub);
+        Button button1 = (Button) view.findViewById(R.id.autoCargoAdd);
+        Button button2 = (Button) view.findViewById(R.id.autoCargoSub);
+        Button button3 = (Button) view.findViewById(R.id.autoPanelAdd);
+        Button button4 = (Button) view.findViewById(R.id.autoPanelSub);
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-//        button3.setOnClickListener(this);
-//        button4.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
 
 
         return view;
@@ -58,11 +58,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Autonomous Info");
-            TextView crates = (TextView) getActivity().findViewById(R.id.autoCrateNumber);
-            //TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
+            TextView cargo = (TextView) getActivity().findViewById(R.id.autoCargoNumber);
+            TextView panels = (TextView) getActivity().findViewById(R.id.autoPanelNumber);
 
-            crates.setText(String.valueOf(cratesFilled));
-            //low.setText(String.valueOf(lowScores));
+            cargo.setText(String.valueOf(cargoDelivered));
+            panels.setText(String.valueOf(panelsAttached));
         }
     }
 
@@ -71,24 +71,24 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         switch(v.getId())
         {
-            case R.id.autoCrateAdd:
-                ++cratesFilled;
+            case R.id.autoCargoAdd:
+                ++cargoDelivered;
                 break;
-            case R.id.autoCrateSub:
-                if(cratesFilled > 0)
+            case R.id.autoCargoSub:
+                if(cargoDelivered > 0)
                 {
-                    --cratesFilled;
+                    --cargoDelivered;
                 }
                 break;
-//            case R.id.autoLowAdd:
-//                ++lowScores;
-//                break;
-//            case R.id.autoLowSub:
-//                if(lowScores > 0)
-//                {
-//                    --lowScores;
-//                }
-//                break;
+            case R.id.autoPanelAdd:
+                ++panelsAttached;
+                break;
+            case R.id.autoPanelSub:
+                if(panelsAttached > 0)
+                {
+                    --panelsAttached;
+                }
+                break;
         }
         updateCounts();
     }
@@ -139,18 +139,18 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String getCratesFilled()
+    public String getCargoDelivered()
     {
-        return Integer.toString(cratesFilled);
+        return Integer.toString(cargoDelivered);
     }
-    //public String getLowScores() { return Integer.toString(lowScores);}
+    public String getPanelsAttached() { return Integer.toString(panelsAttached);}
 
     private void updateCounts()
     {
-        TextView crates = (TextView) getActivity().findViewById(R.id.autoCrateNumber);
-        //TextView low = (TextView) getActivity().findViewById(R.id.autoLowGoalNumber);
+        TextView cargo = (TextView) getActivity().findViewById(R.id.autoCargoNumber);
+        TextView panels = (TextView) getActivity().findViewById(R.id.autoPanelNumber);
 
-        crates.setText(String.valueOf(cratesFilled));
-        //low.setText(String.valueOf(lowScores));
+        cargo.setText(String.valueOf(cargoDelivered));
+        panels.setText(String.valueOf(panelsAttached));
     }
 }

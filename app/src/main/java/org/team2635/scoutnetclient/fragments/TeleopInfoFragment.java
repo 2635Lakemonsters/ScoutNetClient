@@ -17,8 +17,8 @@ import org.team2635.scoutnetclient.R;
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int cratesFilled = 0;
-    private int bunniesPlaced = 0;
+    private int cargoDelivered = 0;
+    private int panelsAttached = 0;
 
 
     public TeleopInfoFragment()
@@ -31,10 +31,10 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teleop_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.teleCrateAdd);
-        Button button2 = (Button) view.findViewById(R.id.teleCrateSub);
-        Button button5 = (Button) view.findViewById(R.id.teleBunnyAdd);
-        Button button6 = (Button) view.findViewById(R.id.teleBunnySub);
+        Button button1 = (Button) view.findViewById(R.id.teleCargoAdd);
+        Button button2 = (Button) view.findViewById(R.id.teleCargoSub);
+        Button button5 = (Button) view.findViewById(R.id.telePanelAdd);
+        Button button6 = (Button) view.findViewById(R.id.telePanelSub);
 
 
 
@@ -61,11 +61,11 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Teleop Info");
-            TextView CratesFilled = (TextView) getActivity().findViewById(R.id.teleopCratesFilledNum);
-            TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.teleopBunniesPlacedNum);
+            TextView cargo = (TextView) getActivity().findViewById(R.id.teleCargoNum);
+            TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.telePanelNum);
 
-            CratesFilled.setText(String.valueOf(cratesFilled));
-            BunniesPlaced.setText(String.valueOf(bunniesPlaced));
+            cargo.setText(String.valueOf(cargoDelivered));
+            BunniesPlaced.setText(String.valueOf(panelsAttached));
         }
     }
 
@@ -74,22 +74,22 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     {
         switch(v.getId())
         {
-            case R.id.teleCrateAdd:
-                ++cratesFilled;
+            case R.id.teleCargoAdd:
+                ++cargoDelivered;
                 break;
-            case R.id.teleCrateSub:
-                if(cratesFilled > 0)
+            case R.id.teleCargoSub:
+                if(cargoDelivered > 0)
                 {
-                    --cratesFilled;
+                    --cargoDelivered;
                 }
                 break;
-            case R.id.teleBunnyAdd:
-                ++bunniesPlaced;
+            case R.id.telePanelAdd:
+                ++panelsAttached;
                 break;
-            case R.id.teleBunnySub:
-                if(bunniesPlaced > 0)
+            case R.id.telePanelSub:
+                if(panelsAttached > 0)
                 {
-                    --bunniesPlaced;
+                    --panelsAttached;
                 }
                 break;
 
@@ -99,22 +99,22 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
     private void updateCounts()
     {
-        TextView CratesFilled = (TextView) getActivity().findViewById(R.id.teleopCratesFilledNum);
-        TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.teleopBunniesPlacedNum);
+        TextView cargo = (TextView) getActivity().findViewById(R.id.teleCargoNum);
+        TextView panels = (TextView) getActivity().findViewById(R.id.telePanelNum);
 
-        CratesFilled.setText(String.valueOf(cratesFilled));
+        cargo.setText(String.valueOf(cargoDelivered));
 
-        BunniesPlaced.setText(String.valueOf(bunniesPlaced));
+        panels.setText(String.valueOf(panelsAttached));
 
     }
 
-    public String getCratesFilled()
+    public String getCargoDelivered()
     {
-        return Integer.toString(cratesFilled);
+        return Integer.toString(cargoDelivered);
     }
-    public String getBunniesPlaced()
+    public String getPanelsAttached()
     {
-        return Integer.toString(bunniesPlaced);
+        return Integer.toString(panelsAttached);
     }
 
     public String didMalfunction()

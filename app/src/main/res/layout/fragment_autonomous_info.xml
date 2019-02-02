@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="61dp"
         android:layout_gravity="center_horizontal"
-        android:text="Crossed Centerline" />
+        android:text="Crossed Hab Line" />
 
 
     <CheckBox
@@ -42,13 +42,6 @@
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/woodieView"
-            android:layout_width="194dp"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:src="@drawable/woodie2" />
 
         <LinearLayout
             android:layout_width="191dp"
@@ -66,10 +59,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Crates Filled" />
+                android:text="Cargo Delivered" />
 
             <Button
-                android:id="@+id/autoCrateAdd"
+                android:id="@+id/autoCargoAdd"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,14 +71,63 @@
                 android:text="+" />
 
             <TextView
-                android:id="@+id/autoCrateNumber"
+                android:id="@+id/autoCargoNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0" />
 
             <Button
-                android:id="@+id/autoCrateSub"
+                android:id="@+id/autoCargoSub"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:nestedScrollingEnabled="false"
+                android:text="-" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="120dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="191dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.89"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="0.59" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Hatch Panels Attached" />
+
+            <Button
+                android:id="@+id/autoPanelAdd"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:nestedScrollingEnabled="false"
+                android:text="+" />
+
+            <TextView
+                android:id="@+id/autoPanelNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/autoPanelSub"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

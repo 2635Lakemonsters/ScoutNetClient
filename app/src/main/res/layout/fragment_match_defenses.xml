@@ -22,4 +22,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.06"/>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Climbing"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/climbingLevel">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Didn't Climb"
+            android:id="@+id/didnt"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:text="Level One"
+            android:id="@+id/levelOne"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level Two"
+            android:id="@+id/levelTwo"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level Three"
+            android:id="@+id/levelThree"/>
+
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/helpsOthers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Helps Others Climb" />
 </LinearLayout>
