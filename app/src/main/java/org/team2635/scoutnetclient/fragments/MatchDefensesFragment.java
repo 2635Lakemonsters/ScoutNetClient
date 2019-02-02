@@ -56,23 +56,26 @@ public class MatchDefensesFragment extends Fragment
     public String getClimbingLevel()
     {
         String returnString = "";
-        RadioGroup group = (RadioGroup) mView.findViewById(R.id.climbingLevel);
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.climbingLevel);
 
 
         int id = group.getCheckedRadioButtonId();
 
+        System.out.println("getClimbingLevel()");
+
         if(id == -1)
         {
+            System.out.println("id = -1");
             //No button checked, not to worry
             returnString = "";
         }
         else
         {
+            System.out.println("else");
             String idString = getResources().getResourceEntryName(id);
-            returnString = idString.substring(4);
+            returnString = idString;
         }
-
-
+        System.out.println("return");
         return returnString;
     }
 
