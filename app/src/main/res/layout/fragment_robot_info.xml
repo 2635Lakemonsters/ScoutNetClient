@@ -86,32 +86,40 @@
             android:textColor="@android:color/black" />
 
         <CheckBox
-            android:id="@+id/canCollect"
+            android:id="@+id/canCargo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Collect Balls" />
+            android:text="Manipulate Cargo" />
 
         <CheckBox
-            android:id="@+id/canFill"
+            android:id="@+id/canHatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Fill Crates" />
+            android:text="Manipulate Hatches" />
 
         <CheckBox
-            android:id="@+id/canBunny"
+            android:id="@+id/canElevator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Manipulate Bunnies" />
+            android:text="Reach All 3 Rocket Levels" />
 
         <CheckBox
-            android:id="@+id/canSort"
+            android:id="@+id/canClimb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Sort Balls" />
+            android:text="Climb To Level 2" />
+
+        <CheckBox
+            android:id="@+id/canClimb3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Climb To Level 3" />
+
 
     </LinearLayout>
 

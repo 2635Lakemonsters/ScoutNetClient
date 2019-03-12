@@ -13,28 +13,28 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
-        android:id="@+id/doesMove"
+        android:id="@+id/doesAutonomous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Move Crates" />
+        android:text="Autonomously Drive During Sandstorm" />
 
     <CheckBox
-        android:id="@+id/doesBunny"
+        android:id="@+id/doesSandstorm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Put Bunnies In Crates" />
+        android:text="Get Driven By Driver During Sandstorm" />
 
     <CheckBox
-        android:id="@+id/doesAutoFill"
+        android:id="@+id/doesRocket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fill Crates During Auto" />
+        android:text="Work The Rocket" />
 
     <CheckBox
-        android:id="@+id/doesRemove"
+        android:id="@+id/doesShip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove Enemy Balls" />
+        android:text="Work The Cargo Ship" />
 
     <CheckBox
         android:id="@+id/doesDefensive"

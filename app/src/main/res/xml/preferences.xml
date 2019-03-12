@@ -7,13 +7,13 @@
         android:title="Server Settings"
         android:key="pref_key_server_settings">
         <EditTextPreference
+            android:defaultValue="35.185.205.254"
             android:key="pref_key_server_ip"
             android:summary="IP Address of the ScoutNet Server. Get this from scouting manager."
-            android:title="IP Address"
-            android:defaultValue="192.168.7.2"/>
+            android:title="IP Address" />
 
         <EditTextPreference
-            android:defaultValue="pitdata.php"
+            android:defaultValue="scouting.php"
             android:key="pref_key_server_data_page"
             android:summary="Data page of the ScoutNet Server. Get this from scouting manager."
             android:title="Data Page" />
