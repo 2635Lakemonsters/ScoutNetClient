@@ -16,8 +16,8 @@ import org.team2635.scoutnetclient.R;
 
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int cargoDelivered = 0;
-    private int panelsAttached = 0;
+    private int bunniesSupported = 0;
+    private int tubsContacted = 0;
 
     public AutonomousInfoFragment()
     {
@@ -29,10 +29,10 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_autonomous_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.autoCargoAdd);
-        Button button2 = (Button) view.findViewById(R.id.autoCargoSub);
-        Button button3 = (Button) view.findViewById(R.id.autoPanelAdd);
-        Button button4 = (Button) view.findViewById(R.id.autoPanelSub);
+        Button button1 = (Button) view.findViewById(R.id.autoBunniesAdd);
+        Button button2 = (Button) view.findViewById(R.id.autoBunniesSub);
+        Button button3 = (Button) view.findViewById(R.id.autoTubsAdd);
+        Button button4 = (Button) view.findViewById(R.id.autoTubsSub);
 
 
         button1.setOnClickListener(this);
@@ -58,11 +58,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Autonomous Info");
-            TextView cargo = (TextView) getActivity().findViewById(R.id.autoCargoNumber);
-            TextView panels = (TextView) getActivity().findViewById(R.id.autoPanelNumber);
+            TextView bunnies = (TextView) getActivity().findViewById(R.id.autoBunniesNumber);
+            TextView tubs = (TextView) getActivity().findViewById(R.id.autoTubsNumber);
 
-            cargo.setText(String.valueOf(cargoDelivered));
-            panels.setText(String.valueOf(panelsAttached));
+            bunnies.setText(String.valueOf(bunniesSupported));
+            tubs.setText(String.valueOf(tubsContacted));
         }
     }
 
@@ -71,22 +71,22 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         switch(v.getId())
         {
-            case R.id.autoCargoAdd:
-                ++cargoDelivered;
+            case R.id.autoBunniesAdd:
+                ++bunniesSupported;
                 break;
-            case R.id.autoCargoSub:
-                if(cargoDelivered > 0)
+            case R.id.autoBunniesSub:
+                if(bunniesSupported > 0)
                 {
-                    --cargoDelivered;
+                    --bunniesSupported;
                 }
                 break;
-            case R.id.autoPanelAdd:
-                ++panelsAttached;
+            case R.id.autoTubsAdd:
+                ++tubsContacted;
                 break;
-            case R.id.autoPanelSub:
-                if(panelsAttached > 0)
+            case R.id.autoTubsSub:
+                if(tubsContacted > 0)
                 {
-                    --panelsAttached;
+                    --tubsContacted;
                 }
                 break;
         }
@@ -109,9 +109,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String centerCrossed()
+    public String supportsTub()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.matchCenterCrossed);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.supportsTub);
         String toReturn;
         if(box.isChecked())
         {
@@ -139,18 +139,18 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String getCargoDelivered()
+    public String getBunniesSupported()
     {
-        return Integer.toString(cargoDelivered);
+        return Integer.toString(bunniesSupported);
     }
-    public String getPanelsAttached() { return Integer.toString(panelsAttached);}
+    public String getTubsContacted() { return Integer.toString(tubsContacted);}
 
     private void updateCounts()
     {
-        TextView cargo = (TextView) getActivity().findViewById(R.id.autoCargoNumber);
-        TextView panels = (TextView) getActivity().findViewById(R.id.autoPanelNumber);
+        TextView bunnies = (TextView) getActivity().findViewById(R.id.autoBunniesNumber);
+        TextView tubs = (TextView) getActivity().findViewById(R.id.autoTubsNumber);
 
-        cargo.setText(String.valueOf(cargoDelivered));
-        panels.setText(String.valueOf(panelsAttached));
+        bunnies.setText(String.valueOf(bunniesSupported));
+        tubs.setText(String.valueOf(tubsContacted));
     }
 }

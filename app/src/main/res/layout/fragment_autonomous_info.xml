@@ -22,11 +22,11 @@
         android:text="@string/doesAutonomous" />
 
     <CheckBox
-        android:id="@+id/matchCenterCrossed"
+        android:id="@+id/supportsTub"
         android:layout_width="wrap_content"
         android:layout_height="61dp"
         android:layout_gravity="center_horizontal"
-        android:text="Crossed Hab Line" />
+        android:text="Supports Tub" />
 
 
     <CheckBox
@@ -34,9 +34,10 @@
         android:layout_width="wrap_content"
         android:layout_height="52dp"
         android:layout_gravity="center_horizontal"
-        android:text="Auto Broke" />
+        android:text="Auto Broke"
+        android:visibility="gone" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:baselineAligned="false"
@@ -44,8 +45,12 @@
         android:weightSum="1">
 
         <LinearLayout
-            android:layout_width="191dp"
+            android:layout_width="192dp"
             android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="0.89"
             android:orientation="vertical"
             android:weightSum="1">
@@ -59,10 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Cargo Delivered" />
+                android:text="Bunnies Supported" />
 
             <Button
-                android:id="@+id/autoCargoAdd"
+                android:id="@+id/autoBunniesAdd"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,14 +76,14 @@
                 android:text="+" />
 
             <TextView
-                android:id="@+id/autoCargoNumber"
+                android:id="@+id/autoBunniesNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0" />
 
             <Button
-                android:id="@+id/autoCargoSub"
+                android:id="@+id/autoBunniesSub"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -95,6 +100,9 @@
         <LinearLayout
             android:layout_width="191dp"
             android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_weight="0.89"
             android:orientation="vertical"
             android:weightSum="1">
@@ -108,10 +116,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Hatch Panels Attached" />
+                android:text="Tubs Contacted" />
 
             <Button
-                android:id="@+id/autoPanelAdd"
+                android:id="@+id/autoTubsAdd"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -120,14 +128,14 @@
                 android:text="+" />
 
             <TextView
-                android:id="@+id/autoPanelNumber"
+                android:id="@+id/autoTubsNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0" />
 
             <Button
-                android:id="@+id/autoPanelSub"
+                android:id="@+id/autoTubsSub"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,7 +149,7 @@
 
         </LinearLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
 
