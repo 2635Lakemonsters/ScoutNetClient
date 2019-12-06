@@ -17,7 +17,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    private CheckBox[] checkBoxReferences = new CheckBox[5];
+    private CheckBox[] checkBoxReferences = new CheckBox[4];
 
     public RobotInfoFragment()
     {
@@ -57,17 +57,15 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canCargo);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canHatch);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canElevator);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canClimb2);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canClimb3);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canTubs);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canCubes);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBunnies);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canDump);
 
             checkBoxReferences[0] = S1;
             checkBoxReferences[1] = S2;
             checkBoxReferences[2] = S3;
             checkBoxReferences[3] = S4;
-            checkBoxReferences[4] = S5;
 
     }
 
@@ -75,12 +73,12 @@ public class RobotInfoFragment extends Fragment
     {
         getCheckBoxReferences();
         int position = 0;
-        String[] selections = new String[5];
+        String[] selections = new String[4];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
         {
-            if(position > 4) {
+            if(position > 3) {
                 break;
             }
             //Putting a human-readable string value instead of boolean
@@ -100,13 +98,13 @@ public class RobotInfoFragment extends Fragment
 
     public String[] getOptions()
     {
-        String[] options = new String[5];
+        String[] options = new String[4];
 
-        options[0] = "CANCARGO";
-        options[1] = "CANHATCH";
-        options[2] = "CANELEVATOR";
-        options[3] = "CANCLIMB2";
-        options[4] = "CANCLIMB3";
+        options[0] = "CANTUBS";
+        options[1] = "CANCUBES";
+        options[2] = "CANBUNNIES";
+        options[3] = "CANDUMP";
+
 
         return options;
     }

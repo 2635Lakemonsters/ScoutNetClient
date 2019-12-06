@@ -53,7 +53,7 @@
                 android:weightSum="1">
 
                 <LinearLayout
-                    android:layout_width="103dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -62,10 +62,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Cargo Delivered" />
+                        android:text="Final Cubes on Bed" />
 
                     <Button
-                        android:id="@+id/teleCargoAdd"
+                        android:id="@+id/teleCubeAdd"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,14 +74,14 @@
                         android:text="+" />
 
                     <TextView
-                        android:id="@+id/teleCargoNum"
+                        android:id="@+id/teleCubeNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="0" />
 
                     <Button
-                        android:id="@+id/teleCargoSub"
+                        android:id="@+id/teleCubeSub"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -89,44 +89,6 @@
                         android:text="-" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="152dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.26"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textViw12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="Hatch Panels Attached" />
-
-                    <Button
-                        android:id="@+id/telePanelAdd"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:nestedScrollingEnabled="false"
-                        android:text="+" />
-
-                    <TextView
-                        android:id="@+id/telePanelNum"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="0" />
-
-                    <Button
-                        android:id="@+id/telePanelSub"
-                        style="?android:attr/buttonStyleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="-" />
-
-                </LinearLayout>
             </LinearLayout>
 
             <Space
@@ -153,14 +115,21 @@
                     android:layout_height="10dp" />
 
                 <CheckBox
-                    android:id="@+id/doesDefend"
+                    android:id="@+id/doesGive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Robot Defends" />
+                    android:text="Robot Gives Cubes to Teammate" />
 
                 <Space
                     android:layout_width="159dp"
                     android:layout_height="10dp" />
+
+                <CheckBox
+                    android:id="@+id/cubesSpoiled"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cubes Spoiled by Bunny" />
 
             </LinearLayout>
 

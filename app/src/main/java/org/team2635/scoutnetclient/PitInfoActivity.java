@@ -160,14 +160,11 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         //Get data from teaminfo fragment; 3 fields
         String teamNumber = teamFrag.getTeamNumber();
         String teamName = teamFrag.getTeamName();
-        String robotName = teamFrag.getRobotName();
 
         try
         {
             jsonObject.accumulate("TEAMNUMBER", teamNumber);
             jsonObject.accumulate("TEAMNAME", teamName);
-            jsonObject.accumulate("ROBOTNAME", robotName);
-
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());

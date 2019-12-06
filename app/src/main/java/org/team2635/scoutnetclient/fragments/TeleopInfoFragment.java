@@ -17,8 +17,7 @@ import org.team2635.scoutnetclient.R;
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int cargoDelivered = 0;
-    private int panelsAttached = 0;
+    private int bedCubes = 0;
 
 
     public TeleopInfoFragment()
@@ -31,18 +30,14 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teleop_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.teleCargoAdd);
-        Button button2 = (Button) view.findViewById(R.id.teleCargoSub);
-        Button button5 = (Button) view.findViewById(R.id.telePanelAdd);
-        Button button6 = (Button) view.findViewById(R.id.telePanelSub);
+        Button button1 = (Button) view.findViewById(R.id.teleCubeAdd);
+        Button button2 = (Button) view.findViewById(R.id.teleCubeSub);
 
 
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
 
         return view;
     }
@@ -61,11 +56,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Teleop Info");
-            TextView cargo = (TextView) getActivity().findViewById(R.id.teleCargoNum);
-            TextView BunniesPlaced = (TextView) getActivity().findViewById(R.id.telePanelNum);
+            TextView cubes = (TextView) getActivity().findViewById(R.id.teleCubeNumber);
 
-            cargo.setText(String.valueOf(cargoDelivered));
-            BunniesPlaced.setText(String.valueOf(panelsAttached));
+            cubes.setText(String.valueOf(bedCubes));
         }
     }
 
@@ -74,24 +67,16 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     {
         switch(v.getId())
         {
-            case R.id.teleCargoAdd:
-                ++cargoDelivered;
+            case R.id.teleCubeAdd:
+                ++bedCubes;
                 break;
-            case R.id.teleCargoSub:
-                if(cargoDelivered > 0)
+            case R.id.teleCubeSub:
+                if(bedCubes > 0)
                 {
-                    --cargoDelivered;
+                    --bedCubes;
                 }
                 break;
-            case R.id.telePanelAdd:
-                ++panelsAttached;
-                break;
-            case R.id.telePanelSub:
-                if(panelsAttached > 0)
-                {
-                    --panelsAttached;
-                }
-                break;
+
 
         }
         updateCounts();
@@ -99,22 +84,16 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
     private void updateCounts()
     {
-        TextView cargo = (TextView) getActivity().findViewById(R.id.teleCargoNum);
-        TextView panels = (TextView) getActivity().findViewById(R.id.telePanelNum);
+        TextView cubes = (TextView) getActivity().findViewById(R.id.teleCubeNumber);
 
-        cargo.setText(String.valueOf(cargoDelivered));
+        cubes.setText(String.valueOf(bedCubes));
 
-        panels.setText(String.valueOf(panelsAttached));
 
     }
 
-    public String getCargoDelivered()
+    public String getBedCubes()
     {
-        return Integer.toString(cargoDelivered);
-    }
-    public String getPanelsAttached()
-    {
-        return Integer.toString(panelsAttached);
+        return Integer.toString(bedCubes);
     }
 
     public String didMalfunction()
@@ -132,9 +111,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String doesDefend()
+    public String doesGive()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesDefend);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesGive);
         String toReturn;
         if(box.isChecked())
         {

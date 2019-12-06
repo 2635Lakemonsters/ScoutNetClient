@@ -172,20 +172,17 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleCargoDelivered = teleFrag.getCargoDelivered();
-        String telePanelsAttached = teleFrag.getPanelsAttached();
+        String teleBedCubes = teleFrag.getBedCubes();
 
         String didMalfunction = teleFrag.didMalfunction();
-        String doesDefend = teleFrag.doesDefend();
+        String doesGive = teleFrag.doesGive();
         String teleNotes = teleFrag.getNotes();
 
         try
         {
-            jsonObject.accumulate("TELECARGODELIVERED", teleCargoDelivered);
-            jsonObject.accumulate("TELEPANELSATTACHED", telePanelsAttached);
-
+            jsonObject.accumulate("TELEBEDCUBES", teleBedCubes);
             jsonObject.accumulate("MALFUNCTION", didMalfunction);
-            jsonObject.accumulate("DOESDEFEND", doesDefend);
+            jsonObject.accumulate("DOESGIVE", doesGive);
             jsonObject.accumulate("TELENOTES", teleNotes);
         } catch (Exception e)
         {
@@ -202,8 +199,8 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         try{
             jsonObject.accumulate("SPECIALNOTES", story);
-            jsonObject.accumulate("CLIMBLEVEL", climbLevel);
-            jsonObject.accumulate("HELPSOTHERS", helpsOthers);
+            //jsonObject.accumulate("CLIMBLEVEL", climbLevel);
+            //jsonObject.accumulate("HELPSOTHERS", helpsOthers);
         } catch (Exception e){
             Log.d("InputStream", e.getLocalizedMessage());
         }

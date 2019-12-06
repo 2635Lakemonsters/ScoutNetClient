@@ -27,7 +27,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Climbing"
-        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:visibility="gone"/>
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -39,26 +40,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Didn't Climb"
-            android:id="@+id/didnt"/>
+            android:id="@+id/didnt"
+            android:visibility="gone"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="5dp"
             android:text="Level One"
-            android:id="@+id/levelOne"/>
+            android:id="@+id/levelOne"
+            android:visibility="gone"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Level Two"
-            android:id="@+id/levelTwo"/>
+            android:id="@+id/levelTwo"
+            android:visibility="gone"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Level Three"
-            android:id="@+id/levelThree"/>
+            android:id="@+id/levelThree"
+            android:visibility="gone"/>
 
 
     </RadioGroup>
@@ -67,5 +72,6 @@
         android:id="@+id/helpsOthers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Helps Others Climb" />
+        android:text="Helps Others Climb"
+        android:visibility="gone"/>
 </LinearLayout>

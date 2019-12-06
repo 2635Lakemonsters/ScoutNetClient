@@ -13,40 +13,40 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
-        android:id="@+id/doesAutonomous"
+        android:id="@+id/doesAutoContactTubs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Autonomously Drive During Sandstorm" />
+        android:text="Contact Tubs During Autonomous" />
 
     <CheckBox
-        android:id="@+id/doesSandstorm"
+        android:id="@+id/doesAutoSupportTubs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Driven By Driver During Sandstorm" />
+        android:text="Support Tubs During Autonomous" />
 
     <CheckBox
-        android:id="@+id/doesRocket"
+        android:id="@+id/doesAutoSupportBunnies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Work The Rocket" />
+        android:text="Support Bunnies During Autonomous" />
 
     <CheckBox
-        android:id="@+id/doesShip"
+        android:id="@+id/doesGiveCubes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Work The Cargo Ship" />
+        android:text="Give Cubes To Alliance Members" />
 
     <CheckBox
-        android:id="@+id/doesDefensive"
+        android:id="@+id/doesPutBunnies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Defensively" />
+        android:text="Put Bunnies On Opposing Bots" />
 
     <CheckBox
-        android:id="@+id/doesOffensive"
+        android:id="@+id/doesRemoveBunnies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Offensively" />
+        android:text="Remove Bunnies From Itself Or Others" />
 
     <Space
         android:layout_width="match_parent"

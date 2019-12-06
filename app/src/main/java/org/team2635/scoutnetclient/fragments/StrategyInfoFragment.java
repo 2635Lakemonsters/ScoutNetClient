@@ -47,12 +47,12 @@ public class StrategyInfoFragment extends Fragment
     private void getReferences()
     {
             //For reference sheet, see github wiki page: Strategy info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesAutonomous);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesSandstorm);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesRocket);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesShip);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesDefensive);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesOffensive);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesAutoContactTubs);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesAutoSupportTubs);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesAutoSupportBunnies);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesGiveCubes);
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesPutBunnies);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesRemoveBunnies);
 
 
             references[0] = S1;
@@ -97,12 +97,12 @@ public class StrategyInfoFragment extends Fragment
     {
         String[] options = new String[7];
 
-        options[0] = "DOESAUTONOMOUS";
-        options[1] = "DOESSANDSTORM";
-        options[2] = "DOESROCKET";
-        options[3] = "DOESSHIP";
-        options[4] = "DOESDEFENSIVE";
-        options[5] = "DOESOFFENSIVE";
+        options[0] = "DOESAUTOCONTACTTUBS";
+        options[1] = "DOESAUTOSUPPORTTUBS";
+        options[2] = "DOESAUTOSUPPORTBUNNIES";
+        options[3] = "DOESGIVECUBES";
+        options[4] = "DOESPUTBUNNIES";
+        options[5] = "DOESREMOVEBUNNIES";
         options[6] = "GENERALNOTES";
 
         return options;

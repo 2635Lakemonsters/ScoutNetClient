@@ -53,9 +53,4 @@ public class TeamInfoFragment extends Fragment
         return name.getText().toString();
     }
 
-    public String getRobotName()
-    {
-        EditText name = (EditText) getActivity().findViewById(R.id.robotName);
-        return name.getText().toString();
-    }
 }
