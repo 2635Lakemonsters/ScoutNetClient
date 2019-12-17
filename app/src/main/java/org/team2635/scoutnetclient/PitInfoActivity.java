@@ -186,7 +186,7 @@ public class PitInfoActivity extends AppCompatActivity implements UploadPromptDi
         try
         {
             jsonObject.accumulate("NUMOFWHEELS", wheels);
-            jsonObject.accumulate("LOCOMOION", locomotion);
+            jsonObject.accumulate("LOCOMOTION", locomotion);
             jsonObject.accumulate("VISION", vision);
             jsonObject.accumulate("VISIONUSAGE", visionUsage);
             jsonObject.accumulate("DRIVETRAIN", driveTrain);
