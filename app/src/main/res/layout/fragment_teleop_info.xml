@@ -53,7 +53,7 @@
                 android:weightSum="1">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="136dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -62,10 +62,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Final Cubes on Bed" />
+                        android:text="Upper Power Cells" />
 
                     <Button
-                        android:id="@+id/teleCubeAdd"
+                        android:id="@+id/teleUpperAdd"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,14 +74,51 @@
                         android:text="+" />
 
                     <TextView
-                        android:id="@+id/teleCubeNumber"
+                        android:id="@+id/teleUpperNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:text="0" />
 
                     <Button
-                        android:id="@+id/teleCubeSub"
+                        android:id="@+id/teleUpperSub"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="-" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="151dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Lower Power Cells" />
+
+                    <Button
+                        android:id="@+id/teleLowerAdd"
+                        style="?android:attr/buttonStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:nestedScrollingEnabled="false"
+                        android:text="+" />
+
+                    <TextView
+                        android:id="@+id/teleLowerNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="0" />
+
+                    <Button
+                        android:id="@+id/teleLowerSub"
                         style="?android:attr/buttonStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,8 +139,8 @@
 
                 <CheckBox
                     android:id="@+id/didMalfunction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
                     android:text="Robot Malfuntions" />
 
                 <Space
@@ -114,22 +151,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="10dp" />
 
-                <CheckBox
-                    android:id="@+id/doesGive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Robot Gives Cubes to Teammate" />
-
                 <Space
                     android:layout_width="159dp"
                     android:layout_height="10dp" />
 
                 <CheckBox
-                    android:id="@+id/cubesSpoiled"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/usesPanel"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Cubes Spoiled by Bunny" />
+                    android:text="Uses Control Panel" />
 
             </LinearLayout>
 

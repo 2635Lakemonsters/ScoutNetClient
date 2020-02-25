@@ -17,7 +17,8 @@ import org.team2635.scoutnetclient.R;
 
 public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int bedCubes = 0;
+    private int upperCells = 0;
+    private int lowerCells = 0;
 
 
     public TeleopInfoFragment()
@@ -30,14 +31,17 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teleop_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.teleCubeAdd);
-        Button button2 = (Button) view.findViewById(R.id.teleCubeSub);
-
+        Button button1 = (Button) view.findViewById(R.id.teleUpperAdd);
+        Button button2 = (Button) view.findViewById(R.id.teleUpperSub);
+        Button button3 = (Button) view.findViewById(R.id.teleLowerAdd);
+        Button button4 = (Button) view.findViewById(R.id.teleLowerSub);
 
 
 
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
+        button3.setOnClickListener(this);
+        button4.setOnClickListener(this);
 
         return view;
     }
@@ -56,9 +60,12 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Teleop Info");
-            TextView cubes = (TextView) getActivity().findViewById(R.id.teleCubeNumber);
+            TextView upper = (TextView) getActivity().findViewById(R.id.teleUpperNumber);
+            TextView lower = (TextView) getActivity().findViewById(R.id.teleLowerNumber);
 
-            cubes.setText(String.valueOf(bedCubes));
+            upper.setText(String.valueOf(upperCells));
+            lower.setText(String.valueOf(lowerCells));
+
         }
     }
 
@@ -67,13 +74,21 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
     {
         switch(v.getId())
         {
-            case R.id.teleCubeAdd:
-                ++bedCubes;
+            case R.id.teleUpperAdd:
+                ++upperCells;
                 break;
-            case R.id.teleCubeSub:
-                if(bedCubes > 0)
+            case R.id.teleUpperSub:
+                if(upperCells > 0)
                 {
-                    --bedCubes;
+                    --upperCells;
+                }
+            case R.id.teleLowerAdd:
+                ++lowerCells;
+                break;
+            case R.id.teleLowerSub:
+                if(lowerCells > 0)
+                {
+                    --lowerCells;
                 }
                 break;
 
@@ -84,17 +99,24 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
 
     private void updateCounts()
     {
-        TextView cubes = (TextView) getActivity().findViewById(R.id.teleCubeNumber);
+        TextView upper = (TextView) getActivity().findViewById(R.id.teleUpperNumber);
+        TextView lower = (TextView) getActivity().findViewById(R.id.teleLowerNumber);
 
-        cubes.setText(String.valueOf(bedCubes));
+        upper.setText(String.valueOf(upperCells));
+        lower.setText(String.valueOf(lowerCells));
 
 
     }
 
-    public String getBedCubes()
+    public String getUpperCells()
     {
-        return Integer.toString(bedCubes);
+        return Integer.toString(upperCells);
     }
+    public String getLowerCells()
+    {
+        return Integer.toString(lowerCells);
+    }
+
 
     public String didMalfunction()
     {
@@ -111,9 +133,9 @@ public class TeleopInfoFragment extends Fragment implements View.OnClickListener
         return toReturn;
     }
 
-    public String doesGive()
+    public String usesPanel()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.doesGive);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.usesPanel);
         String toReturn;
         if(box.isChecked())
         {

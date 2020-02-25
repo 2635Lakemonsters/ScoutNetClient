@@ -53,15 +53,15 @@ public class MatchDefensesFragment extends Fragment
         return astory.getText().toString();
     }
 
-    public String getClimbingLevel()
+    public String getEndgame()
     {
         String returnString = "";
-        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.climbingLevel);
+        RadioGroup group = (RadioGroup) getActivity().findViewById(R.id.endgame);
 
 
         int id = group.getCheckedRadioButtonId();
 
-        System.out.println("getClimbingLevel()");
+        System.out.println("getEndgame()");
 
         if(id == -1)
         {
@@ -79,9 +79,9 @@ public class MatchDefensesFragment extends Fragment
         return returnString;
     }
 
-    public String getHelpOthers()
+    public String getLevel()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.helpsOthers);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.switchLevel);
         String toReturn;
         if(box.isChecked())
         {

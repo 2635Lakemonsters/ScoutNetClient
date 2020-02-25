@@ -150,18 +150,20 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
 
         //Get info from autonomous fragment
         String autonomous = autoFrag.getAutonomous();
-        String supportsTub = autoFrag.supportsTub();
-        String autoBunniesSupported = autoFrag.getBunniesSupported();
-        String AutoTubsContacted = autoFrag.getTubsContacted();
-        String autoBroke = autoFrag.autoBroke();
+        String crossesLine = autoFrag.crossesLine();
+        String collectsCells = autoFrag.collectsCells();
+        String shootsCells = autoFrag.shootsCells();
+        String autoUpperCells = autoFrag.getUpperCells();
+        String autoLowerCells = autoFrag.getLowerCells();
 
         try
         {
             jsonObject.accumulate("DOESAUTO", autonomous);
-            jsonObject.accumulate("SUPPORTSTUB", supportsTub);
-            //jsonObject.accumulate("AUTOBROKE", autoBroke);
-            jsonObject.accumulate("AUTOBUNNIESSUPPORTED", autoBunniesSupported);
-            jsonObject.accumulate("AUTOTUBSCONTACTED", AutoTubsContacted);
+            jsonObject.accumulate("CROSSESLINE", crossesLine);
+            jsonObject.accumulate("COLLECTSCELLS", collectsCells);
+            jsonObject.accumulate("SHOOTSCELLS", shootsCells);
+            jsonObject.accumulate("AUTOUPPERCELLS", autoUpperCells);
+            jsonObject.accumulate("AUTOLOWERCELLS", autoLowerCells);
         } catch (Exception e)
         {
             Log.d("InputStream", e.getLocalizedMessage());
@@ -172,17 +174,18 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(2, false);
 
         //Get info from teleop fragment
-        String teleBedCubes = teleFrag.getBedCubes();
-
+        String teleUpperCells = teleFrag.getUpperCells();
+        String teleLowerCells = teleFrag.getLowerCells();
         String didMalfunction = teleFrag.didMalfunction();
-        String doesGive = teleFrag.doesGive();
+        String usesPanel = teleFrag.usesPanel();
         String teleNotes = teleFrag.getNotes();
 
         try
         {
-            jsonObject.accumulate("TELEBEDCUBES", teleBedCubes);
+            jsonObject.accumulate("TELEUPPERCELLS", teleUpperCells);
+            jsonObject.accumulate("TELELOWERCELLS", teleLowerCells);
             jsonObject.accumulate("MALFUNCTION", didMalfunction);
-            jsonObject.accumulate("DOESGIVE", doesGive);
+            jsonObject.accumulate("USESPANEL", usesPanel);
             jsonObject.accumulate("TELENOTES", teleNotes);
         } catch (Exception e)
         {
@@ -194,13 +197,13 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         viewpager.setCurrentItem(3, false);
 
         String story = defenseFrag.getStory();
-        String climbLevel = defenseFrag.getClimbingLevel();
-        String helpsOthers = defenseFrag.getHelpOthers();
+        String endgame = defenseFrag.getEndgame();
+        String switchLevel = defenseFrag.getLevel();
 
         try{
             jsonObject.accumulate("SPECIALNOTES", story);
-            //jsonObject.accumulate("CLIMBLEVEL", climbLevel);
-            //jsonObject.accumulate("HELPSOTHERS", helpsOthers);
+            jsonObject.accumulate("ENDGAME", endgame);
+            jsonObject.accumulate("SWITCHLEVEL", switchLevel);
         } catch (Exception e){
             Log.d("InputStream", e.getLocalizedMessage());
         }

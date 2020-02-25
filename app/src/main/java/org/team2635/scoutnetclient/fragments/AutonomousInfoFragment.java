@@ -16,8 +16,8 @@ import org.team2635.scoutnetclient.R;
 
 public class AutonomousInfoFragment extends Fragment implements View.OnClickListener
 {
-    private int bunniesSupported = 0;
-    private int tubsContacted = 0;
+    private int upperCells = 0;
+    private int lowerCells = 0;
 
     public AutonomousInfoFragment()
     {
@@ -29,10 +29,10 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_autonomous_info, container, false);
 
-        Button button1 = (Button) view.findViewById(R.id.autoBunniesAdd);
-        Button button2 = (Button) view.findViewById(R.id.autoBunniesSub);
-        Button button3 = (Button) view.findViewById(R.id.autoTubsAdd);
-        Button button4 = (Button) view.findViewById(R.id.autoTubsSub);
+        Button button1 = (Button) view.findViewById(R.id.autoUpperAdd);
+        Button button2 = (Button) view.findViewById(R.id.autoUpperSub);
+        Button button3 = (Button) view.findViewById(R.id.autoLowerAdd);
+        Button button4 = (Button) view.findViewById(R.id.autoLowerSub);
 
 
         button1.setOnClickListener(this);
@@ -58,11 +58,11 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         {
             ((FieldInfoActivity) getActivity())
                     .setActionBarTitle("Autonomous Info");
-            TextView bunnies = (TextView) getActivity().findViewById(R.id.autoBunniesNumber);
-            TextView tubs = (TextView) getActivity().findViewById(R.id.autoTubsNumber);
+            TextView upper = (TextView) getActivity().findViewById(R.id.autoUpperNumber);
+            TextView lower = (TextView) getActivity().findViewById(R.id.autoLowerNumber);
 
-            bunnies.setText(String.valueOf(bunniesSupported));
-            tubs.setText(String.valueOf(tubsContacted));
+            upper.setText(String.valueOf(upperCells));
+            lower.setText(String.valueOf(lowerCells));
         }
     }
 
@@ -71,22 +71,22 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
     {
         switch(v.getId())
         {
-            case R.id.autoBunniesAdd:
-                ++bunniesSupported;
+            case R.id.autoUpperAdd:
+                ++upperCells;
                 break;
-            case R.id.autoBunniesSub:
-                if(bunniesSupported > 0)
+            case R.id.autoUpperSub:
+                if(upperCells > 0)
                 {
-                    --bunniesSupported;
+                    --upperCells;
                 }
                 break;
-            case R.id.autoTubsAdd:
-                ++tubsContacted;
+            case R.id.autoLowerAdd:
+                ++lowerCells;
                 break;
-            case R.id.autoTubsSub:
-                if(tubsContacted > 0)
+            case R.id.autoLowerSub:
+                if(lowerCells > 0)
                 {
-                    --tubsContacted;
+                    --lowerCells;
                 }
                 break;
         }
@@ -109,9 +109,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String supportsTub()
+    public String crossesLine()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.supportsTub);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.crossesLine);
         String toReturn;
         if(box.isChecked())
         {
@@ -124,9 +124,9 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String autoBroke()
+    public String shootsCells()
     {
-        CheckBox box = (CheckBox) getActivity().findViewById(R.id.autoBroke);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.shootsCells);
         String toReturn;
         if(box.isChecked())
         {
@@ -139,18 +139,33 @@ public class AutonomousInfoFragment extends Fragment implements View.OnClickList
         return toReturn;
     }
 
-    public String getBunniesSupported()
+    public String collectsCells()
     {
-        return Integer.toString(bunniesSupported);
+        CheckBox box = (CheckBox) getActivity().findViewById(R.id.collectsCells);
+        String toReturn;
+        if(box.isChecked())
+        {
+            toReturn = "Yes";
+        }
+        else
+        {
+            toReturn = "No";
+        }
+        return toReturn;
     }
-    public String getTubsContacted() { return Integer.toString(tubsContacted);}
+
+    public String getUpperCells()
+    {
+        return Integer.toString(upperCells);
+    }
+    public String getLowerCells() { return Integer.toString(lowerCells);}
 
     private void updateCounts()
     {
-        TextView bunnies = (TextView) getActivity().findViewById(R.id.autoBunniesNumber);
-        TextView tubs = (TextView) getActivity().findViewById(R.id.autoTubsNumber);
+        TextView upper = (TextView) getActivity().findViewById(R.id.autoUpperNumber);
+        TextView lower = (TextView) getActivity().findViewById(R.id.autoLowerNumber);
 
-        bunnies.setText(String.valueOf(bunniesSupported));
-        tubs.setText(String.valueOf(tubsContacted));
+        upper.setText(String.valueOf(upperCells));
+        lower.setText(String.valueOf(lowerCells));
     }
 }

@@ -22,12 +22,26 @@
         android:text="@string/doesAutonomous" />
 
     <CheckBox
-        android:id="@+id/supportsTub"
+        android:id="@+id/crossesLine"
         android:layout_width="wrap_content"
         android:layout_height="61dp"
         android:layout_gravity="center_horizontal"
-        android:text="Supports Tub" />
+        android:text="Crosses Initiation Line" />
 
+
+    <CheckBox
+        android:id="@+id/shootsCells"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Shoots Power Cells" />
+
+    <CheckBox
+        android:id="@+id/collectsCells"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Collects Power Cells" />
 
     <CheckBox
         android:id="@+id/autoBroke"
@@ -64,10 +78,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Bunnies Supported" />
+                android:text="Upper Power Cells" />
 
             <Button
-                android:id="@+id/autoBunniesAdd"
+                android:id="@+id/autoUpperAdd"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,14 +90,14 @@
                 android:text="+" />
 
             <TextView
-                android:id="@+id/autoBunniesNumber"
+                android:id="@+id/autoUpperNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0" />
 
             <Button
-                android:id="@+id/autoBunniesSub"
+                android:id="@+id/autoUpperSub"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,10 +130,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="Tubs Contacted" />
+                android:text="Lower Power Cells" />
 
             <Button
-                android:id="@+id/autoTubsAdd"
+                android:id="@+id/autoLowerAdd"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -128,14 +142,14 @@
                 android:text="+" />
 
             <TextView
-                android:id="@+id/autoTubsNumber"
+                android:id="@+id/autoLowerNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="0" />
 
             <Button
-                android:id="@+id/autoTubsSub"
+                android:id="@+id/autoLowerSub"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
