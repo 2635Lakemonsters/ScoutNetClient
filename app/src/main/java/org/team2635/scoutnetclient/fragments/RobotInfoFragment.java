@@ -17,7 +17,7 @@ import org.team2635.scoutnetclient.R;
 public class RobotInfoFragment extends Fragment
 {
     protected View mView;
-    private CheckBox[] checkBoxReferences = new CheckBox[4];
+    private CheckBox[] checkBoxReferences = new CheckBox[6];
 
     public RobotInfoFragment()
     {
@@ -57,15 +57,20 @@ public class RobotInfoFragment extends Fragment
 
 
             //For reference sheet, see github wiki page: Robot info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canTubs);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canCubes);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canBunnies);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canDump);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.canShootHigh);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.canShootLow);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.canControlPanel);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.canCollectGround);
+            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.canCollectLoading);
+            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.canClimb);
+
 
             checkBoxReferences[0] = S1;
             checkBoxReferences[1] = S2;
             checkBoxReferences[2] = S3;
             checkBoxReferences[3] = S4;
+            checkBoxReferences[4] = S4;
+            checkBoxReferences[5] = S6;
 
     }
 
@@ -73,12 +78,12 @@ public class RobotInfoFragment extends Fragment
     {
         getCheckBoxReferences();
         int position = 0;
-        String[] selections = new String[4];
+        String[] selections = new String[6];
 
         //Iterate through checkBoxReferences[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: checkBoxReferences)
         {
-            if(position > 3) {
+            if(position > 5) {
                 break;
             }
             //Putting a human-readable string value instead of boolean
@@ -98,12 +103,14 @@ public class RobotInfoFragment extends Fragment
 
     public String[] getOptions()
     {
-        String[] options = new String[4];
+        String[] options = new String[6];
 
-        options[0] = "CANTUBS";
-        options[1] = "CANCUBES";
-        options[2] = "CANBUNNIES";
-        options[3] = "CANDUMP";
+        options[0] = "CANSHOOTHIGH";
+        options[1] = "CANSHOOTLOW";
+        options[2] = "CANCONTROLPANEL";
+        options[3] = "CANCOLLECTGROUND";
+        options[4] = "CANCOLLECTLOADING";
+        options[5] = "CANCLIMB";
 
 
         return options;

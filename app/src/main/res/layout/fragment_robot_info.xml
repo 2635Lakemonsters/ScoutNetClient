@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="horizontal"
-              tools:context="org.team2635.scoutnetclient.RobotInfoFragment"
+              tools:context="org.team2635.scoutnetclient.fragments.RobotInfoFragment"
               android:baselineAligned="false">
 
 
@@ -86,32 +86,46 @@
             android:textColor="@android:color/black" />
 
         <CheckBox
-            android:id="@+id/canTubs"
+            android:id="@+id/canShootHigh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Pick Up Tubs" />
+            android:text="Shoot High Goal" />
 
         <CheckBox
-            android:id="@+id/canCubes"
+            android:id="@+id/canShootLow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Pick Up Cubes" />
+            android:text="Shoot Low Goal" />
 
         <CheckBox
-            android:id="@+id/canBunnies"
+            android:id="@+id/canControlPanel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Manipulate Bunnies" />
+            android:text="Manipulate Control Panel" />
 
         <CheckBox
-            android:id="@+id/canDump"
+            android:id="@+id/canCollectGround"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Dump Its Bed" />
+            android:text="Collect Power Cells From Ground" />
+
+        <CheckBox
+            android:id="@+id/canCollectLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Collect Power Cells From Control Panel" />
+
+        <CheckBox
+            android:id="@+id/canClimb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Climb" />
 
     </LinearLayout>
 
