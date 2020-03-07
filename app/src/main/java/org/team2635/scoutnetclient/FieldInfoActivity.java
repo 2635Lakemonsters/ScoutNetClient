@@ -203,7 +203,7 @@ public class FieldInfoActivity extends AppCompatActivity implements UploadPrompt
         try{
             jsonObject.accumulate("SPECIALNOTES", story);
             jsonObject.accumulate("ENDGAME", endgame);
-            jsonObject.accumulate("SWITCHLEVEL", switchLevel);
+            jsonObject.accumulate("ISLEVEL", switchLevel);
         } catch (Exception e){
             Log.d("InputStream", e.getLocalizedMessage());
         }

@@ -14,7 +14,7 @@ import org.team2635.scoutnetclient.R;
 
 public class StrategyInfoFragment extends Fragment
 {
-    private CheckBox[] references = new CheckBox[6];
+    private CheckBox[] references = new CheckBox[4];
 
     public StrategyInfoFragment()
     {
@@ -47,33 +47,31 @@ public class StrategyInfoFragment extends Fragment
     private void getReferences()
     {
             //For reference sheet, see github wiki page: Strategy info fragment
-            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesAutoContactTubs);
-            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesAutoSupportTubs);
-            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesAutoSupportBunnies);
-            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesGiveCubes);
-            CheckBox S5 = (CheckBox) getActivity().findViewById(R.id.doesPutBunnies);
-            CheckBox S6 = (CheckBox) getActivity().findViewById(R.id.doesRemoveBunnies);
+            CheckBox S1 = (CheckBox) getActivity().findViewById(R.id.doesAutomaticallyAim);
+            CheckBox S2 = (CheckBox) getActivity().findViewById(R.id.doesAutoShoot);
+            CheckBox S3 = (CheckBox) getActivity().findViewById(R.id.doesAutoPickUp);
+            CheckBox S4 = (CheckBox) getActivity().findViewById(R.id.doesShootFromOtherSide);
+
 
 
             references[0] = S1;
             references[1] = S2;
             references[2] = S3;
             references[3] = S4;
-            references[4] = S5;
-            references[5] = S6;
+
         }
 
     public String[] getData()
     {
         getReferences();
         int position = 0;
-        String[] selections = new String[7];
+        String[] selections = new String[5];
         EditText generalNotes = (EditText) getActivity().findViewById(R.id.generalStrategyNotes);
 
         //Iterate through references[], check if reference is checked, and commit that to selections[position]
         for(CheckBox s: references)
         {
-            if(position > 5){
+            if(position > 3){
                 break;
             }
             //Putting a human-readable string value instead of boolean
@@ -88,22 +86,20 @@ public class StrategyInfoFragment extends Fragment
             position++;
         }
 
-        selections[6] = generalNotes.getText().toString();
+        selections[4] = generalNotes.getText().toString();
 
         return selections;
     }
 
     public String[] getOptions()
     {
-        String[] options = new String[7];
+        String[] options = new String[5];
 
-        options[0] = "DOESAUTOCONTACTTUBS";
-        options[1] = "DOESAUTOSUPPORTTUBS";
-        options[2] = "DOESAUTOSUPPORTBUNNIES";
-        options[3] = "DOESGIVECUBES";
-        options[4] = "DOESPUTBUNNIES";
-        options[5] = "DOESREMOVEBUNNIES";
-        options[6] = "GENERALNOTES";
+        options[0] = "DOESAUTOMATICAIM";
+        options[1] = "DOESAUTOSHOOT";
+        options[2] = "DOESAUTOPICKUP";
+        options[3] = "DOESSHOOTFROMOPPOSITE";
+        options[4] = "GENERALNOTES";
 
         return options;
     }

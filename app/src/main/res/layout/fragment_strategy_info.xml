@@ -13,41 +13,28 @@
         android:textColor="@android:color/black"/>
 
     <CheckBox
-        android:id="@+id/doesAutoContactTubs"
+        android:id="@+id/doesAutomaticallyAim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Contact Tubs During Autonomous" />
+        android:text="Automatically Aim" />
 
     <CheckBox
-        android:id="@+id/doesAutoSupportTubs"
+        android:id="@+id/doesAutoShoot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Support Tubs During Autonomous" />
+        android:text="Shoot Power Cells During Autonomous" />
 
     <CheckBox
-        android:id="@+id/doesAutoSupportBunnies"
+        android:id="@+id/doesAutoPickUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Support Bunnies During Autonomous" />
+        android:text="Pick Up Power Cells During Autonomous" />
 
     <CheckBox
-        android:id="@+id/doesGiveCubes"
+        android:id="@+id/doesShootFromOtherSide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Give Cubes To Alliance Members" />
-
-    <CheckBox
-        android:id="@+id/doesPutBunnies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Put Bunnies On Opposing Bots" />
-
-    <CheckBox
-        android:id="@+id/doesRemoveBunnies"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remove Bunnies From Itself Or Others" />
-
+        android:text="Shoot Power Cells From Opposite Side Of Field" />
     <Space
         android:layout_width="match_parent"
         android:layout_height="24dp"/>
